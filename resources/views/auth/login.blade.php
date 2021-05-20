@@ -31,7 +31,7 @@
                 <div class="form-container">
                     <div class="form-content">
 
-                        <img src="/assets/img/logo-clubarq.png" alt="">
+                        <img src="/assets/img/logo-clubarq.png" alt="clubarqedesign">
 
                         <h1 class="">Entrar</h1>
                         {{-- <p class="">Log in to your account to continue.</p> --}}
