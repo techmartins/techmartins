@@ -28,7 +28,7 @@
     @include('inc.navbar')
     
     <!--  BEGIN MAIN CONTAINER  -->
-    <div class="main-container" style="background-color: darkviolet" id="container">
+    <div class="main-container" style="background-color: lightslategray" id="container">
 
         <div class="overlay"></div>
         <div class="search-overlay"></div>

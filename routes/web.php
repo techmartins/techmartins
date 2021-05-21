@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+
+Auth::routes();
+
 Route::group(['middleware' => 'auth'] , function() {
 
     // $this->middleware
@@ -44,6 +47,36 @@ Route::group(['middleware' => 'auth'] , function() {
         ];
         // $pageName = 'sales';
         return view('dashboard2')->with($data);
+    });
+
+    Route::get('/cadastrar-empresa', function() {
+        $data = [
+            'category_name' => 'empresas',
+            'page_name' => 'cadastrar-empresa',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+        return view('pages.empresas.cadastrar_empresa')->with($data);
+    });
+
+    Route::get('/cadastrar-profissional', function() {
+        $data = [
+            'category_name' => 'profissional',
+            'page_name' => 'cadastrar-profissional',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+        return view('pages.profissional.cadastrar_profissional')->with($data);
+    });
+
+    Route::get('/config-geral', function() {
+        $data = [
+            'category_name' => 'configuracao',
+            'page_name' => 'config-geral',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+        return view('pages.configuracao.config_geral')->with($data);
     });
 
 
@@ -1306,8 +1339,6 @@ Route::group(['middleware' => 'auth'] , function() {
 
 
 });
-
-Auth::routes();
 
 Route::get('/', 'HomeController@index');
 

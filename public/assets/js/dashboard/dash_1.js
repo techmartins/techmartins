@@ -56,12 +56,15 @@ var d_2options1 = {
         }
     }],
     series: [{
-        name: 'Sales',
-        data: [44, 55, 41, 67, 22, 43, 21]
-    },{
-        name: 'Last Week',
-        data: [13, 23, 20, 8, 13, 27, 33]
-    }],
+                name: 'Entradas',
+                data: [862, 2883, 5246, 1281, 0, 0, 0, 0, 0, 0, 0, 2148]
+            }, {
+                name: 'Despesas',
+                data: [2969, 1050, 668, 2480, 0, 0, 0, 191, 1441, 363, 700, 0]
+            }, {
+                name: 'Tarifas',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+            }],
     xaxis: {
         labels: {
             show: false,
@@ -185,6 +188,7 @@ var options1 = {
       mounted: function(ctx, config) {
         const highest1 = ctx.getHighestValueInSeries(0);
         const highest2 = ctx.getHighestValueInSeries(1);
+        const highest3 = ctx.getHighestValueInSeries(2);
 
         ctx.addPointAnnotation({
           x: new Date(ctx.w.globals.seriesX[0][ctx.w.globals.series[0].indexOf(highest1)]).getTime(),
@@ -205,6 +209,22 @@ var options1 = {
         ctx.addPointAnnotation({
           x: new Date(ctx.w.globals.seriesX[1][ctx.w.globals.series[1].indexOf(highest2)]).getTime(),
           y: highest2,
+          label: {
+            style: {
+              cssClass: 'd-none'
+            }
+          },
+          customSVG: {
+              SVG: '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#e7515a" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg>',
+              cssClass: undefined,
+              offsetX: -8,
+              offsetY: 5
+          }
+        })
+
+        ctx.addPointAnnotation({
+          x: new Date(ctx.w.globals.seriesX[2][ctx.w.globals.series[2].indexOf(highest3)]).getTime(),
+          y: highest3,
           label: {
             style: {
               cssClass: 'd-none'
@@ -252,8 +272,8 @@ var options1 = {
     }
   },
   title: {
-    text: '$10,840',
-    align: 'left',
+    text: 'Lucros',
+    align: 'center',
     margin: 0,
     offsetX: -10,
     offsetY: 0,
@@ -270,13 +290,16 @@ var options1 = {
       lineCap: 'square'
   },
   series: [{
-      name: 'Income',
-      data: [16800, 16800, 15500, 17800, 15500, 17000, 19000, 16000, 15000, 17000, 14000, 17000]
-  }, {
-      name: 'Expenses',
-      data: [16500, 17500, 16200, 17300, 16000, 19500, 16000, 17000, 16000, 19000, 18000, 19000]
-  }],
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+              name: 'Entradas',
+              data: [862, 2883, 5246, 1281, 0, 0, 0, 0, 0, 0, 0, 2148]
+          }, {
+              name: 'Despesas',
+              data: [2969, 1050, 668, 2480, 0, 0, 0, 191, 1441, 363, 700, 0]
+          }, {
+              name: 'Tarifas',
+              data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+          }],
+  labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
   xaxis: {
     axisBorder: {
       show: false

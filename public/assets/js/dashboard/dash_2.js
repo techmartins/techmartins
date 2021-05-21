@@ -281,14 +281,17 @@ try {
           colors: ['transparent']
       },
       series: [{
-          name: 'Direct',
-          data: [58, 44, 55, 57, 56, 61, 58, 63, 60, 66, 56, 63]
+          name: 'Entradas',
+          data: [862, 2883, 5246, 1281, 0, 0, 0, 0, 0, 0, 0, 2148]
       }, {
-          name: 'Organic',
-          data: [91, 76, 85, 101, 98, 87, 105, 91, 114, 94, 66, 70]
+          name: 'Despesas',
+          data: [2969, 1050, 668, 2480, 0, 0, 0, 191, 1441, 363, 700, 0]
+      }, {
+          name: 'Tarifas',
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
       }],
       xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
       },
       fill: {
         type: 'gradient',
