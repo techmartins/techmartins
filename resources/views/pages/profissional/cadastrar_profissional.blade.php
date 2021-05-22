@@ -43,53 +43,34 @@
                   <input type="text" class="form-control" id="nascimento_profissional" placeholder="Endereço">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="bairro_empresa">Bairro</label>
-                  <input type="text" class="form-control" id="bairro_empresa" placeholder="Bairro">
+                  <label for="telefone_profissional">Contato</label>
+                  <input type="tel" class="form-control" id="telefone_profissional">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="uf_empresa">UF</label>
-                  <select id="uf_empresa" class="form-control">
-                    <option selected="">Estados</option>
-                    <option>Opção 1</option>
-                    <option>Opção 2</option>
-                    <option>Opção 3</option>
-                  </select>
+                  <label for="pix_profissional">Chave PIX</label>
+                  <input type="text" class="form-control" id="pix_profissional">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="banco_profissional">Banco</label>
+                  <input type="text" class="form-control" id="banco_profissional">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="agencia_profissional">Agência</label>
+                  <input type="text" class="form-control" id="agencia_profissional">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="conta_profissional">Conta</label>
+                  <input type="text" class="form-control" id="conta_profissional">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="cidade_empresa">Cidade</label>
-                  <select id="cidade_empresa" class="form-control">
-                    <option selected="">Cidades</option>
-                    <option>Opção 1</option>
-                    <option>Opção 2</option>
-                    <option>Opção 3</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-3">
-                  <label for="percentual_empresa">Percentual de Comissão (%)</label>
-                  <select id="percentual_empresa" class="form-control">
-                    <option selected="" value="0">Percentual</option>
-                    <option value="2">2.0%</option>
-                    <option value="2.5">2.5%</option>
-                    <option value="3.0">3.0%</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-3">
-                  <label for="contato_empresa">Contato</label>
-                  <input type="tel" class="form-control" id="contato_empresa">
-                </div>
-                <div class="form-group col-md-3">
-                  <label for="refcontato_empresa">Referência do Contato</label>
-                  <input type="text" class="form-control" id="refcontato_empresa">
-                </div>
-                <div class="form-group col-md-3">
-                  <label for="login_empresa">Login</label>
-                  <input type="text" class="form-control" id="refcontato_empresa">
+                  <label for="login_profissional">Login</label>
+                  <input type="text" class="form-control" id="login_profissional">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="password">Senha</label>
                   <input type="password" class="form-control" id="password" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Sign in</button>
+                <button type="submit" class="btn btn-primary mt-3">Confirmar</button>
               </div>
             </form>
           </div>

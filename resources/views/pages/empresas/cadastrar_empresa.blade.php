@@ -2,6 +2,7 @@
 
 @section('content')
 
+
   <div class="layout-px-spacing">
 
     <div class="row layout-top-spacing">
@@ -15,7 +16,7 @@
             </div>
           </div>
           <div class="widget-content widget-content-area" style="height: auto;">
-            <form>
+            <form action="" method="POST">
               <div class="form-row mb-1">
                 <div class="form-group col-md-6">
                   <label for="razao_social_empresa">Razão Social</label>
@@ -33,9 +34,22 @@
                   <label for="ramo_empresa">Ramo de Atividade</label>
                   <select id="ramo_empresa" class="form-control">
                     <option selected="">Selecione</option>
-                    <option>Opção 1</option>
-                    <option>Opção 2</option>
-                    <option>Opção 3</option>
+                    <option value="Ar Condicionado">Ar Condicionado</option>
+                    <option value="Automacao Residencial">Automação Residencial</option>
+                    <option value="Coifas e Calhas">Coifas, Calhas</option>
+                    <option value="Cortinas e Persianas">Cortinas e Persianas</option>
+                    <option value="Drywall e Gesso">Drywall e Gesso</option>
+                    <option value="Energia Fotovoltaica">Energia Fotovoltaica</option>
+                    <option value="Esquadrias e PVC">Esquadrias e PVC</option>
+                    <option value="Lajes e Artefatos Cimento">Lajes e Artefatos Cimento</option>
+                    <option value="Marcenaria">Marcenaria</option>
+                    <option value="Materiais de Construcao">Materiais de Construção</option>
+                    <option value="Moveis e Decoracao">Móveis e Decoração</option>
+                    <option value="Moveis Planejados">Móveis Planejados</option>
+                    <option value="Moveis Prontos">Móveis Prontos</option>
+                    <option value="Pergolado Madeira">Pergolado Madeira</option>
+                    <option value="Vidracaria">Vidraçaria</option>
+                    <option value="Vidros Box e Guarda Corpo">Vidros Box e Guarda Corpo</option>
                   </select>
                 </div>
                 <div class="form-group col-md-3">

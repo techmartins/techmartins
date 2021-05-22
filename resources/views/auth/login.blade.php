@@ -29,11 +29,11 @@
         <div class="form-form">
             <div class="form-form-wrap">
                 <div class="form-container">
-                    <div class="form-content">
+                    <div class="form-content" style="background-color: lightslategray">
 
                         <img src="/assets/img/logo-clubarq.png" alt="clubarqedesign">
 
-                        <h1 class="">Entrar</h1>
+                        <h1 class="">Painel Administrativo</h1>
                         {{-- <p class="">Log in to your account to continue.</p> --}}
                         
                         <form method="POST" action="{{ route('login') }}" class="text-left">

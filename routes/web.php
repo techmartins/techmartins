@@ -1352,3 +1352,5 @@ Route::get('/password/reset', function() {
 Route::get('/', function() {
     return redirect('/analytics');    
 });
+
+Route::resource('empresa','EmpresaController');
