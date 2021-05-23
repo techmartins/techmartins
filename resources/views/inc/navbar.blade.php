@@ -1,4 +1,4 @@
-@if ($config['page_name'] != 'coming_soon' && $config['page_name'] != 'contact_us' && $config['page_name'] != 'error404' && $config['page_name'] != 'error500' && $config['page_name'] != 'error503' && $config['page_name'] != 'faq' && $config['page_name'] != 'helpdesk' && $config['page_name'] != 'maintenence' && $config['page_name'] != 'privacy' && $config['page_name'] != 'auth_boxed' && $config['page_name'] != 'auth_default')
+@if ($page_name != 'coming_soon' && $page_name != 'contact_us' && $page_name != 'error404' && $page_name != 'error500' && $page_name != 'error503' && $page_name != 'faq' && $page_name != 'helpdesk' && $page_name != 'maintenence' && $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_default')
 
 <!--  BEGIN NAVBAR  -->
     <div class="header-container" style="background-color: lightslategray">

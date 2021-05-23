@@ -52,6 +52,9 @@ Route::group(['middleware' => 'auth'] , function() {
 
     Route::get('/empresa', 'EmpresaController@index');
     Route::post('/empresa', 'EmpresaController@store')->name('empresa.store');
+    Route::get('/empresa/{id}', 'EmpresaController@show')->name('empresa.show');
+    Route::get('/empresa/{id}/edit', 'EmpresaController@edit')->name('empresa.edit');
+    Route::delete('/empresa/{id}', 'EmpresaController@destroy')->name('empresa.destroy');
 
 
     Route::get('/cadastrar-profissional', function() {

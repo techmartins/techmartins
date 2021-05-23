@@ -1,60 +1,5 @@
 $(document).ready(function(){
 
-    // CRIAR EMPRESA
-
-    $('#enviar-dados').on('click', function() {
-        var razao = $('#razao_social').val();
-        var cnpj = $('#cnpj').val();
-        var email = $('#email').val();
-        var atividade = $('#ramo').val();
-        var cep = $('#cep').val();
-        var endereco = $('#endereco').val();
-        var bairro = $('#bairro').val();
-        var uf = $('#uf').val();
-        var cidade = $('#cidade').val();
-        var percentual = $('#percentual').val();
-        var contato = $('#contato').val();
-        var referencia = $('#referencia').val();
-        var login = $('#login').val();
-        var password = $('#password').val();
-    
-        let _url = $('#url_cadastro').val();
-        let _token   = $('meta[name="csrf-token"]').attr('content');
-    
-            $.ajax({
-                url: _url,
-                type: "POST",
-                data: {
-                    razao_social: razao,
-                    cnpj: cnpj,
-                    email: email,
-                    ramo_atividade: atividade,
-                    cep: cep,
-                    endereco: endereco,
-                    bairro: bairro,
-                    uf: uf,
-                    cidade: cidade,
-                    percentual: percentual,
-                    contato: contato,
-                    referencia: referencia,
-                    login: login,
-                    password: password,
-                    _token: _token
-                },
-                alert(data);
-
-                // success: function(response) {
-                //     if(response.code == 200) {
-                //         alert("deu tudo certo registro inserido com sucesso na base, parabens")
-                //     }
-                // },
-                // error: function(response) {
-                //     $('#titleError').text(response.responseJSON.errors.title);
-                //     $('#descriptionError').text(response.responseJSON.errors.description);
-                // }
-            });
-        });
-
     // Static Mask
 
     $('#static-mask1').inputmask("99-99999999");  //static mask
@@ -143,5 +88,100 @@ $(document).ready(function(){
         $(this).inputmask("setvalue", 'test@mail.com');
     });
 
+    $('#cep').on('blur', function(){
+
+        if($.trim($("#cep").val()) != ""){
+
+            $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#cep").val(), function(){
+
+                if(resultadoCEP["resultado"]){
+                    $("#endereco").val(unescape(resultadoCEP["tipo_logradouro"])+" "+unescape(resultadoCEP["logradouro"]));
+                    $("#bairro").val(unescape(resultadoCEP["bairro"]));
+                    $("#cidade").val(unescape(resultadoCEP["cidade"]));
+                    $("#uf").val(unescape(resultadoCEP["uf"]));
+                }
+            });				
+        }			
+    });
+
+    $('#enviar-dados').on('click', function() {
+        
+        var razao = $('#razao_social').val();
+        var cnpj = $('#cnpj').val();
+        var email = $('#email').val();
+        var atividade = $('#ramo').val();
+        var cep = $('#cep').val();
+        var endereco = $('#endereco').val();
+        var bairro = $('#bairro').val();
+        var uf = $('#uf').val();
+        var cidade = $('#cidade').val();
+        var percentual = $('#percentual').val();
+        var contato = $('#contato').val();
+        var referencia = $('#referencia').val();
+        var login = $('#login').val();
+        var password = $('#password').val();
+    
+        let _url = $('#url_cadastro').val();
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: _url,
+            type: "POST",
+            data: {
+                razao_social: razao,
+                cnpj: cnpj,
+                email: email,
+                ramo_atividade: atividade,
+                cep: cep,
+                endereco: endereco,
+                bairro: bairro,
+                uf: uf,
+                cidade: cidade,
+                percentual: percentual,
+                contato: contato,
+                referencia: referencia,
+                login: login,
+                password: password,
+                _token: _token
+            },
+
+            success: function(response) {
+                if(response.code == 200) {
+                    alert("deu tudo certo registro inserido com sucesso na base, parabens")
+                }
+            },
+            error: function(response) {
+                console.log(response)
+            }
+        });
+    });
+
+    $(".btn-editar-empresa").click(function(){
+        $("#modal-editar-empresa").modal();
+        let id = $(this).data("id");
+        let _url = $('#url_visualizar').val();
+        //let _token   = $('meta[name="csrf-token"]').attr('content');
+        
+        $.ajax({
+            url: _url+"/"+id,
+            type: "GET",
+            // dataType: 'json',
+            
+            success: function(response) {
+                console.log(response);
+                $('#razao_social_edit').val($response);
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        });
+
+    });
+
+    $(".btn-excluir-empresa").click(function(){
+        $("#modal-excluir-empresa").modal();
+        let _url = $('#url_visualizar').val();
+        let _id = $(this).data("id");
+    });
 
 });

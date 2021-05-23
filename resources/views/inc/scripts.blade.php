@@ -3,7 +3,7 @@
 <script src="{{asset('bootstrap/js/popper.min.js')}}"></script>
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
-@if ($config['page_name'] != 'coming_soon' && $config['page_name'] != 'contact_us' && $config['page_name'] != 'error404' && $config['page_name'] != 'error500' && $config['page_name'] != 'error503' && $config['page_name'] != 'faq' && $config['page_name'] != 'helpdesk' && $config['page_name'] != 'maintenence' && $config['page_name'] != 'privacy' && $config['page_name'] != 'auth_boxed' && $config['page_name'] != 'auth_default')
+@if ($page_name != 'coming_soon' && $page_name != 'contact_us' && $page_name != 'error404' && $page_name != 'error500' && $page_name != 'error503' && $page_name != 'faq' && $page_name != 'helpdesk' && $page_name != 'maintenence' && $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_default')
 <script src="{{asset('plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
 <script src="{{asset('assets/js/app.js')}}"></script>
 <script>
@@ -18,7 +18,7 @@
 <!-- END GLOBAL MANDATORY SCRIPTS -->
 
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-@switch($config['page_name'])
+@switch($page_name)
     @case('analytics')
       {{-- Dashboard --}}
       <script src="{{asset('plugins/apex/apexcharts.min.js')}}"></script>
@@ -817,26 +817,6 @@
           feather.replace();
       </script>
       <script src="{{asset('plugins/input-mask/jquery.inputmask.bundle.min.js')}}"></script>
-      <script>
-        $('#cep').on('blur', function(){
-
-          if($.trim($("#cep").val()) != ""){
-
-              $("#mensagem").html('(Aguarde, consultando CEP ...)');
-              $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#cep").val(), function(){
-
-                  if(resultadoCEP["resultado"]){
-                      $("#endereco").val(unescape(resultadoCEP["tipo_logradouro"])+" "+unescape(resultadoCEP["logradouro"]));
-                      $("#bairro").val(unescape(resultadoCEP["bairro"]));
-                      $("#cidade").val(unescape(resultadoCEP["cidade"]));
-                      $("#uf").val(unescape(resultadoCEP["uf"]));
-                  }
-
-                  $("#mensagem").html('');
-              });				
-          }			
-        });
-      </script>
       <script src="{{asset('plugins/scripts-empresa.js')}}"></script>
       <script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
       <script src="{{asset('plugins/bootstrap-maxlength/bootstrap-maxlength.js')}}"></script>

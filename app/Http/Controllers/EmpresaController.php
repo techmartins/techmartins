@@ -15,13 +15,12 @@ class EmpresaController extends Controller
     public function index()
     {
         $empresas = Empresa::latest()->paginate(5);
-        $config['page_name'] = 'cadastrar-empresa';
-        $config['category_name'] = 'empresas';
-        $config['has_scrollspy'] = 0;
-        $config['scrollspy_offset'] = '';
+        $page_name = 'cadastrar-empresa';
+        $category_name = 'empresas';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
 
-        return view('empresas.cadastrar_empresa',compact('empresas', 'config'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('empresas.cadastrar_empresa',compact('empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -58,11 +57,10 @@ class EmpresaController extends Controller
             'login' => 'required',
             'password' => 'required'
         ]);
-        dd($request);
-
+        
         Empresa::create($request->all());
 
-        return redirect()->route('empresas.cadastrar_empresa')
+        return redirect()->route('empresa')
                         ->with('success','Empresa registrada com sucesso.');
     }
 
@@ -72,9 +70,12 @@ class EmpresaController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Empresa $empresa)
+    public function show(Request $request)
     {
-        return view('empresa.show',compact('empresa'));
+        $empresa = Empresa::where('id', '=', $request->id)->get();
+        $retorno = response()->json($empresa);
+
+        return $retorno;
     }
 
     /**

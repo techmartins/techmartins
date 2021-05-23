@@ -1,4 +1,4 @@
-@if ($config['page_name']  != 'coming_soon' && $config['page_name']  != 'contact_us' && $config['page_name']  != 'error404' && $config['page_name']  != 'error500' && $config['page_name']  != 'error503' && $config['page_name']  != 'faq' && $config['page_name']  != 'helpdesk' && $config['page_name']  != 'maintenence' && $config['page_name']  != 'privacy' && $config['page_name']  != 'auth_boxed' && $config['page_name']  != 'auth_default')
+@if ($page_name  != 'coming_soon' && $page_name  != 'contact_us' && $page_name  != 'error404' && $page_name  != 'error500' && $page_name  != 'error503' && $page_name  != 'faq' && $page_name  != 'helpdesk' && $page_name  != 'maintenence' && $page_name  != 'privacy' && $page_name  != 'auth_boxed' && $page_name  != 'auth_default')
     <!--  BEGIN SIDEBAR  -->
     {{-- <div class="sidebar-wrapper sidebar-theme">
                 
@@ -16,7 +16,7 @@
             </ul>
 
             <ul class="list-unstyled menu-categories" id="accordionExample">
-                @if ($config['page_name']  != 'alt_menu' && $config['page_name']  != 'blank_page' && $config['page_name']  != 'boxed' && $config['page_name']  != 'breadcrumb' )
+                @if ($page_name  != 'alt_menu' && $page_name  != 'blank_page' && $page_name  != 'boxed' && $page_name  != 'breadcrumb' )
 
                     <li class="menu {{ ($category_name === 'dashboard') ? 'active' : '' }}">
                         <a href="#dashboard" data-toggle="collapse" aria-expanded="{{ ($category_name === 'dashboard') ? 'true' : 'false' }}" class="dropdown-toggle">
@@ -30,10 +30,10 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled {{ ($category_name === 'dashboard') ? 'show' : '' }}" id="dashboard" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'analytics') ? 'active' : '' }}">
-                                <a href="{{getURL()}}/analytics"> Analytics {{$config['page_name'] }}</a>
+                            <li class="{{ ($page_name  === 'analytics') ? 'active' : '' }}">
+                                <a href="{{getURL()}}/analytics"> Analytics {{$page_name }}</a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'sales') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'sales') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/sales"> Sales </a>
                             </li>
                         </ul>
@@ -130,52 +130,52 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled {{ ($category_name === 'components') ? 'show' : '' }}" id="components" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'tabs') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'tabs') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/tabs"> Tabs </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'accordion') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'accordion') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/accordions"> Accordions  </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'modal') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'modal') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/modals"> Modals </a>
                             </li>                            
-                            <li class="{{ ($config['page_name']  === 'cards') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'cards') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/cards"> Cards </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'bootstrap_carousel') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'bootstrap_carousel') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/carousel">Carousel</a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'blockui') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'blockui') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/blockui"> Block UI </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'countdown') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'countdown') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/countdown"> Countdown </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'counter') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'counter') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/counter"> Counter </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'sweetalert') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'sweetalert') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/sweet_alerts"> Sweet Alerts </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'timeline') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'timeline') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/timeline"> Timeline </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'notifications') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'notifications') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/notifications"> Notifications </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'session_timeout') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'session_timeout') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/session_timeout"> Session Timeout </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'media_object') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'media_object') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/media_object"> Media Object </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'list_group') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'list_group') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/list_group"> List Group </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'pricing_table') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'pricing_table') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/pricing_tables"> Pricing Tables </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'lightbox') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'lightbox') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/components/lightbox"> Lightbox </a>
                             </li>
                         </ul>
@@ -192,58 +192,58 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled {{ ($category_name === 'elements') ? 'show' : '' }}" id="elements" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'alerts') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'alerts') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/alerts"> Alerts </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'avatars') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'avatars') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/avatars"> Avatars </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'badges') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'badges') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/badges"> Badges </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'breadcrumbs') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'breadcrumbs') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/breadcrumbs"> Breadcrumbs </a>
                             </li>                            
-                            <li class="{{ ($config['page_name']  === 'buttons') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'buttons') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/buttons"> Buttons </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'button_group') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'button_group') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/button_group"> Button Group </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'color_library') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'color_library') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/color_library"> Color Library </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'dropdown') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'dropdown') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/dropdown"> Dropdown </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'infobox') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'infobox') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/infobox"> Infobox </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'jumbotron') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'jumbotron') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/jumbotron"> Jumbotron </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'loaders') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'loaders') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/loaders"> Loaders </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'pagination') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'pagination') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/pagination"> Pagination </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'popovers') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'popovers') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/popovers"> Popovers </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'progress_bar') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'progress_bar') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/progress_bar"> Progress Bar </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'search') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'search') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/search"> Search </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'tooltips') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'tooltips') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/tooltips"> Tooltips </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'treeview') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'treeview') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/treeview"> Treeview </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'typography') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'typography') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/elements/typography"> Typography </a>
                             </li>
                         </ul>
@@ -291,37 +291,37 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled {{ ($category_name === 'datatable') ? 'show' : '' }}" id="datatables" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'basic') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'basic') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/basic"> Basic </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'basic-light') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'basic-light') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/basic-light"> Dark </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'ordering_sorting') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'ordering_sorting') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/ordering_sorting"> Order Sorting </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'multi-column_ordering') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'multi-column_ordering') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/multi-column_ordering"> Multi-Column </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'multiple_tables') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'multiple_tables') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/multiple_tables"> Multiple Tables</a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'alternative_pagination') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'alternative_pagination') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/alternative_pagination"> Alt. Pagination</a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'custom') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'custom') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/custom"> Custom </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'range_search') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'range_search') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/range_search"> Range Search </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'html5') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'html5') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/html5"> HTML5 Export </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'live_dom_ordering') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'live_dom_ordering') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/live_dom_ordering"> Live DOM ordering </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'miscellaneous') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'miscellaneous') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/tables/datatables/miscellaneous"> Miscellaneous </a>
                             </li>
                         </ul>
@@ -338,58 +338,58 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled {{ ($category_name === 'forms') ? 'show' : '' }}" id="forms" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'basic') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'basic') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/basic"> Basic </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'input_group') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'input_group') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/input_group"> Input Group </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'layouts') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'layouts') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/layouts"> Layouts </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'validation') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'validation') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/validation"> Validation </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'input_mask') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'input_mask') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/input_mask"> Input Mask </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'bootstrap_select') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'bootstrap_select') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/bootstrap_select"> Bootstrap Select </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'select2') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'select2') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/select2"> Select2 </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'touchspin') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'touchspin') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/touchspin"> TouchSpin </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'maxlength') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'maxlength') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/maxlength"> Maxlength </a>
                             </li>                          
-                            <li class="{{ ($config['page_name']  === 'checkbox_radio') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'checkbox_radio') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/checkbox_radio"> Checkbox &amp; Radio </a>
                             </li>                            
-                            <li class="{{ ($config['page_name']  === 'switches') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'switches') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/switches"> Switches </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'wizards') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'wizards') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/wizards"> Wizards </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'file_upload') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'file_upload') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/file_upload"> File Upload </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'quill') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'quill') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/quill_editor"> Quill Editor </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'markdown') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'markdown') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/markdown_editor"> Markdown Editor </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'date_range_picker') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'date_range_picker') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/date_range_picker"> Date &amp; Range Picker </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'clipboard') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'clipboard') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/clipboard"> Clipboard </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'typeahead') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'typeahead') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/forms/typeahead"> Typeahead </a>
                             </li>
                         </ul>
@@ -410,10 +410,10 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled {{ ($category_name === 'users') ? 'show' : '' }}" id="users" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'profile') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'profile') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/users/profile"> Profile </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'account_setting') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'account_setting') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/users/account_settings"> Account Settings </a>
                             </li>
                         </ul>
@@ -430,37 +430,37 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled {{ ($category_name === 'pages') ? 'show' : '' }}" id="pages" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'helpdesk') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'helpdesk') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/pages/helpdesk"> Helpdesk </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'contact_us') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'contact_us') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/pages/contact_us_form"> Contact Form </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'faq') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'faq') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/pages/faq"> FAQ </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'faq2') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'faq2') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/pages/faq2"> FAQ 2 </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'privacy') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'privacy') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/pages/privacy_policy"> Privacy Policy </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'coming_soon') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'coming_soon') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/pages/coming_soon"> Coming Soon </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'dashboard') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'dashboard') ? 'active' : '' }}">
                                 <a href="#pages-error" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Error <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
                                 <ul class="collapse list-unstyled sub-submenu" id="pages-error" data-parent="#pages"> 
-                                    <li class="{{ ($config['page_name']  === 'error404') ? 'active' : '' }}">
+                                    <li class="{{ ($page_name  === 'error404') ? 'active' : '' }}">
                                         <a href="{{getURL()}}/pages/error_404"> 404 </a>
                                     </li>
-                                    <li class="{{ ($config['page_name']  === 'error500') ? 'active' : '' }}">
+                                    <li class="{{ ($page_name  === 'error500') ? 'active' : '' }}">
                                         <a href="{{getURL()}}/pages/error_500"> 500 </a>
                                     </li>
-                                    <li class="{{ ($config['page_name']  === 'error503') ? 'active' : '' }}">
+                                    <li class="{{ ($page_name  === 'error503') ? 'active' : '' }}">
                                         <a href="{{getURL()}}/pages/error_503"> 503 </a>
                                     </li>
-                                    <li class="{{ ($config['page_name']  === 'maintenence') ? 'active' : '' }}">
+                                    <li class="{{ ($page_name  === 'maintenence') ? 'active' : '' }}">
                                         <a href="{{getURL()}}/pages/maintenence"> Maintanence </a>
                                     </li>
                                 </ul>
@@ -483,28 +483,28 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled {{ ($category_name === 'auth') ? 'show' : '' }}" id="authentication" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'auth_boxed') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'auth_boxed') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/authentication/login_boxed"> Login Boxed </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'auth_boxed') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'auth_boxed') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/authentication/register_boxed"> Register Boxed </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'auth_boxed') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'auth_boxed') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/authentication/lockscreen_boxed"> Unlock Boxed </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'auth_boxed') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'auth_boxed') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/authentication/pass_recovery_boxed"> Recover ID Boxed </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'auth_default') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'auth_default') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/authentication/login"> Login Cover </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'auth_default') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'auth_default') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/authentication/register"> Register Cover </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'auth_default') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'auth_default') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/authentication/lockscreen"> Unlock Cover </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'auth_default') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'auth_default') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/authentication/pass_recovery"> Recover ID Cover </a>
                             </li>
                         </ul>
@@ -548,16 +548,16 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled" id="starter-kit" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'blank_page') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'blank_page') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/starter-kit/blank_page"> Blank Page </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'breadcrumb') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'breadcrumb') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/starter-kit/breadcrumb"> Breadcrumb </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'boxed') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'boxed') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/starter-kit/boxed"> Boxed </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'alt_menu') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'alt_menu') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/starter-kit/alternative_menu"> Alternate Menu </a>
                             </li>
                         </ul>
@@ -645,16 +645,16 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled {{ ($category_name === 'starter_kits') ? 'show' : '' }}" id="starter-kit" data-parent="#accordionExample">
-                            <li class="{{ ($config['page_name']  === 'blank_page') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'blank_page') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/starter-kit/blank_page"> Blank Page </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'breadcrumb') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'breadcrumb') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/starter-kit/breadcrumb"> Breadcrumb </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'boxed') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'boxed') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/starter-kit/boxed"> Boxed </a>
                             </li>
-                            <li class="{{ ($config['page_name']  === 'alt_menu') ? 'active' : '' }}">
+                            <li class="{{ ($page_name  === 'alt_menu') ? 'active' : '' }}">
                                 <a href="{{getURL()}}/starter-kit/alternative_menu"> Alternate Menu </a>
                             </li>
                         </ul>

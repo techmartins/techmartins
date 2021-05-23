@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ setTitle($config['page_name']) }}</title>
+    <title>{{ setTitle($page_name) }}</title>
     <link rel="icon" type="image/x-icon" href="{{asset('storage/img/favicon.ico')}}"/>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -17,7 +17,7 @@
     <!-- Styles -->
     @include('inc.styles')  
 </head>
-<body {{ ($config['has_scrollspy']) ? scrollspy($scrollspy_offset) : '' }} class=" {{ ($config['page_name'] === 'alt_menu') ? 'alt-menu' : '' }} {{ ($config['page_name'] === 'error404') ? 'error404 text-center' : '' }} {{ ($config['page_name'] === 'error500') ? 'error500 text-center' : '' }} {{ ($config['page_name'] === 'error503') ? 'error503 text-center' : '' }} {{ ($config['page_name'] === 'maintenence') ? 'maintanence text-center' : '' }}">
+<body {{ ($has_scrollspy) ? scrollspy($scrollspy_offset) : '' }} class=" {{ ($page_name === 'alt_menu') ? 'alt-menu' : '' }} {{ ($page_name === 'error404') ? 'error404 text-center' : '' }} {{ ($page_name === 'error500') ? 'error500 text-center' : '' }} {{ ($page_name === 'error503') ? 'error503 text-center' : '' }} {{ ($page_name === 'maintenence') ? 'maintanence text-center' : '' }}">
 <body>
     <!-- BEGIN LOADER -->
     <div id="load_screen"> 
@@ -44,7 +44,7 @@
 
             @yield('content')
 
-            @if ($config['page_name'] != 'account_settings')
+            @if ($page_name != 'account_settings')
                 @include('inc.footer')
             @endif
         </div>
