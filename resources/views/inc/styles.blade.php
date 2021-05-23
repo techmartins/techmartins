@@ -5,14 +5,14 @@
 <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
 <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
 
-@if ($page_name != 'coming_soon' && $page_name != 'contact_us' && $page_name != 'error404' && $page_name != 'error500' && $page_name != 'error503' && $page_name != 'faq' && $page_name != 'helpdesk' && $page_name != 'maintenence' && $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_default')
+@if ($config['page_name'] != 'coming_soon' && $config['page_name'] != 'contact_us' && $config['page_name'] != 'error404' && $config['page_name'] != 'error500' && $config['page_name'] != 'error503' && $config['page_name'] != 'faq' && $config['page_name'] != 'helpdesk' && $config['page_name'] != 'maintenence' && $config['page_name'] != 'privacy' && $config['page_name'] != 'auth_boxed' && $config['page_name'] != 'auth_default')
 <link href="{{asset('assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
 @endif
 <!-- END GLOBAL MANDATORY STYLES -->
 
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-@switch($page_name)
+@switch($config['page_name'])
     @case('analytics')
       {{-- Dashboard --}}
 <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">

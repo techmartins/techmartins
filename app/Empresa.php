@@ -1,0 +1,29 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Empresa extends Model
+{
+    protected $fillable = [
+        'id', 
+        'razao_social',
+        'cnpj',
+        'email',
+        'ramo_atividade',
+        'cep',
+        'endereco',
+        'bairro',
+        'uf',
+        'cidade',
+        'percentual',
+        'contato',
+        'referencia',
+        'login',
+        'password',
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+}
