@@ -14,7 +14,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::latest()->paginate(5);
+        $empresas = Empresa::where('deleted_at', '=', null)->latest()->paginate(5);
         $page_name = 'cadastrar-empresa';
         $category_name = 'empresas';
         $has_scrollspy = 0;
@@ -115,10 +115,13 @@ class EmpresaController extends Controller
             'password' => 'required'
         ]);
 
-        $empresa->update($request->all());
+        $empresa->where('id', '=', $request->id)->update($request->toArray());
 
-        return redirect()->route('empresa.index')
-                        ->with('success','Empresa atualizada com sucesso');
+        $retorno = response()->json($empresa);
+
+        return $retorno;
+        // return redirect()->route('empresa')
+        //                 ->with('success','Empresa atualizada com sucesso');
     }
 
     /**
@@ -127,20 +130,11 @@ class EmpresaController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Empresa $empresa)
+    public function destroy(Request $request)
     {
-        $empresa->delete();
+        $empresa = Empresa::where('id', '=', $request->id)->update(['deleted_at' => now()]);
 
-        return redirect()->route('empresa.index')
-                        ->with('success','Empresa removida com sucesso.');
+        return response()->json($empresa, 200);
     }
 
-    public function busca_cep($cep){
-        $resultado = @file_get_contents('http://republicavirtual.com.br/web_cep.php?cep='.urlencode($cep).'&formato=query_string');  
-        if(!$resultado){  
-            $resultado = "&resultado=0&resultado_txt=erro+ao+buscar+cep";  
-        }  
-        parse_str($resultado, $retorno);   
-        return $retorno;
-    }
 }

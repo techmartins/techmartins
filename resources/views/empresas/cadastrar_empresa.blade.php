@@ -17,6 +17,7 @@
           </div>
           <div class="widget-content widget-content-area" style="height: auto;">
             <form action="{{ route('empresa.store') }}" method="POST">
+
               <input type="hidden" value="{{ route('empresa.store') }}" id="url_cadastro">
               <input type="hidden" value="{{ Request::url() }}" id="url_visualizar">
               <div class="form-row mb-1">
@@ -145,7 +146,7 @@
                     <td>{{ $emp->percentual }}</td>
                     <td>{{ $emp->created_at }}</td>
                     <td class="text-center">
-                      <button class="btn btn-primary btn-editar-empresa" data-id="{{ $emp->id }}" data-titulo="{{$emp->razao_social}}">Editar</button>
+                      <button class="btn btn-primary btn-editar-empresa" data-id="{{ $emp->id }}">Editar</button>
                       <button class="btn btn-danger btn-excluir-empresa" data-id="{{ $emp->id }}">Excluir</button>
                     </td>
                   </tr>
@@ -160,7 +161,7 @@
       {{-- MODAL DE EDITAR EMPRESA --}}
 
       ​<div class="modal fade" id="modal-editar-empresa" role="dialog">
-        <div class="modal-dialog" style="max-width: 60%;">
+        <div class="modal-dialog" style="max-width: 65%;">
         
           <!-- Modal content-->
           <div class="modal-content">
@@ -177,8 +178,10 @@
                     </div>
                     <div class="widget-content widget-content-area" style="height: auto;">
                         
-                      <form action="" method="POST">
-                        <input type="hidden" value="{{Request::url()."/"}}" id="url_cadastro">
+                      <form action="" method="PUT">
+                        @csrf
+                        <input type="hidden" value="{{Request::url()}}" id="url_cadastro">
+                        <input type="hidden" id="id_edit">
                         <div class="form-row mb-1">
                           <div class="form-group col-md-6">
                             <label for="razao_social">Razão Social</label>
@@ -286,8 +289,9 @@
                     <div class="statbox widget box box-shadow">
                       <div class="widget-content widget-content-area" style="height: auto;">
                         <h3>Você tem certeza de que deseja excluir esta empresa?</h3>
-                        <button type="button" class="btn btn-danger">Excluir</button>
-                        <button data-dismiss="modal" type="button">Fechar</button>
+                        <input type="hidden" id="id_deletar_empresa">
+                        <button type="button" class="btn btn-danger" id="deletar">Excluir</button>
+                        <a data-dismiss="modal" style="text-decoration: none; cursor: pointer;">Fechar</a>
                       </div>
                     </div>
                   </div>

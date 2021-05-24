@@ -1,13 +1,13 @@
 @if ($page_name != 'coming_soon' && $page_name != 'contact_us' && $page_name != 'error404' && $page_name != 'error500' && $page_name != 'error503' && $page_name != 'faq' && $page_name != 'helpdesk' && $page_name != 'maintenence' && $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_default')
 
 <!--  BEGIN NAVBAR  -->
-    <div class="header-container" style="background-color: lightslategray">
+    <div class="header-container" style="background-color: #04122f">
         <header class="header navbar navbar-expand-sm">
 
             <div class="nav-logo align-self-center">
                 <a class="navbar-brand" href="/analytics">
                     <img alt="logo" style="margin-right: 15%; height: 90px; width: 110px" src="{{asset('assets/img/logo-clubarq.png')}}"> 
-                    <span class="navbar-brand-name">Painel Administrativo</span>
+                    <span class="navbar-brand-name" style="color: #cc7032;">Painel Administrativo</span>
                 </a>
             </div>
 
@@ -16,7 +16,7 @@
                         <div class="media">
                             {{-- <img src="{{asset('assets/img/90x90.jpg')}}" class="img-fluid" alt=""> --}}
                             <div class="media-body align-self-center">
-                                <h6 style="font-weight: bolder"><span>Olá,</span> Usuário</h6>
+                                <h6 style="font-weight: bolder"><span>Olá,</span> {{ Auth::user()->name }}</h6>
                             </div>
                         </div>
                         {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg> --}}
