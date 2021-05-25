@@ -7,10 +7,10 @@ if (!function_exists('setTitle')) :
 
         // echo $page_name;
 
-        $admin_name = '| CORK - Multipurpose Bootstrap Dashboard Template';
+        $admin_name = 'Painel Administrativo - Club Arq & Design';
 
         if ($page_name === 'analytics') :
-            echo 'CORK Admin - Multipurpose Bootstrap Dashboard Template';
+            echo 'Painel Administrativo - Club Arq & Design';
         elseif ($page_name === 'sales') :
             echo 'Sales Admin ' . $admin_name;
 
