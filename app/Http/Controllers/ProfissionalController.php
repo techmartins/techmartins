@@ -40,7 +40,7 @@ class ProfissionalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         $request->validate([
             'parceiro' => 'required',
@@ -62,8 +62,15 @@ class ProfissionalController extends Controller
             'password' => 'required',
             'perfil' => 'required',
         ]);
+
+        $user["name"] = $request->parceiro;
+        $user["email"] = $request->email;
+        $user["login"] = $request->login;
+        $user["password"] = $request->password;
+        $user["perfil"] = $request->perfil;
         
         Profissionais::create($request->all());
+        User::create($user);
 
         return redirect()->route('profissional')
                         ->with('success','Profissional registrada com sucesso.');
