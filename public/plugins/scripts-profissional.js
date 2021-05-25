@@ -271,7 +271,8 @@ $(document).ready(function(){
             },
             
             success: function(response) {
-                console.log(response);    
+                console.log(response);
+                $('#modal-editar-profissional').modal('hide');   
             },
             error: function(err) {
                 console.log(err)

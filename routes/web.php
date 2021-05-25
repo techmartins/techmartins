@@ -65,6 +65,14 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::put('/profissional/{id}', 'ProfissionalController@update')->name('profissional.update');
     Route::delete('/profissional/{id}', 'ProfissionalController@destroy')->name('profissional.destroy');
 
+    Route::get('/vendas', 'VendasController@index');
+    Route::get('/vendas/visualizar', 'VendasController@getallvendas')->name('visualizar.vendas');
+    Route::post('/vendas', 'VendasController@store')->name('vendas.store');
+    Route::get('/vendas/{id}', 'VendasController@show')->name('vendas.show');
+    Route::get('/vendas/{id}/edit', 'VendasController@edit')->name('vendas.edit');
+    Route::put('/vendas/{id}', 'VendasController@update')->name('vendas.update');
+    Route::delete('/vendas/{id}', 'VendasController@destroy')->name('vendas.destroy');
+
     Route::get('/config-geral', function() {
         $data = [
             'category_name' => 'configuracao',

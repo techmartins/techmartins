@@ -4,6 +4,7 @@
     <div class="topbar-nav header navbar" role="banner">
         <nav id="topbar" style="background-color: gray">
             <ul class="list-unstyled menu-categories" id="topAccordion">
+                @if(Auth::user()->perfil == 'admin')
                 <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
                         <div class="">
@@ -18,7 +19,7 @@
                         </li>
                     </ul>
                 </li>
-
+                
 
                 <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
@@ -34,6 +35,7 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
                 <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
@@ -44,15 +46,16 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
-                        <li class="{{ ($page_name === 'cadastrar-profissional') ? 'active' : '' }}">
+                        <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
                             <a href="/vendas">Registrar</a>
                         </li>
-                        <li class="{{ ($page_name === 'cadastrar-profissional') ? 'active' : '' }}">
-                            <a href="/vendas">Visualizar</a>
+                        <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
+                            <a href="/vendas/visualizar">Visualizar</a>
                         </li>
                     </ul>
                 </li>
 
+                @if(Auth::user()->perfil == 'admin')
                 <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
                         <div class="">
@@ -62,24 +65,21 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
-                        <li class="{{ ($page_name === 'config-geral') ? 'active' : '' }}">
-                            <a href="/relatorios"> Vendas Por Lojista </a>
+                        <li>
+                            <a href="/relatorios/venda-lojista"> Vendas Por Lojista </a>
                         </li>
-                        <li class="{{ ($page_name === 'config-geral') ? 'active' : '' }}">
-                            <a href="/relatorios"> Obras Por Profissional </a>
+                        <li>
+                            <a href="/relatorios/obra-profissional"> Obras Por Profissional </a>
                         </li>
-                        <li class="{{ ($page_name === 'config-geral') ? 'active' : '' }}">
-                            <a href="/relatorios"> Ranking de Pontuação </a>
+                        <li>
+                            <a href="/relatorios/ranking"> Ranking de Pontuação </a>
                         </li>
-                        <li class="{{ ($page_name === 'config-geral') ? 'active' : '' }}">
-                            <a href="/relatorios"> Comissionamento Profissional X Lojista </a>
-                        </li>
-                        <li class="{{ ($page_name === 'config-geral') ? 'active' : '' }}">
-                            <a href="/relatorios"> Relatórios 5 </a>
+                        <li>
+                            <a href="/relatorios/comissao-profissional-lojista"> Comissionamento Profissional X Lojista </a>
                         </li>
                     </ul>
                 </li>
-
+                @endif
                 {{-- <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
                         <div class="">

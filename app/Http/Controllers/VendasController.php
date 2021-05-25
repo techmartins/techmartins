@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Vendas;
+use App\Profissionais;
+use App\Empresa;
+use App\Ranking;
 use Illuminate\Http\Request;
 
 class VendasController extends Controller
@@ -14,15 +17,26 @@ class VendasController extends Controller
      */
     public function index()
     {
-        $vendas = Vendas::latest()->paginate(5);
+        $profissionais = Profissionais::all();
+        $empresas = Empresa::all();
         $page_name = 'vendas';
         $category_name = 'vendas';
         $has_scrollspy = 0;
         $scrollspy_offset = '';
 
-        return view('vendas.registrar_venda',compact('vendas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('vendas.registrar_venda',compact('profissionais', 'empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
+    public function getallvendas(Vendas $vendas)
+    {
+        $vendas = Vendas::all();
+        $page_name = 'vendas';
+        $category_name = 'vendas';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+        
+        return view('vendas.visualizar_vendas',compact('vendas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -52,8 +66,15 @@ class VendasController extends Controller
             'status' => 'required',
             'cca' => 'required'
         ]);
+        $valor = $request->valor;
+        $request->pontuacao_indicador = $valor;
+        $request->cca = $valor*0.025;
+        
+        $request_ranking["pontuacao"] = $request->pontuacao_indicador;
+        $request_ranking["beneficiario"] = $request->indicador;
         
         Vendas::create($request->all());
+        Ranking::create($request_ranking);
 
         return redirect()->route('vendas')
                         ->with('success','Venda registrada com sucesso.');
