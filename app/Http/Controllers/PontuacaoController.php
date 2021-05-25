@@ -14,13 +14,13 @@ class PontuacaoController extends Controller
      */
     public function index()
     {
-        $pontuacao = Pontuacao::all();
+        //$pontuacao = Pontuacao::get();
         $page_name = 'pontuacao';
         $category_name = 'pontuacao';
         $has_scrollspy = 0;
         $scrollspy_offset = '';
 
-        return view('pontuacao.visualizar_pontuacao',compact('pontuacao', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+        return view('pontuacao.visualizar_pontuacao',compact( 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
     /**

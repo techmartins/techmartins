@@ -77,6 +77,9 @@
                         <li>
                             <a href="/relatorios/comissao-profissional-lojista"> Comissionamento Profissional X Lojista </a>
                         </li>
+                        <li>
+                            <a href="/relatorios/pontuacao"> Tabela de Premiações </a>
+                        </li>
                     </ul>
                 </li>
                 @endif

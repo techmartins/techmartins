@@ -72,6 +72,13 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::get('/vendas/{id}/edit', 'VendasController@edit')->name('vendas.edit');
     Route::put('/vendas/{id}', 'VendasController@update')->name('vendas.update');
     Route::delete('/vendas/{id}', 'VendasController@destroy')->name('vendas.destroy');
+    
+    Route::get('/relatorios/pontuacao', 'PontuacaoController@index');
+    Route::get('/pontuacao/visualizar', 'PontuacaoController@getallvendas')->name('visualizar.pontuacao');
+    Route::post('/pontuacao', 'PontuacaoController@store')->name('pontuacao.store');
+    Route::get('/pontuacao/{id}', 'PontuacaoController@show')->name('pontuacao.show');
+    Route::get('/pontuacao/{id}/edit', 'PontuacaoController@edit')->name('pontuacao.edit');
+    Route::put('/pontuacao/{id}', 'PontuacaoController@update')->name('pontuacao.update');
 
     Route::get('/config-geral', function() {
         $data = [
