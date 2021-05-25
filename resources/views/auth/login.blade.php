@@ -25,11 +25,11 @@
 </head>
 <body>
 
-    <div class="form-container outer">
+    <div class="form-container outer" style="background-color: #04122f">
         <div class="form-form">
             <div class="form-form-wrap">
                 <div class="form-container">
-                    <div class="form-content" style="background-color: lightslategray">
+                    <div class="form-content" style="background-color: gray">
 
                         <img src="/assets/img/logo-clubarq.png" alt="clubarqedesign">
 

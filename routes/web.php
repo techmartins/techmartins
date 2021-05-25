@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\ProfissionalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,16 +58,12 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::put('/empresa/{id}', 'EmpresaController@update')->name('empresa.update');
     Route::delete('/empresa/{id}', 'EmpresaController@destroy')->name('empresa.destroy');
 
-
-    Route::get('/cadastrar-profissional', function() {
-        $data = [
-            'category_name' => 'profissional',
-            'page_name' => 'cadastrar-profissional',
-            'has_scrollspy' => 0,
-            'scrollspy_offset' => '',
-        ];
-        return view('profissional.cadastrar_profissional')->with($data);
-    });
+    Route::get('/profissional', 'ProfissionalController@index');
+    Route::post('/profissional', 'ProfissionalController@store')->name('profissional.store');
+    Route::get('/profissional/{id}', 'ProfissionalController@show')->name('profissional.show');
+    Route::get('/profissional/{id}/edit', 'ProfissionalController@edit')->name('profissional.edit');
+    Route::put('/profissional/{id}', 'ProfissionalController@update')->name('profissional.update');
+    Route::delete('/profissional/{id}', 'ProfissionalController@destroy')->name('profissional.destroy');
 
     Route::get('/config-geral', function() {
         $data = [

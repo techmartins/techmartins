@@ -30,6 +30,7 @@ class CreateProfissionaisTable extends Migration
             $table->string('banco',50);
             $table->string('agencia',50);
             $table->string('conta',50);
+            $table->string('perfil',100);
             $table->string('login',50);
             $table->string('password',50);
             $table->dateTime('created_at')->date_timestamp_set;
