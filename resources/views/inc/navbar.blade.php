@@ -14,7 +14,7 @@
                 <li class="nav-item dropdown user-profile-dropdown order-lg-0 order-1 ml-auto">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="user-profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media">
-                            {{-- <img src="{{asset('assets/img/90x90.jpg')}}" class="img-fluid" alt=""> --}}
+                            <i data-feather="user"></i><span class="icon-name"> user</span>
                             <div class="media-body align-self-center">
                                 @if (Auth::check())
                                     <h6 style="font-weight: bolder;color: #cc7032;"><span>Olá,</span> {{ Auth::user()->name }}</h6>

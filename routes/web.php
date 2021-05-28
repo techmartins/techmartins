@@ -73,23 +73,20 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::put('/vendas/{id}', 'VendasController@update')->name('vendas.update');
     Route::delete('/vendas/{id}', 'VendasController@destroy')->name('vendas.destroy');
     
-    Route::get('/relatorios/pontuacao', 'PontuacaoController@index');
+    Route::get('/pontuacao', 'PontuacaoController@index');
     Route::get('/pontuacao/visualizar', 'PontuacaoController@getallvendas')->name('visualizar.pontuacao');
     Route::post('/pontuacao', 'PontuacaoController@store')->name('pontuacao.store');
     Route::get('/pontuacao/{id}', 'PontuacaoController@show')->name('pontuacao.show');
     Route::get('/pontuacao/{id}/edit', 'PontuacaoController@edit')->name('pontuacao.edit');
     Route::put('/pontuacao/{id}', 'PontuacaoController@update')->name('pontuacao.update');
 
-    Route::get('/config-geral', function() {
-        $data = [
-            'category_name' => 'configuracao',
-            'page_name' => 'config-geral',
-            'has_scrollspy' => 0,
-            'scrollspy_offset' => '',
-        ];
-        return view('pages.configuracao.config_geral')->with($data);
-    });
-    
+    Route::get('/ranking', 'RankingController@index');
+    Route::get('/ranking/visualizar', 'RankingController@getallvendas')->name('visualizar.ranking');
+    //Route::post('/ranking', 'RankingController@store')->name('ranking.store');
+    Route::get('/ranking/{id}', 'RankingController@show')->name('ranking.show');
+    Route::get('/ranking/{id}/edit', 'RankingController@edit')->name('ranking.edit');
+    Route::put('/ranking/{id}', 'RankingController@update')->name('ranking.update');
+
     // Pages
     Route::prefix('pages')->group(function () {
         Route::get('/coming_soon', function() {
@@ -259,4 +256,3 @@ Route::get('/', function() {
     return redirect('/analytics');    
 });
 
-Route::resource('profissional','ProfissionalController');

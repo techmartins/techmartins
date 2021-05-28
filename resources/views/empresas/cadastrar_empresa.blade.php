@@ -77,15 +77,6 @@
                   <input name="cidade" type="text" class="form-control" id="cidade" placeholder="Cidade">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="percentual">Percentual de Comissão (%)</label>
-                  <select name="percentual" id="percentual" class="form-control">
-                    <option selected="" value="0">Percentual</option>
-                    <option value="2">2.0%</option>
-                    <option value="2.5">2.5%</option>
-                    <option value="3.0">3.0%</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-3">
                   <label for="contato">Contato</label>
                   <input type="tel" class="form-control" id="contato">
                 </div>
@@ -94,12 +85,10 @@
                   <input type="text" class="form-control" id="referencia">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="login">Login</label>
-                  <input type="text" class="form-control" id="login">
-                </div>
-                <div class="form-group col-md-3">
                   <label for="password">Senha</label>
                   <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <div class="form-group col-md-6">
                 </div>
                 <button type="button" class="btn btn-primary mt-3" id="enviar-dados">Confirmar</button>
               </div>
@@ -108,14 +97,50 @@
         </div>
       </div>
 
-      {{-- @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-          <p>{{ $message }}</p>
-        </div>
-      @endif --}}
-
+      
       {{-- TABELA DE EMPRESAS --}}
-      <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+      <div class="col-lg-12">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content widget-content-area">
+                <div class="table-responsive mb-4">
+                    <table id="tabela-empresas" class="table style-3 table-hover">
+                        <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Razao Social</th>
+                              <th>CNPJ</th>
+                              <th>E-mail</th>
+                              <th>Atividade</th>
+                              <th>Contato</th>
+                              <th>Referência</th>
+                              <th>Criado em</th>
+                              <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($empresas as $emp)
+                            <tr>
+                              <td>{{ $emp->id }}</td>
+                              <td>{{ $emp->razao_social }}</td>
+                              <td>{{ $emp->cnpj }}</td>
+                              <td>{{ $emp->email }}</td>
+                              <td>{{ $emp->ramo_atividade }}</td>
+                              <td>{{ $emp->contato }}</td>
+                              <td>{{ $emp->referencia }}</td>
+                              <td>{{ $emp->created_at }}</td>
+                              <td>
+                                <button class="btn btn-primary btn-editar-empresa" data-id="{{ $emp->id }}"><i data-feather="edit-3"></i></button>
+                                <button class="btn btn-danger btn-excluir-empresa" data-id="{{ $emp->id }}"><i data-feather="trash-2"></i><span class="icon-name"></span></button>
+                              </td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+      {{-- <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
         <div class="widget-content widget-content-area br-6">
           <div class="table-responsive mb-4 mt-4">
             <table id="zero-config" class="table table-hover" style="width:100%">
@@ -156,7 +181,7 @@
             {!! $empresas->links() !!}
           </div>
         </div>
-      </div>
+      </div> --}}
 
       {{-- MODAL DE EDITAR EMPRESA --}}
 
@@ -239,15 +264,6 @@
                             <input name="cidade" type="text" class="form-control" id="cidade_edit" placeholder="Cidade">
                           </div>
                           <div class="form-group col-md-3">
-                            <label for="percentual">Percentual de Comissão (%)</label>
-                            <select name="percentual" id="percentual_edit" class="form-control">
-                              <option selected="" value="0">Percentual</option>
-                              <option value="2">2.0%</option>
-                              <option value="2.5">2.5%</option>
-                              <option value="3.0">3.0%</option>
-                            </select>
-                          </div>
-                          <div class="form-group col-md-3">
                             <label for="contato">Contato</label>
                             <input type="tel" class="form-control" id="contato_edit">
                           </div>
@@ -256,12 +272,10 @@
                             <input type="text" class="form-control" id="referencia_edit">
                           </div>
                           <div class="form-group col-md-3">
-                            <label for="login">Login</label>
-                            <input type="text" class="form-control" id="login_edit">
-                          </div>
-                          <div class="form-group col-md-3">
                             <label for="password">Senha</label>
                             <input type="password" class="form-control" id="password_edit" placeholder="Password">
+                          </div>
+                          <div class="form-group col-md-6">
                           </div>
                           <button type="button" class="btn btn-primary mt-3" data-dismiss="modal" id="editar-dados">Confirmar</button>
                         </div>

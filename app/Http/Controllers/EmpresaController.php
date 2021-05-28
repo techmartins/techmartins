@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Empresa;
+use App\User;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
@@ -45,23 +46,29 @@ class EmpresaController extends Controller
             'razao_social' => 'required',
             'cnpj' => 'required',
             'email' => 'required',
-            'ramo_atividade' => 'required',
+            'ramo_atividade',
             'cep',
             'endereco',
             'bairro',
             'uf',
             'cidade',
-            'percentual' => 'required',
-            'contato' => 'required',
-            'referencia' => 'required',
-            'login' => 'required',
+            'contato',
+            'referencia',
             'password' => 'required'
         ]);
         
         Empresa::create($request->all());
+        
+        $newUser['name'] = $request->razao_social;
+        $newUser['email'] = $request->email;
+        $newUser['password'] = $request->password;
+        $newUser['perfil'] = "empresa";
+        
+        User::create($newUser);
 
-        return redirect()->route('empresa')
-                        ->with('success','Empresa registrada com sucesso.');
+        return redirect()->action('EmpresaController@index')->with('success','Empresa registrada com sucesso.');
+        // return redirect()->route('empresa')
+        //                 ->with('success','Empresa registrada com sucesso.');
     }
 
     /**
