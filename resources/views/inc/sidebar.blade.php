@@ -15,7 +15,7 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'cadastrar-empresa') ? 'active' : '' }}">
-                            <a href="/empresa"> Registrar </a>
+                            <a href="/public/empresa"> Registrar </a>
                         </li>
                     </ul>
                 </li>
@@ -31,7 +31,7 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'cadastrar-profissional') ? 'active' : '' }}">
-                            <a href="/profissional"> Registrar </a>
+                            <a href="/public/profissional"> Registrar </a>
                         </li>
                     </ul>
                 </li>
@@ -47,10 +47,10 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas">Registrar</a>
+                            <a href="/public/vendas">Registrar</a>
                         </li>
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas/visualizar">Visualizar</a>
+                            <a href="/public/vendas/visualizar">Visualizar</a>
                         </li>
                     </ul>
                 </li>
@@ -65,15 +65,15 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas">Registrar</a>
+                            <a href="/public/vendas">Registrar</a>
                         </li>
                         @if(Auth::user()->perfil !== 'admin')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas/visualizar">Minhas Obras</a>
+                            <a href="/public/vendas/visualizar">Minhas Obras</a>
                         </li>
                         @endif
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas/visualizar">Lista de Obras</a>
+                            <a href="/public/vendas/visualizar">Lista de Obras</a>
                         </li>
                     </ul>
                 </li>
@@ -89,38 +89,24 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
                         <li>
-                            <a href="/relatorios/venda-lojista"> Vendas Por Lojista </a>
+                            <a href="/public/relatorios/venda-lojista"> Vendas Por Lojista </a>
                         </li>
                         <li>
-                            <a href="/relatorios/obra-profissional"> Obras Por Profissional </a>
+                            <a href="/public/relatorios/obra-profissional"> Obras Por Profissional </a>
                         </li>
                         <li>
-                            <a href="/relatorios/ranking"> Ranking de Pontuação </a>
+                            <a href="/public/relatorios/ranking"> Ranking de Pontuação </a>
                         </li>
                         <li>
-                            <a href="/relatorios/comissao-profissional-lojista"> Comissionamento Profissional X Lojista </a>
+                            <a href="/public/relatorios/comissao-profissional-lojista"> Comissionamento Profissional X Lojista </a>
                         </li>
                         <li>
-                            <a href="/relatorios/pontuacao"> Tabela de Premiações </a>
+                            <a href="/public/relatorios/pontuacao"> Tabela de Premiações </a>
                         </li>
                     </ul>
                 </li>
                 @endif
-                {{-- <li class="menu single-menu">
-                    <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
-                        <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                            <span>Configuração</span>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </a>
-                    <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
-                        <li class="{{ ($page_name === 'config-geral') ? 'active' : '' }}">
-                            <a href="/config-geral"> Geral </a>
-                        </li>
-                    </ul>
-                </li> --}}
-
+                
             </ul>
         </nav>
     </div>

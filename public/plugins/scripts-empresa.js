@@ -104,9 +104,7 @@ $(document).ready(function(){
                 $('#uf_edit').val(response[0]["uf"]);
                 $('#cidade_edit').val(response[0]["cidade"]);
                 $('#referencia_edit').val(response[0]["referencia"]);
-                $('#percentual_edit').val(response[0]["percentual"]);
                 $('#contato_edit').val(response[0]["contato"]);
-                $('#login_edit').val(response[0]["login"]);
                 $('#password_edit').val(response[0]["password"]);
             },
             error: function(err) {
@@ -127,16 +125,12 @@ $(document).ready(function(){
         var bairro = $('#bairro_edit').val();
         var uf = $('#uf_edit').val();
         var cidade = $('#cidade_edit').val();
-        var percentual = $('#percentual_edit').val();
         var contato = $('#contato_edit').val();
         var referencia = $('#referencia_edit').val();
-        var login = $('#login_edit').val();
         var password = $('#password_edit').val();
 
         let _url = $('#url_cadastro').val();
-        // let _token   = $('meta[name="csrf-token"]').attr('content');
-        // alert(_url);
-
+        
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -157,16 +151,15 @@ $(document).ready(function(){
                 bairro: bairro,
                 uf: uf,
                 cidade: cidade,
-                percentual: percentual,
                 contato: contato,
                 referencia: referencia,
-                login: login,
                 password: password
                 // _token: _token
             },
             
             success: function(response) {
-                console.log(response);    
+                console.log(response);
+                location.reload();   
             },
             error: function(err) {
                 console.log(err)
@@ -177,14 +170,12 @@ $(document).ready(function(){
 
     $(".btn-excluir-empresa").click(function(){
         $("#modal-excluir-empresa").modal();
-        let _url = $('#url_visualizar').val();
         let id = $(this).data("id");
         $('#id_deletar_empresa').val(id);
     });
 
     $("#deletar").click(function(){
-        var table = $('#zero-config').DataTable();
-
+        
         let id = $("#id_deletar_empresa").val();
         let _url = $('#url_visualizar').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
@@ -196,12 +187,12 @@ $(document).ready(function(){
             
             success: function(response) {
                 console.log(response);
+                location.reload();
             },
             error: function(err) {
                 console.log(err)
             }
         });
-        table.ajax.reload();
     });
 
 });

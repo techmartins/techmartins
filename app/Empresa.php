@@ -20,6 +20,7 @@ class Empresa extends Model
         'contato',
         'referencia',
         'password',
+        'pontuacao',
         'created_at',
         'updated_at',
         'deleted_at'

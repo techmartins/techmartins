@@ -58,26 +58,31 @@ class VendasController extends Controller
         $request->validate([
             'valor' => 'required',
             'cliente' => 'required',
-            'contato' => 'required',
-            'indicador' => 'required',
+            'contato',
             'indicado' => 'required',
-            'pontuacao_indicador' => 'required',
-            'descricao_servico' => 'required',
-            'status' => 'required',
-            'cca' => 'required'
+            'pontuacao_indicador',
+            'descricao_servico',
+            'perfil',
+            'caed'
         ]);
         $valor = $request->valor;
         $request->pontuacao_indicador = $valor;
-        $request->cca = $valor*0.025;
         
+        if($request->perfil == "profissional-empresa"){
+            $request->caed = $valor*0.025;
+        }else{
+            $request->caed = $valor*0.05;
+        }
+
         $request_ranking["pontuacao"] = $request->pontuacao_indicador;
-        $request_ranking["beneficiario"] = $request->indicador;
+        $request_ranking["beneficiario"] = $request->indicado;
         
         Vendas::create($request->all());
         Ranking::create($request_ranking);
 
-        return redirect()->route('vendas')
-                        ->with('success','Venda registrada com sucesso.');
+        return redirect()->action('VendasController@index')->with('success','Empresa registrada com sucesso.');
+        // return redirect()->route('vendas')
+        //                 ->with('success','Venda registrada com sucesso.');
     }
 
     /**

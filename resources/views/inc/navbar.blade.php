@@ -5,7 +5,7 @@
         <header class="header navbar navbar-expand-sm">
 
             <div class="nav-logo align-self-center">
-                <a class="navbar-brand" href="/analytics">
+                <a class="navbar-brand" href="/public/analytics">
                     <img alt="logo" style="margin-right: 15%; height: 90px; width: 110px" src="{{asset('assets/img/logo-clubarq.png')}}"> 
                     <span class="navbar-brand-name" style="color: #cc7032;">Painel Administrativo</span>
                 </a>
@@ -14,7 +14,7 @@
                 <li class="nav-item dropdown user-profile-dropdown order-lg-0 order-1 ml-auto">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="user-profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media">
-                            <i data-feather="user"></i><span class="icon-name"> user</span>
+                            <i data-feather="user"></i>
                             <div class="media-body align-self-center">
                                 @if (Auth::check())
                                     <h6 style="font-weight: bolder;color: #cc7032;"><span>Olá,</span> {{ Auth::user()->name }}</h6>

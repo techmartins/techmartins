@@ -109,16 +109,14 @@ class EmpresaController extends Controller
             'razao_social' => 'required',
             'cnpj' => 'required',
             'email' => 'required',
-            'ramo_atividade' => 'required',
+            'ramo_atividade',
             'cep',
             'endereco',
             'bairro',
             'uf',
             'cidade',
-            'percentual' => 'required',
-            'contato' => 'required',
-            'referencia' => 'required',
-            'login' => 'required',
+            'contato',
+            'referencia',
             'password' => 'required'
         ]);
 

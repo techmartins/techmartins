@@ -24,11 +24,10 @@ class CreateEmpresasTable extends Migration
             $table->string('bairro',50)->nullable();
             $table->string('uf',50)->nullable();
             $table->string('cidade',50)->nullable();
-            $table->string('percentual',50);
             $table->string('contato',50);
             $table->string('referencia',50);
-            $table->string('login',50);
             $table->string('password',50);
+            $table->integer('pontuacao',100);
             $table->dateTime('created_at')->date_timestamp_set;
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();

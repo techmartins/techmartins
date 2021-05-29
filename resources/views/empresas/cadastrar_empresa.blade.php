@@ -99,51 +99,10 @@
 
       
       {{-- TABELA DE EMPRESAS --}}
-      <div class="col-lg-12">
-        <div class="statbox widget box box-shadow">
-            <div class="widget-content widget-content-area">
-                <div class="table-responsive mb-4">
-                    <table id="tabela-empresas" class="table style-3 table-hover">
-                        <thead>
-                            <tr>
-                              <th>ID</th>
-                              <th>Razao Social</th>
-                              <th>CNPJ</th>
-                              <th>E-mail</th>
-                              <th>Atividade</th>
-                              <th>Contato</th>
-                              <th>Referência</th>
-                              <th>Criado em</th>
-                              <th>Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($empresas as $emp)
-                            <tr>
-                              <td>{{ $emp->id }}</td>
-                              <td>{{ $emp->razao_social }}</td>
-                              <td>{{ $emp->cnpj }}</td>
-                              <td>{{ $emp->email }}</td>
-                              <td>{{ $emp->ramo_atividade }}</td>
-                              <td>{{ $emp->contato }}</td>
-                              <td>{{ $emp->referencia }}</td>
-                              <td>{{ $emp->created_at }}</td>
-                              <td>
-                                <button class="btn btn-primary btn-editar-empresa" data-id="{{ $emp->id }}"><i data-feather="edit-3"></i></button>
-                                <button class="btn btn-danger btn-excluir-empresa" data-id="{{ $emp->id }}"><i data-feather="trash-2"></i><span class="icon-name"></span></button>
-                              </td>
-                            </tr>
-                          @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-      {{-- <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+      <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
         <div class="widget-content widget-content-area br-6">
           <div class="table-responsive mb-4 mt-4">
-            <table id="zero-config" class="table table-hover" style="width:100%">
+            <table id="tabela-empresas" class="table table-hover" style="width:100%">
               <thead>
                   <tr>
                     <th>ID</th>
@@ -153,7 +112,6 @@
                     <th>Atividade</th>
                     <th>Contato</th>
                     <th>Referência</th>
-                    <th>Percentual</th>
                     <th>Criado em</th>
                     <th>Ação</th>
                   </tr>
@@ -168,20 +126,19 @@
                     <td>{{ $emp->ramo_atividade }}</td>
                     <td>{{ $emp->contato }}</td>
                     <td>{{ $emp->referencia }}</td>
-                    <td>{{ $emp->percentual }}</td>
                     <td>{{ $emp->created_at }}</td>
                     <td class="text-center">
-                      <button class="btn btn-primary btn-editar-empresa" data-id="{{ $emp->id }}">Editar</button>
-                      <button class="btn btn-danger btn-excluir-empresa" data-id="{{ $emp->id }}">Excluir</button>
+                      <button class="btn btn-primary mb-2 btn-editar-empresa" data-id="{{ $emp->id }}"><i data-feather="edit-3"></i></button>
+                      <button class="btn btn-danger mb-2 btn-excluir-empresa" data-id="{{ $emp->id }}"><i data-feather="trash-2"></i><span class="icon-name"></span></button>
                     </td>
                   </tr>
                 @endforeach
               </tbody>
             </table>
-            {!! $empresas->links() !!}
+            {{-- {!! $empresas->links() !!} --}}
           </div>
         </div>
-      </div> --}}
+      </div>
 
       {{-- MODAL DE EDITAR EMPRESA --}}
 
@@ -302,7 +259,7 @@
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom:24px;">
                     <div class="statbox widget box box-shadow">
                       <div class="widget-content widget-content-area" style="height: auto;">
-                        <h3>Você tem certeza de que deseja excluir esta empresa?</h3>
+                        <h4>Você tem certeza de que deseja excluir esta empresa?</h4>
                         <input type="hidden" id="id_deletar_empresa">
                         <button type="button" class="btn btn-danger" id="deletar">Excluir</button>
                         <a data-dismiss="modal" style="text-decoration: none; cursor: pointer;">Fechar</a>

@@ -9,6 +9,7 @@ class Ranking extends Model
     protected $fillable = [
         'id', 
         'pontuacao',
-        'beneficiario'
+        'beneficiario',
+        'codigo_beneficiario'
     ];
 }

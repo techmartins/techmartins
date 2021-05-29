@@ -10,8 +10,8 @@
             <div class="statbox widget box box-shadow" style="height: 600px; border: none;">
                 <div class="widget-header">                                
                     <div class="row">
-                        <div class="col-xl-12 col-md-12 col-sm-12 col-12" style="padding-top: 15px; padding-left: 15px;">
-                            <h3>Vendas</h3>
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                            <h4>Vendas</h4>
                         </div>
                     </div>
                 </div>

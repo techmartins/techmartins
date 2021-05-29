@@ -17,6 +17,7 @@ class CreateRankingTable extends Migration
             $table->increments('id');
             $table->string('pontuacao',100);
             $table->string('beneficiario',100);
+            $table->integer('codigo_beneficiario');
         });
     }
 

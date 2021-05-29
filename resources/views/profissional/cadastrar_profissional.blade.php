@@ -72,24 +72,10 @@
                   <input name="cidade" type="text" class="form-control" id="cidade" placeholder="Cidade">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="banco">Banco</label>
-                  <input name="banco" type="text" class="form-control" id="banco" placeholder="banco">
-                </div>
-                <div class="form-group col-md-3">
-                  <label for="agencia">Agência</label>
-                  <input type="text" class="form-control" id="agencia" placeholder="Agencia">
-                </div>
-                <div class="form-group col-md-3">
-                  <label for="conta">Conta</label>
-                  <input type="text" class="form-control" id="conta" placeholder="Conta">
-                </div>
-                <div class="form-group col-md-3">
-                  <label for="login">Login</label>
-                  <input type="text" class="form-control" id="login" placeholder="Login">
-                </div>
-                <div class="form-group col-md-3">
                   <label for="password">Senha</label>
                   <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <div class="form-group col-md-3">
                 </div>
                 <div class="form-group col-md-3">
                   <button type="button" class="btn btn-primary mt-3" id="enviar-dados">Confirmar</button>
@@ -106,7 +92,7 @@
       <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
         <div class="widget-content widget-content-area br-6">
           <div class="table-responsive mb-4 mt-4">
-            <table id="zero-config" class="table table-hover" style="width:100%">
+            <table id="tabela-profissionais" class="table table-hover" style="width:100%">
               <thead>
                   <tr>
                     <th>ID</th>
@@ -116,7 +102,6 @@
                     <th>Área de Atuação</th>
                     <th>Telefone</th>
                     <th>Chave PIX</th>
-                    <th>Banco</th>
                     <th>Criado em</th>
                     <th>Ação</th>
                   </tr>
@@ -131,11 +116,10 @@
                     <td>{{ $prof->area_atuacao }}</td>
                     <td>{{ $prof->telefone }}</td>
                     <td>{{ $prof->chave_pix }}</td>
-                    <td>{{ $prof->banco }}</td>
                     <td>{{ $prof->created_at }}</td>
                     <td class="text-center">
-                      <button class="btn btn-primary btn-editar-profissional" data-id="{{ $prof->id }}">Editar</button>
-                      <button class="btn btn-danger btn-excluir-profissional" data-id="{{ $prof->id }}">Excluir</button>
+                      <button class="btn btn-primary mb-2 btn-editar-profissional" data-id="{{ $prof->id }}"><i data-feather="edit-3"></i></button>
+                      <button class="btn btn-danger mb-2 btn-excluir-profissional" data-id="{{ $prof->id }}"><i data-feather="trash-2"></i><span class="icon-name"></span></button>
                     </td>
                   </tr>
                 @endforeach
@@ -221,24 +205,10 @@
                             <input name="cidade_edit" type="text" class="form-control" id="cidade_edit" placeholder="Cidade">
                           </div>
                           <div class="form-group col-md-3">
-                            <label for="banco_edit">Banco</label>
-                            <input name="banco_edit" type="text" class="form-control" id="banco_edit" placeholder="banco">
-                          </div>
-                          <div class="form-group col-md-3">
-                            <label for="agencia_edit">Agência</label>
-                            <input type="text" class="form-control" id="agencia_edit" placeholder="Agencia">
-                          </div>
-                          <div class="form-group col-md-3">
-                            <label for="conta_edit">Conta</label>
-                            <input type="text" class="form-control" id="conta_edit" placeholder="Conta">
-                          </div>
-                          <div class="form-group col-md-3">
-                            <label for="login_edit">Login</label>
-                            <input type="text" class="form-control" id="login_edit" placeholder="Login">
-                          </div>
-                          <div class="form-group col-md-3">
                             <label for="password_edit">Senha</label>
                             <input type="password" class="form-control" id="password_edit" placeholder="Password">
+                          </div>
+                          <div class="form-group col-md-3">
                           </div>
                           <button type="button" class="btn btn-primary mt-3" id="editar-dados">Confirmar</button>
                         </div>

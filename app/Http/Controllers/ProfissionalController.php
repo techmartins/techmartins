@@ -40,13 +40,13 @@ class ProfissionalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
         $request->validate([
             'parceiro' => 'required',
             'cpf' => 'required',
             'email' => 'required',
-            'area_atuacao' => 'required',
+            'area_atuacao',
             'nascimento',
             'telefone',
             'chave_pix',
@@ -55,25 +55,22 @@ class ProfissionalController extends Controller
             'bairro',
             'uf',
             'cidade',
-            'banco',
-            'agencia',
-            'conta',
-            'login' => 'required',
-            'password' => 'required',
-            'perfil' => 'required',
+            'pontuacao',
+            'password',
+            'perfil',
         ]);
 
-        $user["name"] = $request->parceiro;
-        $user["email"] = $request->email;
-        $user["login"] = $request->login;
-        $user["password"] = $request->password;
-        $user["perfil"] = $request->perfil;
+        $newUser['name'] = $request->parceiro;
+        $newUser['email'] = $request->email;
+        $newUser['password'] = $request->password;
+        $newUser['perfil'] = "profissional";
         
         Profissionais::create($request->all());
-        User::create($user);
+        User::create($newUser);
 
-        return redirect()->route('profissional')
-                        ->with('success','Profissional registrada com sucesso.');
+        return redirect()->action('ProfissionalController@index')->with('success','Profissional registrado com sucesso.');
+        // return redirect()->route('profissional')
+        //                 ->with('success','Profissional registrada com sucesso.');
     }
 
     /**
@@ -123,9 +120,7 @@ class ProfissionalController extends Controller
             'bairro',
             'uf',
             'cidade',
-            'banco',
-            'agencia',
-            'conta',
+            'pontuacao',
             'login' => 'required',
             'password' => 'required'
         ]);

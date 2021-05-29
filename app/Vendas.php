@@ -16,7 +16,7 @@ class Vendas extends Model
             'pontuacao_indicador',
             'descricao_servico',
             'status',
-            'cca',
+            'caed',
             'created_at',
             'updated_at',
     ];
