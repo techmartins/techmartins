@@ -47,6 +47,7 @@ $(document).ready(function(){
         var cidade = $('#cidade').val();
         var chave_pix = $('#chave_pix').val();
         var password = $('#password').val();
+        var pontuacao = 0;
         var perfil = $('#perfil').val();
         
         let _url = $('#url_cadastro').val();
@@ -69,6 +70,7 @@ $(document).ready(function(){
                 cidade: cidade,
                 chave_pix: chave_pix,
                 password: password,
+                pontuacao:pontuacao,
                 perfil:perfil,
                 _token: _token
             },
@@ -184,11 +186,13 @@ $(document).ready(function(){
         let id = $("#id_deletar_profissional").val();
         let _url = $('#url_visualizar').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
-
+        
         $.ajax({
             url: _url+"/"+id,
             type: "DELETE",
-            data: {_token:_token},
+            data: {
+                _token:_token
+            },
             
             success: function(response) {
                 console.log(response);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRankingTable extends Migration
+class CreateLogbookTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateRankingTable extends Migration
      */
     public function up()
     {
-        Schema::create('ranking', function (Blueprint $table) {
+        Schema::create('logbook', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pontuacao',100);
-            $table->string('beneficiario',100);
-            $table->integer('codigo_beneficiario');
+            $table->string('entidade', 50);
+            $table->string('acao', 100);
+            $table->string('observacao', 250);
+            $table->dateTime('created_at')->date_timestamp_set;
         });
     }
 
@@ -28,6 +29,6 @@ class CreateRankingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ranking');
+        Schema::dropIfExists('logbook');
     }
 }

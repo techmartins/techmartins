@@ -15,13 +15,13 @@ class ProfissionalController extends Controller
      */
     public function index()
     {
-        $profissionais = Profissionais::where('deleted_at', '=', null)->latest()->paginate(5);
+        $profissionais = Profissionais::where('deleted_at', '=', null)->latest()->get();
         $page_name = 'cadastrar-profissional';
         $category_name = 'profissional';
         $has_scrollspy = 0;
         $scrollspy_offset = '';
 
-        return view('profissional.cadastrar_profissional',compact('profissionais', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('profissional.cadastrar_profissional',compact('profissionais', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
     /**
@@ -44,8 +44,8 @@ class ProfissionalController extends Controller
     {
         $request->validate([
             'parceiro' => 'required',
-            'cpf' => 'required',
-            'email' => 'required',
+            'cpf',
+            'email',
             'area_atuacao',
             'nascimento',
             'telefone',
@@ -69,8 +69,6 @@ class ProfissionalController extends Controller
         User::create($newUser);
 
         return redirect()->action('ProfissionalController@index')->with('success','Profissional registrado com sucesso.');
-        // return redirect()->route('profissional')
-        //                 ->with('success','Profissional registrada com sucesso.');
     }
 
     /**
@@ -108,10 +106,11 @@ class ProfissionalController extends Controller
     public function update(Request $request, Profissionais $profissional)
     {
         $request->validate([
+            'id',
             'parceiro' => 'required',
-            'cpf' => 'required',
-            'email' => 'required',
-            'area_atuacao' => 'required',
+            'cpf',
+            'email',
+            'area_atuacao',
             'nascimento',
             'telefone',
             'chave_pix',
@@ -121,8 +120,7 @@ class ProfissionalController extends Controller
             'uf',
             'cidade',
             'pontuacao',
-            'login' => 'required',
-            'password' => 'required'
+            'password'
         ]);
 
         $profissional->where('id', '=', $request->id)->update($request->toArray());
@@ -142,9 +140,9 @@ class ProfissionalController extends Controller
      */
     public function destroy(Request $request)
     {
-        $profissional = Profissionais::where('id', '=', $request->id)->update(['deleted_at' => now()]);
+        $profissionais = Profissionais::where('id', '=', $request->id)->update(['deleted_at' => now()]);
 
-        return response()->json($profissional, 200);
+        return response()->json($profissionais, 200);
     }
 
 }

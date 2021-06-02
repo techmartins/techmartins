@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group col-md-3">
                   <label for="nascimento">Data de nascimento</label>
-                  <input name="nascimento" type="date" class="form-control" id="nascimento" placeholder="Data de nascimento do profissional">
+                  <input name="nascimento" type="text" class="form-control" id="nascimento" placeholder="Data de nascimento do profissional">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="telefone">Telefone</label>
@@ -74,8 +74,6 @@
                 <div class="form-group col-md-3">
                   <label for="password">Senha</label>
                   <input type="password" class="form-control" id="password" placeholder="Password">
-                </div>
-                <div class="form-group col-md-3">
                 </div>
                 <div class="form-group col-md-3">
                   <button type="button" class="btn btn-primary mt-3" id="enviar-dados">Confirmar</button>
@@ -125,7 +123,6 @@
                 @endforeach
               </tbody>
             </table>
-            {!! $profissionais->links() !!}
           </div>
         </div>
       </div>
@@ -169,7 +166,7 @@
                           </div>
                           <div class="form-group col-md-3">
                             <label for="nascimento_edit">Data de nascimento</label>
-                            <input name="nascimento_edit" type="date" class="form-control" id="nascimento_edit" placeholder="Data de nascimento do profissional">
+                            <input name="nascimento_edit" type="text" class="form-control" id="nascimento_edit" placeholder="Data de nascimento do profissional">
                           </div>
                           <div class="form-group col-md-3">
                             <label for="telefone_edit">Telefone</label>
@@ -208,8 +205,6 @@
                             <label for="password_edit">Senha</label>
                             <input type="password" class="form-control" id="password_edit" placeholder="Password">
                           </div>
-                          <div class="form-group col-md-3">
-                          </div>
                           <button type="button" class="btn btn-primary mt-3" id="editar-dados">Confirmar</button>
                         </div>
                       </form>
@@ -236,7 +231,7 @@
                     <div class="statbox widget box box-shadow">
                       <div class="widget-content widget-content-area" style="height: auto;">
                         <h3>Você tem certeza de que deseja excluir este profissional?</h3>
-                        <input type="hidden" id="profissional">
+                        <input type="hidden" id="id_deletar_profissional">
                         <button type="button" class="btn btn-danger" id="deletar">Excluir</button>
                         <a data-dismiss="modal" style="text-decoration: none; cursor: pointer;">Fechar</a>
                       </div>

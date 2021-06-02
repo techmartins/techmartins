@@ -112,7 +112,7 @@
                     <th>Atividade</th>
                     <th>Contato</th>
                     <th>Referência</th>
-                    <th>Criado em</th>
+                    {{-- <th>Criado em</th> --}}
                     <th>Ação</th>
                   </tr>
               </thead>
@@ -126,7 +126,7 @@
                     <td>{{ $emp->ramo_atividade }}</td>
                     <td>{{ $emp->contato }}</td>
                     <td>{{ $emp->referencia }}</td>
-                    <td>{{ $emp->created_at }}</td>
+                    {{-- <td>{{ $emp->created_at }}</td> --}}
                     <td class="text-center">
                       <button class="btn btn-primary mb-2 btn-editar-empresa" data-id="{{ $emp->id }}"><i data-feather="edit-3"></i></button>
                       <button class="btn btn-danger mb-2 btn-excluir-empresa" data-id="{{ $emp->id }}"><i data-feather="trash-2"></i><span class="icon-name"></span></button>

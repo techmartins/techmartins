@@ -20,10 +20,10 @@ class CreateVendasTable extends Migration
             $table->string('contato',100);
             $table->string('indicador',100);
             $table->string('indicado',100);
+            $table->string('id_indicado',11);
             $table->string('pontuacao_indicador',100);
             $table->string('descricao_servico',250);
-            $table->string('status',100);
-            $table->string('cca',100);
+            $table->string('caed',100);
             $table->dateTime('created_at')->date_timestamp_set;
             $table->dateTime('updated_at')->nullable();
         });

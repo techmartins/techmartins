@@ -6,6 +6,7 @@ use App\Vendas;
 use App\Profissionais;
 use App\Empresa;
 use App\Ranking;
+use App\LogRanking;
 use Illuminate\Http\Request;
 
 class VendasController extends Controller
@@ -24,7 +25,7 @@ class VendasController extends Controller
         $has_scrollspy = 0;
         $scrollspy_offset = '';
 
-        return view('vendas.registrar_venda',compact('profissionais', 'empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('vendas.registrar_venda',compact('profissionais', 'empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
     public function getallvendas(Vendas $vendas)
@@ -59,30 +60,36 @@ class VendasController extends Controller
             'valor' => 'required',
             'cliente' => 'required',
             'contato',
+            'indicador',
             'indicado' => 'required',
             'pontuacao_indicador',
+            'id_indicado',
             'descricao_servico',
             'perfil',
             'caed'
         ]);
         $valor = $request->valor;
-        $request->pontuacao_indicador = $valor;
+        $request['pontuacao_indicador'] = $valor;
+        $separador = explode("/",$request->indicado);
         
         if($request->perfil == "profissional-empresa"){
-            $request->caed = $valor*0.025;
+            $request['caed'] = $valor*0.025;
+            $request['indicado'] = $separador[1];
+            $request['id_indicado'] = $separador[0];
         }else{
-            $request->caed = $valor*0.05;
+            $request['caed'] = $valor*0.05;
+            $request['indicado'] = $separador[1];
+            $request['id_indicado'] = $separador[0];
         }
 
         $request_ranking["pontuacao"] = $request->pontuacao_indicador;
-        $request_ranking["beneficiario"] = $request->indicado;
-        
+        $request_ranking["beneficiario"] = "";
+        $request_ranking["codigo_beneficiario"] = $request->id_indicado;
+
         Vendas::create($request->all());
-        Ranking::create($request_ranking);
+        //Ranking::create($request_ranking);
 
         return redirect()->action('VendasController@index')->with('success','Empresa registrada com sucesso.');
-        // return redirect()->route('vendas')
-        //                 ->with('success','Venda registrada com sucesso.');
     }
 
     /**
@@ -127,8 +134,7 @@ class VendasController extends Controller
             'indicado' => 'required',
             'pontuacao_indicador' => 'required',
             'descricao_servico' => 'required',
-            'status' => 'required',
-            'cca' => 'required'
+            'caed' => 'required'
         ]);
 
         $vendas->where('id', '=', $request->id)->update($request->toArray());
@@ -136,8 +142,6 @@ class VendasController extends Controller
         $retorno = response()->json($vendas);
 
         return $retorno;
-        // return redirect()->route('empresa')
-        //                 ->with('success','Empresa atualizada com sucesso');
     }
 
     /**

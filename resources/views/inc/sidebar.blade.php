@@ -15,7 +15,7 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'cadastrar-empresa') ? 'active' : '' }}">
-                            <a href="/public/empresa"> Registrar </a>
+                            <a href="/empresa"> Registrar </a>
                         </li>
                     </ul>
                 </li>
@@ -31,7 +31,7 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'cadastrar-profissional') ? 'active' : '' }}">
-                            <a href="/public/profissional"> Registrar </a>
+                            <a href="/profissional"> Registrar </a>
                         </li>
                     </ul>
                 </li>
@@ -47,10 +47,10 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/public/vendas">Registrar</a>
+                            <a href="/vendas">Registrar</a>
                         </li>
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/public/vendas/visualizar">Visualizar</a>
+                            <a href="/vendas/visualizar">Visualizar</a>
                         </li>
                     </ul>
                 </li>
@@ -65,15 +65,15 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/public/vendas">Registrar</a>
+                            <a href="/vendas">Registrar</a>
                         </li>
                         @if(Auth::user()->perfil !== 'admin')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/public/vendas/visualizar">Minhas Obras</a>
+                            <a href="/vendas/visualizar">Minhas Obras</a>
                         </li>
                         @endif
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/public/vendas/visualizar">Lista de Obras</a>
+                            <a href="/vendas/visualizar">Lista de Obras</a>
                         </li>
                     </ul>
                 </li>
@@ -89,19 +89,19 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
                         <li>
-                            <a href="/public/relatorios/venda-lojista"> Vendas Por Lojista </a>
+                            <a href="/relatorios/venda-lojista"> Vendas Por Lojista </a>
                         </li>
                         <li>
-                            <a href="/public/relatorios/obra-profissional"> Obras Por Profissional </a>
+                            <a href="/relatorios/obra-profissional"> Obras Por Profissional </a>
                         </li>
                         <li>
-                            <a href="/public/relatorios/ranking"> Ranking de Pontuação </a>
+                            <a href="/relatorios/ranking"> Ranking de Pontuação </a>
                         </li>
                         <li>
-                            <a href="/public/relatorios/comissao-profissional-lojista"> Comissionamento Profissional X Lojista </a>
+                            <a href="/relatorios/comissao-profissional-lojista"> Comissionamento Profissional X Lojista </a>
                         </li>
                         <li>
-                            <a href="/public/relatorios/pontuacao"> Tabela de Premiações </a>
+                            <a href="/relatorios/pontuacao"> Tabela de Premiações </a>
                         </li>
                     </ul>
                 </li>

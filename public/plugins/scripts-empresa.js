@@ -46,6 +46,7 @@ $(document).ready(function(){
         var contato = $('#contato').val();
         var referencia = $('#referencia').val();
         var password = $('#password').val();
+        var pontuacao = 0;
     
         let _url = $('#url_cadastro').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
@@ -66,14 +67,13 @@ $(document).ready(function(){
                 contato: contato,
                 referencia: referencia,
                 password: password,
+                pontuacao:pontuacao,
                 _token: _token
             },
 
             success: function(response) {
-                if(response) {
-                    console.log(response);
-                    location.reload();
-                }
+                console.log(response);
+                location.reload();
             },
             error: function(response) {
                 console.log(response)
@@ -179,7 +179,7 @@ $(document).ready(function(){
         let id = $("#id_deletar_empresa").val();
         let _url = $('#url_visualizar').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
-
+        
         $.ajax({
             url: _url+"/"+id,
             type: "DELETE",

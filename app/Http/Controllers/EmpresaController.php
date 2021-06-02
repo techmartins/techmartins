@@ -15,13 +15,13 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::where('deleted_at', '=', null)->latest()->paginate(5);
+        $empresas = Empresa::where('deleted_at', '=', null)->get();
         $page_name = 'cadastrar-empresa';
         $category_name = 'empresas';
         $has_scrollspy = 0;
         $scrollspy_offset = '';
 
-        return view('empresas.cadastrar_empresa',compact('empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('empresas.cadastrar_empresa',compact('empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
     /**
@@ -45,7 +45,7 @@ class EmpresaController extends Controller
         $request->validate([
             'razao_social' => 'required',
             'cnpj' => 'required',
-            'email' => 'required',
+            'email',
             'ramo_atividade',
             'cep',
             'endereco',
@@ -53,15 +53,16 @@ class EmpresaController extends Controller
             'uf',
             'cidade',
             'contato',
+            'pontuacao',
             'referencia',
-            'password' => 'required'
+            'password'
         ]);
         
         Empresa::create($request->all());
         
         $newUser['name'] = $request->razao_social;
         $newUser['email'] = $request->email;
-        $newUser['password'] = $request->password;
+        $newUser['password'] = "clubarqedesign";
         $newUser['perfil'] = "empresa";
         
         User::create($newUser);

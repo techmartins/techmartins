@@ -69,9 +69,7 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::get('/vendas/visualizar', 'VendasController@getallvendas')->name('visualizar.vendas');
     Route::post('/vendas', 'VendasController@store')->name('vendas.store');
     Route::get('/vendas/{id}', 'VendasController@show')->name('vendas.show');
-    Route::get('/vendas/{id}/edit', 'VendasController@edit')->name('vendas.edit');
-    Route::put('/vendas/{id}', 'VendasController@update')->name('vendas.update');
-    Route::delete('/vendas/{id}', 'VendasController@destroy')->name('vendas.destroy');
+    
     
     Route::get('/pontuacao', 'PontuacaoController@index');
     Route::get('/pontuacao/visualizar', 'PontuacaoController@getallvendas')->name('visualizar.pontuacao');
@@ -80,12 +78,8 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::get('/pontuacao/{id}/edit', 'PontuacaoController@edit')->name('pontuacao.edit');
     Route::put('/pontuacao/{id}', 'PontuacaoController@update')->name('pontuacao.update');
 
-    Route::get('/ranking', 'RankingController@index');
-    Route::get('/ranking/visualizar', 'RankingController@getallvendas')->name('visualizar.ranking');
-    //Route::post('/ranking', 'RankingController@store')->name('ranking.store');
-    Route::get('/ranking/{id}', 'RankingController@show')->name('ranking.show');
-    Route::get('/ranking/{id}/edit', 'RankingController@edit')->name('ranking.edit');
-    Route::put('/ranking/{id}', 'RankingController@update')->name('ranking.update');
+    Route::get('/relatorios/ranking', 'RankingController@getRanking')->name('visualizar_ranking');
+    
 
     // Pages
     Route::prefix('pages')->group(function () {
