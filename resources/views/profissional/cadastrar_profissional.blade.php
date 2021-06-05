@@ -101,7 +101,7 @@
                     <th>Telefone</th>
                     <th>Chave PIX</th>
                     <th>Criado em</th>
-                    <th>Ação</th>
+                    {{-- <th>Ação</th> --}}
                   </tr>
               </thead>
               <tbody>
@@ -115,14 +115,55 @@
                     <td>{{ $prof->telefone }}</td>
                     <td>{{ $prof->chave_pix }}</td>
                     <td>{{ $prof->created_at }}</td>
-                    <td class="text-center">
+                    {{-- <td class="text-center">
                       <button class="btn btn-primary mb-2 btn-editar-profissional" data-id="{{ $prof->id }}"><i data-feather="edit-3"></i></button>
                       <button class="btn btn-danger mb-2 btn-excluir-profissional" data-id="{{ $prof->id }}"><i data-feather="trash-2"></i><span class="icon-name"></span></button>
-                    </td>
+                    </td> --}}
                   </tr>
                 @endforeach
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+
+      {{-- EDITAR OU DELETAR REGISTROS --}}
+      <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing" style="max-width: 50%">
+        <div class="widget-content widget-content-area br-6">
+          <div class="table-responsive mb-4 mt-4">
+            <div class="form-row mb-1" style="margin-right: 0px;">
+              <div class="col-md-4">
+                <label for="id-label">Insira aqui o ID do Profissional:</label>
+              </div>
+              <div class="col-md-4">
+                <input name="id_input" type="text" class="form-control" id="id_input">
+              </div>
+              <div class="col-md-4" style="padding-top: 3px">
+                <button class="btn btn-warning btn-editar-profissional"><i data-feather="edit-3"></i></button>
+                <button class="btn btn-danger btn-excluir-profissional"><i data-feather="trash-2"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{-- LOADING --}}
+      ​<div class="modal fade" id="modal-loading" role="dialog">
+        <div class="modal-dialog" style="max-width: 20%;">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row layout-top-spacing">
+                <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing" style="max-width: 20%;">
+                  <div class="widget-content widget-content-area br-6">
+                    <div class="col-md-12">
+                      <div class="loader dual-loader mx-auto"></div>
+                      <h2 style="text-align: center">Processando...</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

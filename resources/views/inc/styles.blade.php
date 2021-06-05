@@ -332,6 +332,22 @@
       <link href="{{asset('plugins/loaders/custom-loader.css')}}" rel="stylesheet" type="text/css" />
       @break
 
+    @case('cadastrar-empresa')
+      <link href="{{asset('plugins/loaders/custom-loader.css')}}" rel="stylesheet" type="text/css" />
+      @break
+
+    @case('cadastrar-profissional')
+      <link href="{{asset('plugins/loaders/custom-loader.css')}}" rel="stylesheet" type="text/css" />
+    @break
+
+    @case('vendas')
+      <link href="{{asset('plugins/loaders/custom-loader.css')}}" rel="stylesheet" type="text/css" />
+      @break
+    
+      @case('compras')
+      <link href="{{asset('plugins/loaders/custom-loader.css')}}" rel="stylesheet" type="text/css" />
+      @break
+
     @case('progress_bar')
       {{-- Elemnts Progress Bar --}}
       <style>

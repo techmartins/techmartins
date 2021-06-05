@@ -28,18 +28,44 @@
                             <input name="cliente" type="text" class="form-control" id="cliente">
                         </div>
                         <div class="form-group col-md-3">
+                            <label for="data_venda">Data da Venda</label>
+                            <input name="data_venda" type="date" class="form-control" id="data_venda">
+                        </div>
+                        <div class="form-group col-md-3">
                             <label for="valor">Valor</label>
                             <input name="valor" type="text" class="form-control" id="valor">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="descricao_servico">Descrição do Serviço</label>
-                            <input name="descricao_servico" type="text" class="form-control" id="descricao_servico" placeholder="Descrição do serviço vendido">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="contato">Contato</label>
                             <input name="contato" type="text" class="form-control" id="contato">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-6">
+                            <label for="descricao_servico">Descrição do Serviço</label>
+                            <input name="descricao_servico" type="text" class="form-control" id="descricao_servico" placeholder="Descrição do serviço vendido">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="rt">RT(Reserva Técnica)</label>
+                            <input name="rt" type="text" class="form-control" id="rt">
+                        </div>
+                        @if(Auth::user()->perfil == 'admin')
+                        <div class="form-group col-md-6">
+                            <label for="empresa_indicadora">Empresa que indicou</label>
+                            <select name="empresa_indicadora" id="empresa_indicadora" class="form-control">
+                                <option selected="selected" value="0">Selecione</option>
+                                @foreach ($empresas as $emp)
+                                <option value="{{$emp->id."/".$emp->razao_social}}">{{$emp->razao_social}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
+                        <div class="form-group col-md-2">
+                            <label for="chk_empresa">É empresa? </label>
+                            <select name="chk_empresa" id="chk_empresa" class="form-control">
+                                <option selected="selected" value="nao">Não</option>
+                                <option value="sim">Sim</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
                             <label for="indicado_profissional">Profissional a ser pontuado</label>
                             <select name="indicado_profissional" id="indicado_profissional" class="form-control">
                                 <option selected="selected" value="0">Selecione o Profissional</option>
@@ -48,16 +74,14 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                             <label for="indicado_empresa">Empresa a ser pontuada</label>
-                            <select name="indicado_empresa" id="indicado_empresa" class="form-control">
+                            <select disabled name="indicado_empresa" id="indicado_empresa" class="form-control">
                                 <option selected="selected" value="0">Selecione</option>
                                 @foreach ($empresas as $emp)
                                 <option value="{{$emp->id."/".$emp->razao_social}}">{{$emp->razao_social}}</option>
                                 @endforeach
                             </select>
-                        </div>
-                        <div class="form-group col-md-3">
                         </div>
                         <div class="form-group col-md-3">
                             <button type="button" class="btn btn-primary mt-3" id="enviar-dados-venda">Confirmar</button>
@@ -66,9 +90,29 @@
                 </form>
             </div>
         </div>
-    </div>
+        </div>
 
     </div>
+        {{-- LOADING --}}
+    ​   <div class="modal fade" id="modal-loading" role="dialog">
+            <div class="modal-dialog" style="max-width: 20%;">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                    <div class="row layout-top-spacing">
+                        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing" style="max-width: 20%;">
+                        <div class="widget-content widget-content-area br-6">
+                            <div class="col-md-12">
+                            <div class="loader dual-loader mx-auto"></div>
+                            <h2 style="text-align: center">Processando...</h2>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 
 @endsection

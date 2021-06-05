@@ -37,6 +37,7 @@
                 </li>
                 @endif
 
+                
                 <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
                         <div class="">
@@ -46,16 +47,25 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
+                        @if(Auth::user()->perfil == 'admin' || Auth::user()->perfil == 'empresa')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas">Registrar</a>
+                            <a href="/vendas">Registrar Venda</a>
                         </li>
+                        @endif
+                        @if(Auth::user()->perfil == 'profissional')
+                        <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
+                            <a href="/compras">Informar Compra</a>
+                        </li>
+                        @endif
+                        @if(Auth::user()->perfil == 'admin' || Auth::user()->perfil == 'empresa')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
                             <a href="/vendas/visualizar">Visualizar</a>
                         </li>
+                        @endif
                     </ul>
                 </li>
-
-                <li class="menu single-menu">
+                
+                {{-- <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
                         <div class="">
                             <i data-feather="codepen"></i>
@@ -76,10 +86,10 @@
                             <a href="/vendas/visualizar">Lista de Obras</a>
                         </li>
                     </ul>
-                </li>
-
+                </li> --}}
+                
                 @if(Auth::user()->perfil == 'admin')
-                <li class="menu single-menu">
+                {{-- <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
                         <div class="">
                             <i data-feather="printer"></i>
@@ -104,7 +114,7 @@
                             <a href="/relatorios/pontuacao"> Tabela de Premiações </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 @endif
                 
             </ul>

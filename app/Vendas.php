@@ -9,11 +9,13 @@ class Vendas extends Model
     protected $fillable = [
             'id',
             'valor',
+            'rt',
             'cliente',
             'contato',
             'indicador',
             'indicado',
             'id_indicado',
+            'data_venda',
             'pontuacao_indicador',
             'descricao_servico',
             'caed',

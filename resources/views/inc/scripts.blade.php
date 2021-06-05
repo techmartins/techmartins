@@ -58,7 +58,7 @@
         <script src="{{asset('plugins/sweetalerts/sweetalert2.min.js')}}"></script>
         <script src="{{asset('plugins/sweetalerts/custom-sweetalert.js')}}"></script>
     @break
-  
+
     @case('cadastrar-empresa')
         {{-- Table Datatable HTML5 --}}
         <script src="{{asset('plugins/table/datatable/datatables.js')}}"></script>

@@ -30,6 +30,7 @@
                                         <th style="text-align: center">Indicado</th>
                                         <th style="text-align: center">Valor</th>
                                         <th style="text-align: center">CAED</th>
+                                        <th style="text-align: center">Data da Venda</th>
                                         <th style="text-align: center">Criado em</th>
                                     </tr>
                                 </thead>
@@ -43,6 +44,7 @@
                                         <td style="text-align: center">{{ $v->indicado }}</td>
                                         <td style="text-align: center">{{ $v->valor }}</td>
                                         <td style="text-align: center">{{ $v->caed }}</td>
+                                        <td style="text-align: center">{{ $v->data_venda }}</td>
                                         <td style="text-align: center">{{ $v->created_at }}</td>
                                     </tr>
                                 @endforeach

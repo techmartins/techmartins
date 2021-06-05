@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Vendas;
 use App\Profissionais;
 use App\Empresa;
-use App\Ranking;
-use App\LogRanking;
 use Illuminate\Http\Request;
 
-class VendasController extends Controller
+class ComprasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,14 +16,13 @@ class VendasController extends Controller
      */
     public function index()
     {
-        $profissionais = Profissionais::where('deleted_at', '=', null)->latest()->get();
         $empresas = Empresa::where('deleted_at', '=', null)->latest()->get();
-        $page_name = 'vendas';
-        $category_name = 'vendas';
+        $page_name = 'compras';
+        $category_name = 'compras';
         $has_scrollspy = 0;
         $scrollspy_offset = '';
 
-        return view('vendas.registrar_venda',compact('profissionais', 'empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+        return view('compras.registrar_compra',compact('empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
     public function getallvendas(Vendas $vendas)

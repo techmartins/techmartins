@@ -51,39 +51,45 @@ $(document).ready(function(){
         let _url = $('#url_cadastro').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
 
-        $.ajax({
-            url: _url,
-            type: "POST",
-            data: {
-                razao_social: razao,
-                cnpj: cnpj,
-                email: email,
-                ramo_atividade: atividade,
-                cep: cep,
-                endereco: endereco,
-                bairro: bairro,
-                uf: uf,
-                cidade: cidade,
-                contato: contato,
-                referencia: referencia,
-                password: password,
-                pontuacao:pontuacao,
-                _token: _token
-            },
+        $('#modal-loading').modal('show');
 
-            success: function(response) {
-                console.log(response);
-                location.reload();
-            },
-            error: function(response) {
-                console.log(response)
-            }
-        });
+        setTimeout(function () {
+            $.ajax({
+                url: _url,
+                type: "POST",
+                data: {
+                    razao_social: razao,
+                    cnpj: cnpj,
+                    email: email,
+                    ramo_atividade: atividade,
+                    cep: cep,
+                    endereco: endereco,
+                    bairro: bairro,
+                    uf: uf,
+                    cidade: cidade,
+                    contato: contato,
+                    referencia: referencia,
+                    password: password,
+                    pontuacao:pontuacao,
+                    _token: _token
+                },
+
+                success: function(response) {
+                    console.log(response);
+                    location.reload();
+                },
+                error: function(response) {
+                    console.log(response)
+                }
+            });
+            $('#modal-loading').modal('hide');
+            location.reload();
+        }, 3000);
     });
 
     $(".btn-editar-empresa").click(function(){
         $("#modal-editar-empresa").modal();
-        let id = $(this).data("id");
+        let id = $("#id_input").val();
         let _url = $('#url_visualizar').val();
         //let _token   = $('meta[name="csrf-token"]').attr('content');
         
@@ -130,47 +136,50 @@ $(document).ready(function(){
         var password = $('#password_edit').val();
 
         let _url = $('#url_cadastro').val();
+        $("#modal-editar-empresa").modal('hide');
+        $('#modal-loading').modal('show');
         
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
-        $.ajax({
-            url: _url+"/"+id,
-            type: "PUT",
-            data: {
-                id: id,
-                razao_social: razao,
-                cnpj: cnpj,
-                email: email,
-                ramo_atividade: atividade,
-                cep: cep,
-                endereco: endereco,
-                bairro: bairro,
-                uf: uf,
-                cidade: cidade,
-                contato: contato,
-                referencia: referencia,
-                password: password
-                // _token: _token
-            },
-            
-            success: function(response) {
-                console.log(response);
-                location.reload();   
-            },
-            error: function(err) {
-                console.log(err)
-            }
-        });
-
+        setTimeout(function () {
+            $.ajax({
+                url: _url+"/"+id,
+                type: "PUT",
+                data: {
+                    id: id,
+                    razao_social: razao,
+                    cnpj: cnpj,
+                    email: email,
+                    ramo_atividade: atividade,
+                    cep: cep,
+                    endereco: endereco,
+                    bairro: bairro,
+                    uf: uf,
+                    cidade: cidade,
+                    contato: contato,
+                    referencia: referencia,
+                    password: password
+                    // _token: _token
+                },
+                
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(err) {
+                    console.log(err)
+                }
+            });
+            $('#modal-loading').modal('hide');
+            location.reload();
+        }, 3000);
     });
 
     $(".btn-excluir-empresa").click(function(){
         $("#modal-excluir-empresa").modal();
-        let id = $(this).data("id");
+        let id = $("#id_input").val();
         $('#id_deletar_empresa').val(id);
     });
 
@@ -179,20 +188,24 @@ $(document).ready(function(){
         let id = $("#id_deletar_empresa").val();
         let _url = $('#url_visualizar').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
-        
-        $.ajax({
-            url: _url+"/"+id,
-            type: "DELETE",
-            data: {_token:_token},
-            
-            success: function(response) {
-                console.log(response);
-                location.reload();
-            },
-            error: function(err) {
-                console.log(err)
-            }
-        });
+        $('#modal-excluir-empresa').modal('hide');
+        $('#modal-loading').modal('show');
+        setTimeout(function () {
+            $.ajax({
+                url: _url+"/"+id,
+                type: "DELETE",
+                data: {_token:_token},
+                
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(err) {
+                    console.log(err)
+                }
+            });
+            $('#modal-loading').modal('hide');
+            location.reload();
+        }, 3000);
     });
 
 });

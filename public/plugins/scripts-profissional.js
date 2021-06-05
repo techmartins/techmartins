@@ -53,41 +53,46 @@ $(document).ready(function(){
         let _url = $('#url_cadastro').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
 
-        $.ajax({
-            url: _url,
-            type: "POST",
-            data: {
-                parceiro: parceiro,
-                cpf: cpf,
-                email: email,
-                area_atuacao: area_atuacao,
-                nascimento: nascimento,
-                telefone: telefone,
-                cep: cep,
-                endereco: endereco,
-                bairro: bairro,
-                uf: uf,
-                cidade: cidade,
-                chave_pix: chave_pix,
-                password: password,
-                pontuacao:pontuacao,
-                perfil:perfil,
-                _token: _token
-            },
+        $('#modal-loading').modal('show');
 
-            success: function(response) {
-                console.log(response);
-                location.reload();
-            },
-            error: function(response) {
-                console.log(response)
-            }
-        });
+        setTimeout(function () {
+            $.ajax({
+                url: _url,
+                type: "POST",
+                data: {
+                    parceiro: parceiro,
+                    cpf: cpf,
+                    email: email,
+                    area_atuacao: area_atuacao,
+                    nascimento: nascimento,
+                    telefone: telefone,
+                    cep: cep,
+                    endereco: endereco,
+                    bairro: bairro,
+                    uf: uf,
+                    cidade: cidade,
+                    chave_pix: chave_pix,
+                    password: password,
+                    pontuacao:pontuacao,
+                    perfil:perfil,
+                    _token: _token
+                },
+
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(response) {
+                    console.log(response)
+                }
+            });
+            $('#modal-loading').modal('hide');
+            location.reload();
+        }, 3000);
     });
 
     $(".btn-editar-profissional").click(function(){
         $("#modal-editar-profissional").modal();
-        let id = $(this).data("id");
+        let id = $("#id_input").val();
         let _url = $('#url_visualizar').val();
         //let _token   = $('meta[name="csrf-token"]').attr('content');
         
@@ -136,47 +141,52 @@ $(document).ready(function(){
         var password = $('#password_edit').val();
 
         let _url = $('#url_cadastro').val();
+        $("#modal-editar-profissional").modal('hide');
+        $('#modal-loading').modal('show');
         
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
-        $.ajax({
-            url: _url+"/"+id,
-            type: "PUT",
-            data: {
-                id: id,
-                parceiro: parceiro,
-                cpf: cpf,
-                email: email,
-                area_atuacao: area_atuacao,
-                nascimento: nascimento,
-                telefone: telefone,
-                cep: cep,
-                endereco: endereco,
-                bairro: bairro,
-                uf: uf,
-                cidade: cidade,
-                chave_pix: chave_pix,
-                password: password,
-            },
-            
-            success: function(response) {
-                console.log(response);
-                location.reload(); 
-            },
-            error: function(err) {
-                console.log(err)
-            }
-        });
+        setTimeout(function () {
+            $.ajax({
+                url: _url+"/"+id,
+                type: "PUT",
+                data: {
+                    id: id,
+                    parceiro: parceiro,
+                    cpf: cpf,
+                    email: email,
+                    area_atuacao: area_atuacao,
+                    nascimento: nascimento,
+                    telefone: telefone,
+                    cep: cep,
+                    endereco: endereco,
+                    bairro: bairro,
+                    uf: uf,
+                    cidade: cidade,
+                    chave_pix: chave_pix,
+                    password: password,
+                },
+                
+                success: function(response) {
+                    console.log(response);
+                    location.reload(); 
+                },
+                error: function(err) {
+                    console.log(err)
+                }
+            });
+            $('#modal-loading').modal('hide');
+            location.reload();
+        }, 3000);
 
     });
 
     $(".btn-excluir-profissional").click(function(){
         $("#modal-excluir-profissional").modal();
-        let id = $(this).data("id");
+        let id = $("#id_input").val();
         $('#id_deletar_profissional').val(id);
     });
 
@@ -186,23 +196,29 @@ $(document).ready(function(){
         let id = $("#id_deletar_profissional").val();
         let _url = $('#url_visualizar').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
-        
-        $.ajax({
-            url: _url+"/"+id,
-            type: "DELETE",
-            data: {
-                _token:_token
-            },
-            
-            success: function(response) {
-                console.log(response);
-                location.reload();
-            },
-            error: function(err) {
-                console.log(err)
-            }
-        });
-        //table.ajax.reload();
+        $('#modal-excluir-PROFISSIONAL').modal('hide');
+        $('#modal-loading').modal('show');
+        setTimeout(function () {
+            $.ajax({
+                url: _url+"/"+id,
+                type: "DELETE",
+                data: {
+                    _token:_token
+                },
+                
+                success: function(response) {
+                    console.log(response);
+                    if(response === "success"){
+                        console.log("deleção realizada")
+                    }
+                },
+                error: function(err) {
+                    console.log(err)
+                }
+            });
+            $('#modal-loading').modal('hide');
+            location.reload();
+        }, 3000);
     });
 
 });

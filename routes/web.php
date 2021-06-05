@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmpresaController;
-use App\Http\Controllers\ProfissionalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +68,8 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::post('/vendas', 'VendasController@store')->name('vendas.store');
     Route::get('/vendas/{id}', 'VendasController@show')->name('vendas.show');
     
+    Route::get('/compras', 'ComprasController@index');
+    Route::post('/compras', 'ComprasController@store')->name('compras.store');
     
     Route::get('/pontuacao', 'PontuacaoController@index');
     Route::get('/pontuacao/visualizar', 'PontuacaoController@getallvendas')->name('visualizar.pontuacao');

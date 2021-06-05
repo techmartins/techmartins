@@ -62,7 +62,7 @@ class ProfissionalController extends Controller
 
         $newUser['name'] = $request->parceiro;
         $newUser['email'] = $request->email;
-        $newUser['password'] = $request->password;
+        $newUser['password'] = '$2y$10$wUeG8t8qqUaqKQMoBU5bledy6.48bv6bAoJ1TkjJ6bgXchP.BQfcK';
         $newUser['perfil'] = "profissional";
         
         Profissionais::create($request->all());
@@ -140,9 +140,9 @@ class ProfissionalController extends Controller
      */
     public function destroy(Request $request)
     {
-        $profissionais = Profissionais::where('id', '=', $request->id)->update(['deleted_at' => now()]);
+        Profissionais::where('id', '=', $request->id)->update(['deleted_at' => now()]);
 
-        return response()->json($profissionais, 200);
+        return response()->json("success", 200);
     }
 
 }

@@ -62,7 +62,7 @@ class EmpresaController extends Controller
         
         $newUser['name'] = $request->razao_social;
         $newUser['email'] = $request->email;
-        $newUser['password'] = "clubarqedesign";
+        $newUser['password'] = '$2y$10$wUeG8t8qqUaqKQMoBU5bledy6.48bv6bAoJ1TkjJ6bgXchP.BQfcK';
         $newUser['perfil'] = "empresa";
         
         User::create($newUser);
@@ -138,9 +138,9 @@ class EmpresaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $empresa = Empresa::where('id', '=', $request->id)->update(['deleted_at' => now()]);
+        Empresa::where('id', '=', $request->id)->update(['deleted_at' => now()]);
 
-        return response()->json($empresa, 200);
+        return response()->json("success", 200);
     }
 
 }
