@@ -5,7 +5,7 @@
         <header class="header navbar navbar-expand-sm">
 
             <div class="nav-logo align-self-center">
-                <a class="navbar-brand" href="/public/analytics">
+                <a class="navbar-brand" href="/analytics">
                     <img alt="logo" style="margin-right: 15%; height: 90px; width: 110px" src="{{asset('assets/img/logo-clubarq.png')}}"> 
                     <span class="navbar-brand-name" style="color: #cc7032;">Painel Administrativo</span>
                 </a>

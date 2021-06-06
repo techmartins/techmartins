@@ -12,6 +12,7 @@ class Compras extends Model
             'empresa',
             'cliente',
             'valor',
+            'anotacao',
             'data_compra',
             'created_at',
             'updated_at',

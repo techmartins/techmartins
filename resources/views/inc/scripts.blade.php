@@ -99,6 +99,18 @@
         <script src="{{asset('plugins/bootstrap-maxlength/bootstrap-maxlength.js')}}"></script>
         <script src="{{asset('plugins/bootstrap-maxlength/custom-bs-maxlength.js')}}"></script>
         @break
+    
+    @case('compras')
+        <script src="{{asset('plugins/font-icons/feather/feather.min.js')}}"></script>
+        <script type="text/javascript">
+            feather.replace();
+        </script>
+        <script src="{{asset('plugins/script-compras.js')}}"></script>
+        <script src="{{asset('plugins/input-mask/jquery.inputmask.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+        <script src="{{asset('plugins/bootstrap-maxlength/bootstrap-maxlength.js')}}"></script>
+        <script src="{{asset('plugins/bootstrap-maxlength/custom-bs-maxlength.js')}}"></script>
+        @break
 
     @case('vendas')
         <script src="{{asset('plugins/table/datatable/datatables.js')}}"></script>

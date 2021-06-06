@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Compras;
 use App\Vendas;
 use App\Profissionais;
 use App\Empresa;
@@ -25,16 +26,6 @@ class ComprasController extends Controller
         return view('compras.registrar_compra',compact('empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
-    public function getallvendas(Vendas $vendas)
-    {
-        $vendas = Vendas::all();
-        $page_name = 'vendas';
-        $category_name = 'vendas';
-        $has_scrollspy = 0;
-        $scrollspy_offset = '';
-        
-        return view('vendas.visualizar_vendas',compact('vendas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +33,7 @@ class ComprasController extends Controller
      */
     public function create()
     {
-        return view('vendas.create');
+        return view('compras.create');
     }
 
     /**
@@ -51,57 +42,29 @@ class ComprasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Profissionais $profissionais, Empresa $empresa)
+    public function store(Request $request)
     {
         $request->validate([
-            'valor' => 'required',
-            'cliente' => 'required',
-            'rt',
-            'contato',
-            'indicador',
-            'indicado' => 'required',
-            'pontuacao_indicador',
-            'id_indicado',
-            'data_venda',
-            'descricao_servico',
-            'perfil',
-            'caed'
+            'empresa',
+            'cliente',
+            'valor',
+            'anotacao',
+            'data_compra'
         ]);
 
-        // valor = pontuacao do usuario
-        $valor = $request->valor;
-        $request['pontuacao_indicador'] = $valor;
+        // empresa -> Nome e ID
+        $separador = explode("/",$request->empresa);
+        $request['id_empresa'] = $separador[0];
+        $request['empresa'] = $separador[1];
 
-        // indicado -> Nome e ID
-        $separador = explode("/",$request->indicado);
-
-        //pegar a data da venda
+        //pegar a data da compra
         if($request->data_venda == null){
             $request->data_venda = date('d-m-Y H:i');
         }
         
-        // calculo do CAED%
-        if($request->perfil == "profissional-empresa"){
-            $request['caed'] = $valor*0.025;
-            $request['indicado'] = $separador[1];
-            $request['id_indicado'] = $separador[0];
-
-            $pontos = Profissionais::select('pontuacao')->where('id', $request['id_indicado'])->get();
-            $request_profissional['pontuacao'] = $request['pontuacao_indicador'] + $pontos[0]->pontuacao;
-            $profissionais->where('id', '=', $request['id_indicado'])->update($request_profissional);
-        }else{
-            $request['caed'] = $valor*0.05;
-            $request['indicado'] = $separador[1];
-            $request['id_indicado'] = $separador[0];
-
-            $pontos = Empresa::select('pontuacao')->where('id', $request['id_indicado'])->get();
-            $request_empresa['pontuacao'] = $request['pontuacao_indicador'] + $pontos[0]->pontuacao;
-            $empresa->where('id', '=', $request['id_indicado'])->update($request_empresa);
-        }
-
-        Vendas::create($request->all());
+        Compras::create($request->all());
         
-        return redirect()->action('VendasController@index')->with('success','Empresa registrada com sucesso.');
+        return redirect()->action('ComprasController@index')->with('success','Compra registrada com sucesso.');
     }
 
     /**
