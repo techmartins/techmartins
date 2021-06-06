@@ -18,6 +18,7 @@ class ComprasController extends Controller
     public function index()
     {
         $empresas = Empresa::where('deleted_at', '=', null)->latest()->get();
+        $empresas = $empresas->sortBy('razao_social');
         $page_name = 'compras';
         $category_name = 'compras';
         $has_scrollspy = 0;

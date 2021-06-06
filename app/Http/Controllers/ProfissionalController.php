@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Profissionais;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfissionalController extends Controller
 {
@@ -62,7 +63,7 @@ class ProfissionalController extends Controller
 
         $newUser['name'] = $request->parceiro;
         $newUser['email'] = $request->email;
-        $newUser['password'] = '$2y$10$wUeG8t8qqUaqKQMoBU5bledy6.48bv6bAoJ1TkjJ6bgXchP.BQfcK';
+        $newUser['password'] = Hash::make($request->password);;
         $newUser['perfil'] = "profissional";
         
         Profissionais::create($request->all());

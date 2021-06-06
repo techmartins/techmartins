@@ -19,7 +19,9 @@ class VendasController extends Controller
     public function index()
     {
         $profissionais = Profissionais::where('deleted_at', '=', null)->latest()->get();
+        $profissionais = $profissionais->sortBy('parceiro');
         $empresas = Empresa::where('deleted_at', '=', null)->latest()->get();
+        $empresas = $empresas->sortBy('razao_social');
         $page_name = 'vendas';
         $category_name = 'vendas';
         $has_scrollspy = 0;

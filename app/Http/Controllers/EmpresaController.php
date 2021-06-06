@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Empresa;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EmpresaController extends Controller
 {
@@ -62,7 +63,7 @@ class EmpresaController extends Controller
         
         $newUser['name'] = $request->razao_social;
         $newUser['email'] = $request->email;
-        $newUser['password'] = '$2y$10$wUeG8t8qqUaqKQMoBU5bledy6.48bv6bAoJ1TkjJ6bgXchP.BQfcK';
+        $newUser['password'] = Hash::make($request->password);
         $newUser['perfil'] = "empresa";
         
         User::create($newUser);
@@ -118,8 +119,10 @@ class EmpresaController extends Controller
             'cidade',
             'contato',
             'referencia',
-            'password' => 'required'
+            'password'
         ]);
+
+        $request['password'] = Hash::make($request->password);
 
         $empresa->where('id', '=', $request->id)->update($request->toArray());
 
