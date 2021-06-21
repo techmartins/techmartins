@@ -216,7 +216,7 @@
                           </div>
                           <div class="form-group col-md-3">
                             <label for="email">Email</label>
-                            <input name="email" type="email" class="form-control" id="email_edit" placeholder="Email da empresa">
+                            <input name="email" type="email" class="form-control" id="email_edit" placeholder="Email da empresa" disabled>
                           </div>
                           <div class="form-group col-md-3">
                             <label for="ramo">Ramo de Atividade</label>

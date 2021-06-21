@@ -19,6 +19,7 @@
                 <form action="{{ route('compras.store') }}" method="POST">
 
                     <input type="hidden" value="{{ Request::url() }}" id="url_cadastro_compra">
+                    <input type="hidden" value="{{ Auth::user()->email }}" id="identificador">
                     <div class="form-row mb-1">
                         <div class="form-group col-md-3">
                             <label for="data_compra">Data da Compra</label>

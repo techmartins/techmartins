@@ -15,12 +15,14 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'cadastrar-empresa') ? 'active' : '' }}">
-                            <a href="/empresa"> Registrar </a>
+                            <a href="/public/empresa"> Registrar </a>
                         </li>
                     </ul>
                 </li>
+                @endif
                 
 
+                @if(Auth::user()->perfil == 'empresa' || Auth::user()->perfil == 'admin')
                 <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
                         <div class="">
@@ -31,12 +33,11 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'cadastrar-profissional') ? 'active' : '' }}">
-                            <a href="/profissional"> Registrar </a>
+                            <a href="/public/profissional"> Registrar </a>
                         </li>
                     </ul>
                 </li>
                 @endif
-
                 
                 <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
@@ -54,17 +55,17 @@
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                         @if(Auth::user()->perfil == 'admin' || Auth::user()->perfil == 'empresa')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas">Registrar Venda</a>
+                            <a href="/public/vendas">Registrar Venda</a>
                         </li>
                         @endif
                         @if(Auth::user()->perfil == 'profissional')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/compras">Informar Compra</a>
+                            <a href="/public/compras">Informar Compra</a>
                         </li>
                         @endif
-                        @if(Auth::user()->perfil == 'admin' || Auth::user()->perfil == 'empresa')
+                        @if(Auth::user()->perfil == 'admin')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas/visualizar">Visualizar</a>
+                            <a href="/public/vendas/visualizar">Visualizar</a>
                         </li>
                         @endif
                     </ul>
@@ -80,21 +81,38 @@
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas">Registrar</a>
+                            <a href="/public/vendas">Registrar</a>
                         </li>
                         @if(Auth::user()->perfil !== 'admin')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas/visualizar">Minhas Obras</a>
+                            <a href="/public/vendas/visualizar">Minhas Obras</a>
                         </li>
                         @endif
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/vendas/visualizar">Lista de Obras</a>
+                            <a href="/public/vendas/visualizar">Lista de Obras</a>
                         </li>
                     </ul>
                 </li> --}}
+
+                @if(Auth::user()->perfil == 'empresa' || Auth::user()->perfil == 'profissional')
+                <li class="menu single-menu">
+                    <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
+                        <div class="">
+                            <i data-feather="users"></i>
+                            <span>Resgate</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
+                        <li class="{{ ($page_name === 'cadastrar-profissional') ? 'active' : '' }}">
+                            <a href="/public/vendas/resgate/premio"> Resgatar Premiação </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
                 
                 @if(Auth::user()->perfil == 'admin')
-                {{-- <li class="menu single-menu">
+                <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
                         <div class="">
                             <i data-feather="printer"></i>
@@ -103,7 +121,10 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
-                        <li>
+                        <li class="{{ ($page_name === 'ranking') ? 'active' : '' }}">
+                            <a href="/tabelaranking">Ranking</a>
+                        </li>
+                        {{-- <li>
                             <a href="/relatorios/venda-lojista"> Vendas Por Lojista </a>
                         </li>
                         <li>
@@ -114,12 +135,12 @@
                         </li>
                         <li>
                             <a href="/relatorios/comissao-profissional-lojista"> Comissionamento Profissional X Lojista </a>
-                        </li>
+                        </li> --}}
                         <li>
-                            <a href="/relatorios/pontuacao"> Tabela de Premiações </a>
+                            <a href="/public/pontuacao"> Premiações </a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
                 @endif
                 
             </ul>

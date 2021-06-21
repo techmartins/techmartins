@@ -63,7 +63,7 @@ class ProfissionalController extends Controller
 
         $newUser['name'] = $request->parceiro;
         $newUser['email'] = $request->email;
-        $newUser['password'] = Hash::make($request->password);;
+        $newUser['password'] = Hash::make($request->password);
         $newUser['perfil'] = "profissional";
         
         Profissionais::create($request->all());
@@ -109,8 +109,8 @@ class ProfissionalController extends Controller
         $request->validate([
             'id',
             'parceiro' => 'required',
-            'cpf',
             'email',
+            'cpf',
             'area_atuacao',
             'nascimento',
             'telefone',
@@ -123,6 +123,11 @@ class ProfissionalController extends Controller
             'pontuacao',
             'password'
         ]);
+
+        $newUser['name'] = $request->parceiro;
+        $newUser['password'] = Hash::make($request->password);
+
+        User::where('email', $request->email)->update($newUser);
 
         $profissional->where('id', '=', $request->id)->update($request->toArray());
 

@@ -110,8 +110,8 @@ class EmpresaController extends Controller
         $request->validate([
             'razao_social' => 'required',
             'cnpj' => 'required',
-            'email' => 'required',
             'ramo_atividade',
+            'email',
             'cep',
             'endereco',
             'bairro',
@@ -122,7 +122,10 @@ class EmpresaController extends Controller
             'password'
         ]);
 
-        $request['password'] = Hash::make($request->password);
+        $newUser['name'] = $request->razao_social;
+        $newUser['password'] = Hash::make($request->password);
+
+        User::where('email', $request->email)->update($newUser);
 
         $empresa->where('id', '=', $request->id)->update($request->toArray());
 

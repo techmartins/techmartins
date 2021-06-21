@@ -20,36 +20,36 @@
                     <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                         <div class="widget-content widget-content-area br-6">
                             <div class="table-responsive mb-4 mt-4">
-                            <table id="zero-config" class="table table-hover" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align: center">ID</th>
-                                        <th style="text-align: center">Cliente</th>
-                                        <th style="text-align: center">Contato</th>
-                                        {{-- <th style="text-align: center">Indicador</th> --}}
-                                        <th style="text-align: center">Indicado</th>
-                                        <th style="text-align: center">Valor</th>
-                                        <th style="text-align: center">CAED</th>
-                                        <th style="text-align: center">Data da Venda</th>
-                                        <th style="text-align: center">Criado em</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($vendas as $v)
-                                    <tr>
-                                        <td style="text-align: center">{{ $v->id }}</td>
-                                        <td style="text-align: center">{{ $v->cliente }}</td>
-                                        <td style="text-align: center">{{ $v->contato }}</td>
-                                        {{-- <td style="text-align: center">{{ $v->indicador }}</td> --}}
-                                        <td style="text-align: center">{{ $v->indicado }}</td>
-                                        <td style="text-align: center">{{ $v->valor }}</td>
-                                        <td style="text-align: center">{{ $v->caed }}</td>
-                                        <td style="text-align: center">{{ $v->data_venda }}</td>
-                                        <td style="text-align: center">{{ $v->created_at }}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                                <table id="zero-config" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center">ID</th>
+                                            <th style="text-align: center">Cliente</th>
+                                            <th style="text-align: center">Contato</th>
+                                            {{-- <th style="text-align: center">Indicador</th> --}}
+                                            <th style="text-align: center">Indicado</th>
+                                            <th style="text-align: center">Valor</th>
+                                            <th style="text-align: center">CAED</th>
+                                            <th style="text-align: center">Data da Venda</th>
+                                            <th style="text-align: center">Criado em</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($vendas as $v)
+                                        <tr>
+                                            <td style="text-align: center">{{ $v->id }}</td>
+                                            <td style="text-align: center">{{ $v->cliente }}</td>
+                                            <td style="text-align: center">{{ $v->contato }}</td>
+                                            {{-- <td style="text-align: center">{{ $v->indicador }}</td> --}}
+                                            <td style="text-align: center">{{ $v->indicado }}</td>
+                                            <td style="text-align: center">{{ $v->valor }}</td>
+                                            <td style="text-align: center">{{ $v->caed }}</td>
+                                            <td style="text-align: center">{{ $v->data_venda }}</td>
+                                            <td style="text-align: center">{{ $v->created_at }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,24 @@
 $(document).ready(function(){
 
+    $("#valor").inputmask('decimal', {
+        'alias': 'numeric',
+        'groupSeparator': '.',
+        'autoGroup': true,
+        'digits': 2,
+        'radixPoint': ",",
+        'digitsOptional': false,
+        'allowMinus': false,
+        'prefix': 'R$ ',
+        'placeholder': ''
+    });
+
     $('#enviar-dados-compra').on('click', function() {
         
         var cliente = $('#cliente').val();
+        var identificador = $("#identificador").val();
         var valor = $('#valor').val();
+        valor = valor.split("R$ ");
+        valor = valor[1];
         var anotacao = $('#anotacao').val();
         var empresa = $('#empresa').val();
 
@@ -24,6 +39,7 @@ $(document).ready(function(){
                 type: "post",
                 data: {
                     cliente:cliente,
+                    identificador:identificador,
                     valor:valor,
                     empresa:empresa,
                     anotacao:anotacao,

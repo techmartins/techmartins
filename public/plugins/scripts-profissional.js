@@ -101,6 +101,7 @@ $(document).ready(function(){
             type: "GET",
             
             success: function(response) {
+                console.log(response);
                 //console.log(response[0]["razao_social"]);
                 $("#id_edit").val(response[0]["id"]);
                 $('#parceiro_edit').val(response[0]["parceiro"]);
@@ -196,7 +197,7 @@ $(document).ready(function(){
         let id = $("#id_deletar_profissional").val();
         let _url = $('#url_visualizar').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
-        $('#modal-excluir-PROFISSIONAL').modal('hide');
+        $('#modal-excluir-profissional').modal('hide');
         $('#modal-loading').modal('show');
         setTimeout(function () {
             $.ajax({

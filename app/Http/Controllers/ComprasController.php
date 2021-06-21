@@ -6,6 +6,7 @@ use App\Compras;
 use App\Vendas;
 use App\Profissionais;
 use App\Empresa;
+use App\Logbook;
 use Illuminate\Http\Request;
 
 class ComprasController extends Controller
@@ -47,6 +48,7 @@ class ComprasController extends Controller
     {
         $request->validate([
             'empresa',
+            'identificador',
             'cliente',
             'valor',
             'anotacao',
@@ -64,6 +66,13 @@ class ComprasController extends Controller
         }
         
         Compras::create($request->all());
+
+        $log['entidade'] = "compras";
+        $log['acao'] = "registro";
+        $log['observacao'] = "Registro de compras de: " . $request['empresa'];
+        $log['id_usuario'] = $request->identificador;
+        
+        Logbook::create($log);
         
         return redirect()->action('ComprasController@index')->with('success','Compra registrada com sucesso.');
     }

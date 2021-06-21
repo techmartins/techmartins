@@ -203,7 +203,7 @@
                           </div>
                           <div class="form-group col-md-3">
                             <label for="email_edit">Email</label>
-                            <input name="email_edit" type="email" class="form-control" id="email_edit" placeholder="Email do profissional">
+                            <input name="email_edit" type="email" class="form-control" id="email_edit" placeholder="Email do profissional" disabled>
                           </div>
                           <div class="form-group col-md-3">
                             <label for="nascimento_edit">Data de nascimento</label>

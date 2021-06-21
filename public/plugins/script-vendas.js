@@ -1,13 +1,44 @@
 $(document).ready(function(){
 
+    $("#contato").inputmask({mask:"(99) 99999-9999"});
+
+    $("#valor").inputmask('decimal', {
+        'alias': 'numeric',
+        'groupSeparator': '.',
+        'autoGroup': true,
+        'digits': 2,
+        'radixPoint': ",",
+        'digitsOptional': false,
+        'allowMinus': false,
+        'prefix': 'R$ ',
+        'placeholder': ''
+    });
+
+    $("#rt").inputmask('decimal', {
+        'alias': 'numeric',
+        'groupSeparator': '.',
+        'autoGroup': true,
+        'digits': 2,
+        'radixPoint': ",",
+        'digitsOptional': false,
+        'allowMinus': false,
+        'prefix': 'R$ ',
+        'placeholder': ''
+    });
+
     $('#enviar-dados-venda').on('click', function() {
         
         var cliente = $('#cliente').val();
         var valor = $('#valor').val();
-        var rt = "$"+$('#rt').val();
+        valor = valor.split("R$ ");
+        valor = valor[1]; // 20.000,00
+        
+        var rt = $('#rt').val();
         var descricao_servico = $('#descricao_servico').val();
         if($('#empresa_indicadora').val() != 0){
             var indicador = $('#empresa_indicadora').val();
+            indicador = indicador.split("/");
+            indicador = indicador[1];
         }else{
             var indicador = $('#indicador').val();
         }
@@ -27,9 +58,13 @@ $(document).ready(function(){
             var id_indicado = $('#id_indicado').val();
             var perfil = "empresa-empresa";
         }
+        
+        indicado = indicado.split("/");
+        indicado = indicado[1];
+        id_indicado = id_indicado.split("/");
+        id_indicado = id_indicado[0];
+        
         var contato = $('#contato').val();
-        var pontuacao_indicador = 0;
-        var caed = 0;
         let _url = $('#url_cadastro_venda').val();
         let _token   = $('meta[name="csrf-token"]').attr('content');
 
@@ -48,10 +83,8 @@ $(document).ready(function(){
                     indicado:indicado,
                     id_indicado:id_indicado,
                     data_venda:data_venda,
-                    pontuacao_indicador:pontuacao_indicador,
                     contato:contato,
                     perfil:perfil,
-                    caed:caed,
                     _token:_token
                 },
 

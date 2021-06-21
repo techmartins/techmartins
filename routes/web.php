@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,12 @@ Route::group(['middleware' => 'auth'] , function() {
         return view('dashboard2')->with($data);
     });
 
+    // VISUALIZAÇÃO E EDIÇÃO DO PERFIL
+    Route::get('/perfil', 'PerfilController@index');
+    Route::get('/perfil/{email}', 'PerfilController@show')->name('perfil.show');
+    Route::put('/perfil/{id}', 'PerfilController@update')->name('perfil.update');
+
+    // CRUD EMPRESA
     Route::get('/empresa', 'EmpresaController@index');
     Route::post('/empresa', 'EmpresaController@store')->name('empresa.store');
     Route::get('/empresa/{id}', 'EmpresaController@show')->name('empresa.show');
@@ -56,6 +63,7 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::put('/empresa/{id}', 'EmpresaController@update')->name('empresa.update');
     Route::delete('/empresa/{id}', 'EmpresaController@destroy')->name('empresa.destroy');
 
+    // CRUD PROFISSIONAL
     Route::get('/profissional', 'ProfissionalController@index');
     Route::post('/profissional', 'ProfissionalController@store')->name('profissional.store');
     Route::get('/profissional/{id}', 'ProfissionalController@show')->name('profissional.show');
@@ -63,24 +71,25 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::put('/profissional/{id}', 'ProfissionalController@update')->name('profissional.update');
     Route::delete('/profissional/{id}', 'ProfissionalController@destroy')->name('profissional.destroy');
 
-    Route::get('/vendas', 'VendasController@index');
-    Route::get('/vendas/visualizar', 'VendasController@getallvendas')->name('visualizar.vendas');
-    Route::post('/vendas', 'VendasController@store')->name('vendas.store');
-    Route::get('/vendas/{id}', 'VendasController@show')->name('vendas.show');
+    // DADOS DE VENDA E RANKING
+    Route::get('/vendas', 'VendasController@index'); // VISUALIZA A TELA DE CADASTRO DAS VENDAS
+    Route::get('/vendas/visualizar', 'VendasController@getallvendas')->name('visualizar.vendas'); // VISUALIZA AS VENDAS EM GERAL
+    Route::get('/vendas/resgate/premio', 'VendasController@resgatarpremiacao'); // PÁGINA DE RESGATE DO PREMIO
+    Route::post('/vendas/resgate/premio', 'VendasController@realizarresgate');
+    Route::get('/analytics/minhapontuacao', 'VendasController@getminhapontuacao');   // RETORNA A PONTUAÇÃO DO USUÁRIO LOGADO
+    Route::get('/analytics/minhasvendas', 'VendasController@getminhasvendas');  // RETORNA AS VENDAS DO USUARIO LOGADO
+    Route::post('/vendas', 'VendasController@store')->name('vendas.store');   //  CADASTRA VENDA
     
-    Route::get('/compras', 'ComprasController@index');
-    Route::post('/compras', 'ComprasController@store')->name('compras.store');
+    // COMPRAS
+    Route::get('/compras', 'ComprasController@index');   // VISUALIZA TELA DE CADASTRO DE COMPRAS DO PROFISSIONAL
+    Route::post('/compras', 'ComprasController@store')->name('compras.store');   // CADASTRA COMPRA DO PROFISSIONAL
     
+    // CRUD DA TABELA PONTUAÇÃO
     Route::get('/pontuacao', 'PontuacaoController@index');
-    Route::get('/pontuacao/visualizar', 'PontuacaoController@getallvendas')->name('visualizar.pontuacao');
-    Route::post('/pontuacao', 'PontuacaoController@store')->name('pontuacao.store');
+    Route::get('/tabelaranking', 'PontuacaoController@indexTabela');
     Route::get('/pontuacao/{id}', 'PontuacaoController@show')->name('pontuacao.show');
-    Route::get('/pontuacao/{id}/edit', 'PontuacaoController@edit')->name('pontuacao.edit');
     Route::put('/pontuacao/{id}', 'PontuacaoController@update')->name('pontuacao.update');
-
-    Route::get('/relatorios/ranking', 'RankingController@getRanking')->name('visualizar_ranking');
     
-
     // Pages
     Route::prefix('pages')->group(function () {
         Route::get('/coming_soon', function() {

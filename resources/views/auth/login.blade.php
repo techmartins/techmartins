@@ -31,7 +31,7 @@
                 <div class="form-container">
                     <div class="form-content" style="background-color: gray">
 
-                        <img src="/public/assets/img/logo-clubarq.png" alt="clubarqedesign">
+                        <img src="/assets/img/logo-clubarq.png" alt="clubarqedesign">
 
                         <h1 class="">Painel Administrativo</h1>
                         {{-- <p class="">Log in to your account to continue.</p> --}}
