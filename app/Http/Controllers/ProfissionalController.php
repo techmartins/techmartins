@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profissionais;
 use App\User;
+use App\Logbook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -66,8 +67,11 @@ class ProfissionalController extends Controller
         $newUser['password'] = Hash::make($request->password);
         $newUser['perfil'] = "profissional";
         
-        Profissionais::create($request->all());
-        User::create($newUser);
+        $profissional = Profissionais::create($request->all());
+        print_r($profissional);
+        
+        $novo_usuario = User::create($newUser);
+        dd($novo_usuario);
 
         return redirect()->action('ProfissionalController@index')->with('success','Profissional registrado com sucesso.');
     }
@@ -110,6 +114,7 @@ class ProfissionalController extends Controller
             'id',
             'parceiro' => 'required',
             'email',
+            'email_verified',
             'cpf',
             'area_atuacao',
             'nascimento',
@@ -123,15 +128,24 @@ class ProfissionalController extends Controller
             'pontuacao',
             'password'
         ]);
-
+        
         $newUser['name'] = $request->parceiro;
+        $newUser['email'] = $request->email;
         $newUser['password'] = Hash::make($request->password);
 
-        User::where('email', $request->email)->update($newUser);
+        $usuario = User::where('email', $request->email_verified)->update($newUser);
 
-        $profissional->where('id', '=', $request->id)->update($request->toArray());
+        $atualizacao = $profissional->where('id', $request->id)->update($request->toArray());
+        
+        $log['entidade'] = "profissional";
+	    $log['acao'] = "editar";
+	    $log['observacao'] = "Profissional editado";
+	    $log['id_usuario'] = $request->id;
+	    
+	    Logbook::create($log);
 
-        $retorno = response()->json($profissional);
+        dd($usuario);
+        $retorno = response()->json($atualizacao);
 
         return $retorno;
         // return redirect()->route('empresa')

@@ -38,17 +38,17 @@ Route::group(['middleware' => 'auth'] , function() {
         return view('dashboard')->with($data);
     });
     
-    Route::get('/sales', function() {
-        // $category_name = '';
-        $data = [
-            'category_name' => 'dashboard',
-            'page_name' => 'sales',
-            'has_scrollspy' => 0,
-            'scrollspy_offset' => '',
-        ];
-        // $pageName = 'sales';
-        return view('dashboard2')->with($data);
-    });
+    // Route::get('/sales', function() {
+    //     // $category_name = '';
+    //     $data = [
+    //         'category_name' => 'dashboard',
+    //         'page_name' => 'sales',
+    //         'has_scrollspy' => 0,
+    //         'scrollspy_offset' => '',
+    //     ];
+    //     // $pageName = 'sales';
+    //     return view('dashboard2')->with($data);
+    // });
 
     // VISUALIZAÇÃO E EDIÇÃO DO PERFIL
     Route::get('/perfil', 'PerfilController@index');
@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth'] , function() {
 
     // CRUD EMPRESA
     Route::get('/empresa', 'EmpresaController@index');
+    Route::get('/empresa/credenciadas', 'EmpresaController@credenciadas');
     Route::post('/empresa', 'EmpresaController@store')->name('empresa.store');
     Route::get('/empresa/{id}', 'EmpresaController@show')->name('empresa.show');
     Route::get('/empresa/{id}/edit', 'EmpresaController@edit')->name('empresa.edit');
@@ -76,12 +77,14 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::get('/vendas/visualizar', 'VendasController@getallvendas')->name('visualizar.vendas'); // VISUALIZA AS VENDAS EM GERAL
     Route::get('/vendas/resgate/premio', 'VendasController@resgatarpremiacao'); // PÁGINA DE RESGATE DO PREMIO
     Route::post('/vendas/resgate/premio', 'VendasController@realizarresgate');
+    Route::get('/minhasvendas/', 'VendasController@getvendas');
     Route::get('/analytics/minhapontuacao', 'VendasController@getminhapontuacao');   // RETORNA A PONTUAÇÃO DO USUÁRIO LOGADO
     Route::get('/analytics/minhasvendas', 'VendasController@getminhasvendas');  // RETORNA AS VENDAS DO USUARIO LOGADO
     Route::post('/vendas', 'VendasController@store')->name('vendas.store');   //  CADASTRA VENDA
     
     // COMPRAS
     Route::get('/compras', 'ComprasController@index');   // VISUALIZA TELA DE CADASTRO DE COMPRAS DO PROFISSIONAL
+    Route::get('/compras/minhascompras', 'ComprasController@minhascompras'); // VISUALIZAR COMPRAS DO USUARIO PROFISSIONAL LOGADO
     Route::post('/compras', 'ComprasController@store')->name('compras.store');   // CADASTRA COMPRA DO PROFISSIONAL
     
     // CRUD DA TABELA PONTUAÇÃO
@@ -89,6 +92,12 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::get('/tabelaranking', 'PontuacaoController@indexTabela');
     Route::get('/pontuacao/{id}', 'PontuacaoController@show')->name('pontuacao.show');
     Route::put('/pontuacao/{id}', 'PontuacaoController@update')->name('pontuacao.update');
+
+    // RELATÓRIOS GERENCIAIS
+    Route::get('/vendas/relatorio/empresa', 'VendasController@relatoriovendasporempresa');
+    Route::get('/vendas/relatorio/profissional', 'VendasController@relatoriovendasporprofissional');
+    Route::get('/vendas/relatorio/fechamento', 'VendasController@relatoriofechamentototal');
+    //Route::get('/vendas/empresa', 'VendasController@relatoriovendasporempresa');
     
     // Pages
     Route::prefix('pages')->group(function () {

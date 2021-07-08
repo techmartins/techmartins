@@ -14,6 +14,7 @@ class Compras extends Model
             'valor',
             'anotacao',
             'data_compra',
+            'id_profissional',
             'created_at',
             'updated_at',
     ];

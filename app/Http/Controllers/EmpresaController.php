@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Empresa;
 use App\User;
+use App\Logbook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,6 +26,17 @@ class EmpresaController extends Controller
         return view('empresas.cadastrar_empresa',compact('empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
+    public function credenciadas()
+    {
+        $empresas = Empresa::where('deleted_at', '=', null)->get();
+        $page_name = 'credenciadas';
+        $category_name = 'credenciadas';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+
+        return view('empresas.credenciadas',compact('empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -44,8 +56,8 @@ class EmpresaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'razao_social' => 'required',
-            'cnpj' => 'required',
+            'razao_social',
+            'cnpj',
             'email',
             'ramo_atividade',
             'cep',
@@ -58,17 +70,27 @@ class EmpresaController extends Controller
             'referencia',
             'password'
         ]);
-        
-        Empresa::create($request->all());
+        $validacao = Empresa::where('email', '=', $request->email)->get();
+
+        // if($validacao > 0){
+        //     return $msg = ;
+        // }
+
+        $empresa = Empresa::create($request->all());
+
         
         $newUser['name'] = $request->razao_social;
         $newUser['email'] = $request->email;
         $newUser['password'] = Hash::make($request->password);
         $newUser['perfil'] = "empresa";
         
-        User::create($newUser);
-
-        return redirect()->action('EmpresaController@index')->with('success','Empresa registrada com sucesso.');
+        $usuario = User::create($newUser);
+        //dd($usuario);
+        
+        $retorno = response()->json($empresa);
+        
+        return $retorno;
+        // return redirect()->action('EmpresaController@index')->with('success','Empresa registrada com sucesso.');
         // return redirect()->route('empresa')
         //                 ->with('success','Empresa registrada com sucesso.');
     }
@@ -112,6 +134,7 @@ class EmpresaController extends Controller
             'cnpj' => 'required',
             'ramo_atividade',
             'email',
+            'email_verified',
             'cep',
             'endereco',
             'bairro',
@@ -125,10 +148,10 @@ class EmpresaController extends Controller
         $newUser['name'] = $request->razao_social;
         $newUser['password'] = Hash::make($request->password);
 
-        User::where('email', $request->email)->update($newUser);
+        $usuario = User::where('email', $request->email_verified)->update($newUser);
 
-        $empresa->where('id', '=', $request->id)->update($request->toArray());
-
+        $empresa->where('id', $request->id)->update($request->toArray());
+        
         $retorno = response()->json($empresa);
 
         return $retorno;

@@ -8,6 +8,7 @@ use App\Empresa;
 use App\Pontuacao;
 use App\Logbook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VendasController extends Controller
 {
@@ -105,6 +106,17 @@ class VendasController extends Controller
         return view('vendas.visualizar_vendas',compact('vendas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
+    public function relatoriovendasporempresa()
+    {
+        $relatorio = Vendas::all()->groupBy('indicador');
+        //dd($relatorio);
+        $page_name = 'vendas';
+        $category_name = 'vendas';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+        return view('construcao.construcao',compact('relatorio','page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+    }
+
     public function getminhapontuacao(Request $request)
     {
         if($request->perfil == "empresa"){
@@ -130,21 +142,25 @@ class VendasController extends Controller
         return $retorno;
     }
 
-    public function getminhasvendas(Request $request)
+    public function getminhasvendas()
     {
-        if($request->perfil == "empresa"){
-            $id = Empresa::select('id')->where('email', $request->email)->where('deleted_at', null)->get();
-            $vendas = Vendas::select('valor', 'cliente', 'data_venda')->where('id_indicado', '=', $id[0]['id'])->get();
-            $vendas = $vendas->sortBy('created_at');
-        }else{
-            $id = Profissionais::select('id')->where('email', $request->email)->where('deleted_at', null)->get();
-            $vendas = Vendas::select('valor', 'cliente', 'data_venda')->where('id_indicado', '=', $id[0]['id'])->get();
-            $vendas = $vendas->sortBy('created_at');
-        }
-        $retorno = response()->json($vendas);
-
-        return $retorno;
+    	$vendas = Vendas::all();
+        
+        return $vendas;
     }
+
+    public function getvendas(Vendas $vendas)
+    {
+        $vendas = Vendas::all();
+        $page_name = 'vendas';
+        $category_name = 'vendas';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+        
+        return view('vendas.visualizar_minhas_vendas',compact('vendas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -203,13 +219,12 @@ class VendasController extends Controller
                         </tr>
                         <tr>
                             <td>
-                                Venda gerada em $data_envio_email.
+                                E-mail gerada em $data_envio_email.
                             </td>
                         </tr>
                     </table>
                 </html>
             ";
-            // $destino = $destinatario;
             $destino = $destinatario;
             $enviar_email = mail($destino, $assunto_email, $html_email, $headers);
 
@@ -233,7 +248,6 @@ class VendasController extends Controller
         $request->validate([
             'valor',
             'cliente',
-            'rt',
             'contato',
             'indicador',
             'indicado',
@@ -293,7 +307,7 @@ class VendasController extends Controller
             
             Logbook::create($log);
         }else{
-            $request['caed'] = $pt*0.05;
+            $request['caed'] = $pt*0.025;
             $request['caed'] = number_format($request['caed'], 2, ',', '.');
             $request['caed'] = str_replace(",", ".", $request['caed']);
             
@@ -323,9 +337,16 @@ class VendasController extends Controller
         
         $request['valor'] = "R$ ".$request->valor;
         $request['pontuacao_indicador'] = $pt;
+        $request['perfil'] = $request->perfil;
+        $request['indicador'] = $request->indicador;
+        $request['email_indicado'] = $pontos[0]['email'];
+        
         
         $resultado = Vendas::create($request->all());
+        dd($resultado);
+        
         $retorno = response()->json($resultado);
+        
         return $retorno;
         //return redirect()->action('VendasController@index')->with('success','Empresa registrada com sucesso.');
     }
@@ -365,14 +386,14 @@ class VendasController extends Controller
     public function update(Request $request, Vendas $vendas)
     {
         $request->validate([
-            'valor' => 'required',
-            'cliente' => 'required',
-            'contato' => 'required',
-            'indicador' => 'required',
-            'indicado' => 'required',
-            'pontuacao_indicador' => 'required',
-            'descricao_servico' => 'required',
-            'caed' => 'required'
+            'valor',
+            'cliente',
+            'contato',
+            'indicador',
+            'indicado',
+            'pontuacao_indicador',
+            'descricao_servico',
+            'caed'
         ]);
 
         $vendas->where('id', '=', $request->id)->update($request->toArray());

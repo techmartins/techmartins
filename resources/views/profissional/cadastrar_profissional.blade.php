@@ -191,6 +191,7 @@
                       <form action="" method="PUT">
                         @csrf
                         <input type="hidden" value="{{Request::url()}}" id="url_cadastro">
+                        <input type="hidden" id="email_verified">
                         <input type="hidden" id="id_edit">
                         <div class="form-row mb-1">
                           <div class="form-group col-md-6">
@@ -203,7 +204,7 @@
                           </div>
                           <div class="form-group col-md-3">
                             <label for="email_edit">Email</label>
-                            <input name="email_edit" type="email" class="form-control" id="email_edit" placeholder="Email do profissional" disabled>
+                            <input name="email_edit" type="email" class="form-control" id="email_edit" placeholder="Email do profissional">
                           </div>
                           <div class="form-group col-md-3">
                             <label for="nascimento_edit">Data de nascimento</label>

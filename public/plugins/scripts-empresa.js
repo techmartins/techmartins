@@ -76,14 +76,14 @@ $(document).ready(function(){
 
                 success: function(response) {
                     console.log(response);
-                    location.reload();
+                    //location.reload();
                 },
                 error: function(response) {
                     console.log(response)
                 }
             });
             $('#modal-loading').modal('hide');
-            location.reload();
+            // location.reload();
         }, 3000);
     });
 
@@ -103,6 +103,7 @@ $(document).ready(function(){
                 $('#razao_social_edit').val(response[0]["razao_social"]);
                 $('#cnpj_edit').val(response[0]["cnpj"]);
                 $('#email_edit').val(response[0]["email"]);
+                $('#email_verified').val(response[0]["email"]);
                 $('#ramo_edit').val(response[0]["ramo_atividade"]);
                 $('#cep_edit').val(response[0]["cep"]);
                 $('#endereco_edit').val(response[0]["endereco"]);
@@ -125,6 +126,7 @@ $(document).ready(function(){
         var razao = $('#razao_social_edit').val();
         var cnpj = $('#cnpj_edit').val();
         var email = $('#email_edit').val();
+        var email_verified = $('#email_verified').val();
         var atividade = $('#ramo_edit').val();
         var cep = $('#cep_edit').val();
         var endereco = $('#endereco_edit').val();
@@ -153,6 +155,7 @@ $(document).ready(function(){
                     razao_social: razao,
                     cnpj: cnpj,
                     email: email,
+                    email_verified:email_verified,
                     ramo_atividade: atividade,
                     cep: cep,
                     endereco: endereco,
@@ -173,7 +176,7 @@ $(document).ready(function(){
                 }
             });
             $('#modal-loading').modal('hide');
-            location.reload();
+            //location.reload();
         }, 3000);
     });
 
@@ -204,7 +207,8 @@ $(document).ready(function(){
                 }
             });
             $('#modal-loading').modal('hide');
-            location.reload();
+            alert("Empresa deletada com sucesso!");
+            //location.reload();
         }, 3000);
     });
 

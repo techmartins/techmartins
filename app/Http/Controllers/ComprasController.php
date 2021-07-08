@@ -48,7 +48,8 @@ class ComprasController extends Controller
     {
         $request->validate([
             'empresa',
-            'identificador',
+            'id_profissional',
+            'id_usuario',
             'cliente',
             'valor',
             'anotacao',
@@ -59,18 +60,18 @@ class ComprasController extends Controller
         $separador = explode("/",$request->empresa);
         $request['id_empresa'] = $separador[0];
         $request['empresa'] = $separador[1];
-
+        
         //pegar a data da compra
-        if($request->data_venda == null){
-            $request->data_venda = date('d-m-Y H:i');
+        if($request->data_compra == null){
+            $request->data_compra = date('d-m-Y H:i');
         }
         
-        Compras::create($request->all());
-
+        $compra = Compras::create($request->all());
+        
         $log['entidade'] = "compras";
         $log['acao'] = "registro";
         $log['observacao'] = "Registro de compras de: " . $request['empresa'];
-        $log['id_usuario'] = $request->identificador;
+        $log['id_usuario'] = $request->id_usuario;
         
         Logbook::create($log);
         
@@ -85,10 +86,21 @@ class ComprasController extends Controller
      */
     public function show(Request $request)
     {
-        $vendas = Vendas::where('id', '=', $request->id)->get();
-        $retorno = response()->json($vendas);
+        $compras = Compras::where('id', '=', $request->id)->get();
+        $retorno = response()->json($compras);
 
         return $retorno;
+    }
+    
+    public function minhascompras(Request $request)
+    {
+    	$compras = Compras::all();
+    	$page_name = 'compras';
+        $category_name = 'compras';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+        
+        return view('compras.visualizar_minhas_compras',compact('compras', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
     /**
@@ -97,9 +109,9 @@ class ComprasController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vendas $vendas)
+    public function edit(Compras $compras)
     {
-        return view('vendas.edit',compact('vendas'));
+        return view('compras.edit',compact('compras'));
     }
 
     /**
@@ -109,22 +121,19 @@ class ComprasController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vendas $vendas)
+    public function update(Request $request, Compras $compras)
     {
         $request->validate([
-            'valor' => 'required',
-            'cliente' => 'required',
-            'contato' => 'required',
-            'indicador' => 'required',
-            'indicado' => 'required',
-            'pontuacao_indicador' => 'required',
-            'descricao_servico' => 'required',
-            'caed' => 'required'
+            'valor',
+            'cliente',
+            'data_compra',
+            'empresa',
+            'anotacao'
         ]);
 
-        $vendas->where('id', '=', $request->id)->update($request->toArray());
+        $compras->where('id', '=', $request->id)->update($request->toArray());
 
-        $retorno = response()->json($vendas);
+        $retorno = response()->json($compras);
 
         return $retorno;
     }

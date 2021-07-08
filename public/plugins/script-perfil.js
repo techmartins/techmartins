@@ -14,10 +14,12 @@ $(document).ready(function(){
             },
 
             success: function(response) {
+                //console.log(response);
                 if(perfil == "profissional"){
                     $("#parceiro_edit").val(response[0]["parceiro"]);
                     $("#cpf_edit").val(response[0]["cpf"]);
                     $("#email_edit").val(response[0]["email"]);
+                    $("#email_verified").val(response[0]["email"]);
                     $("#nascimento_edit").val(response[0]["nascimento"]);
                     $("#telefone_edit").val(response[0]["telefone"]);
                     $("#area_edit").val(response[0]["area_atuacao"]);
@@ -48,6 +50,7 @@ $(document).ready(function(){
             }
         });
     }
+    carregaPerfil();
 
     $('#cep_edit').on('blur', function(){
 
@@ -71,6 +74,7 @@ $(document).ready(function(){
         var parceiro = $('#parceiro_edit').val();
         var cpf = $('#cpf_edit').val();
         var email = $('#email_edit').val();
+        var email_verified = $('#email_verified').val();
         var area_atuacao = $('#area_edit').val();
         var nascimento = $('#nascimento_edit').val();
         var telefone = $('#telefone_edit').val();
@@ -101,6 +105,7 @@ $(document).ready(function(){
                     parceiro: parceiro,
                     cpf: cpf,
                     email: email,
+                    email_verified: email_verified,
                     area_atuacao: area_atuacao,
                     nascimento: nascimento,
                     telefone: telefone,
@@ -121,7 +126,7 @@ $(document).ready(function(){
                 }
             });
             $('#modal-loading').modal('hide');
-            location.reload();
+            //location.reload();
         }, 2000);
 
     });
@@ -132,6 +137,7 @@ $(document).ready(function(){
         var razao = $('#razao_social_edit').val();
         var cnpj = $('#cnpj_edit').val();
         var email = $('#email_edit').val();
+        var email_verified = $('#email_verified').val();
         var atividade = $('#ramo_edit').val();
         var cep = $('#cep_edit').val();
         var endereco = $('#endereco_edit').val();
@@ -160,6 +166,7 @@ $(document).ready(function(){
                     razao_social: razao,
                     cnpj: cnpj,
                     email: email,
+                    email_verified: email_verified,
                     ramo_atividade: atividade,
                     cep: cep,
                     endereco: endereco,
@@ -184,6 +191,6 @@ $(document).ready(function(){
         }, 2000);
     });
 
-    carregaPerfil();
+    
 
 });

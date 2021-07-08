@@ -86,7 +86,8 @@ $(document).ready(function(){
                 }
             });
             $('#modal-loading').modal('hide');
-            location.reload();
+            alert("Profissional cadastrado com sucesso.");
+            // location.reload();
         }, 3000);
     });
 
@@ -107,6 +108,7 @@ $(document).ready(function(){
                 $('#parceiro_edit').val(response[0]["parceiro"]);
                 $('#cpf_edit').val(response[0]["cpf"]);
                 $('#email_edit').val(response[0]["email"]);
+                $('#email_verified').val(response[0]["email"]);
                 $('#area_edit').val(response[0]["area_atuacao"]);
                 $('#nascimento_edit').val(response[0]["nascimento"]);
                 $('#telefone_edit').val(response[0]["telefone"]);
@@ -130,6 +132,7 @@ $(document).ready(function(){
         var parceiro = $('#parceiro_edit').val();
         var cpf = $('#cpf_edit').val();
         var email = $('#email_edit').val();
+        var email_verified = $('#email_verified').val();
         var area_atuacao = $('#area_edit').val();
         var nascimento = $('#nascimento_edit').val();
         var telefone = $('#telefone_edit').val();
@@ -173,14 +176,15 @@ $(document).ready(function(){
                 
                 success: function(response) {
                     console.log(response);
-                    location.reload(); 
+                    //location.reload(); 
                 },
                 error: function(err) {
                     console.log(err)
                 }
             });
             $('#modal-loading').modal('hide');
-            location.reload();
+
+            //location.reload();
         }, 3000);
 
     });
@@ -218,7 +222,7 @@ $(document).ready(function(){
                 }
             });
             $('#modal-loading').modal('hide');
-            location.reload();
+            //location.reload();
         }, 3000);
     });
 

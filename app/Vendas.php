@@ -18,6 +18,7 @@ class Vendas extends Model
             'data_venda',
             'pontuacao_indicador',
             'descricao_servico',
+            'perfil',
             'caed',
             'created_at',
             'updated_at',

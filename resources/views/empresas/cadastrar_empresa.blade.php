@@ -112,8 +112,6 @@
                     <th>Atividade</th>
                     <th>Contato</th>
                     <th>Referência</th>
-                    {{-- <th>Criado em</th> --}}
-                    {{-- <th>Ação</th> --}}
                   </tr>
               </thead>
               <tbody>
@@ -126,16 +124,10 @@
                     <td>{{ $emp->ramo_atividade }}</td>
                     <td>{{ $emp->contato }}</td>
                     <td>{{ $emp->referencia }}</td>
-                    {{-- <td>{{ $emp->created_at }}</td> --}}
-                    {{-- <td class="text-center">
-                      <button class="btn btn-primary mb-2 btn-editar-empresa" data-id="{{ $emp->id }}"><i data-feather="edit-3"></i></button>
-                      <button class="btn btn-danger mb-2 btn-excluir-empresa" data-id="{{ $emp->id }}"><i data-feather="trash-2"></i><span class="icon-name"></span></button>
-                    </td> --}}
                   </tr>
                 @endforeach
               </tbody>
             </table>
-            {{-- {!! $empresas->links() !!} --}}
           </div>
         </div>
       </div>
@@ -204,6 +196,7 @@
                       <form action="" method="PUT">
                         @csrf
                         <input type="hidden" value="{{Request::url()}}" id="url_cadastro">
+                        <input type="hidden" id="email_verified">
                         <input type="hidden" id="id_edit">
                         <div class="form-row mb-1">
                           <div class="form-group col-md-6">
@@ -216,7 +209,7 @@
                           </div>
                           <div class="form-group col-md-3">
                             <label for="email">Email</label>
-                            <input name="email" type="email" class="form-control" id="email_edit" placeholder="Email da empresa" disabled>
+                            <input name="email" type="email" class="form-control" id="email_edit" placeholder="Email da empresa">
                           </div>
                           <div class="form-group col-md-3">
                             <label for="ramo">Ramo de Atividade</label>

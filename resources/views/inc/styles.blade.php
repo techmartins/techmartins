@@ -15,8 +15,10 @@
 @switch($page_name)
     @case('analytics')
       {{-- Dashboard --}}
-<link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/css/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('assets/css/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('plugins/notification/snackbar/snackbar.min.css')}}" rel="stylesheet" type="text/css"
       @break
 
     @case('sales')
@@ -40,6 +42,14 @@
           }
           
       </style>
+      @break
+
+      @case('credenciadas')
+        <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
+        <link rel="stylesheet" type="text/css" href="plugins/table/datatable/datatables.css">
+        <link rel="stylesheet" type="text/css" href="plugins/table/datatable/custom_dt_html5.css">
+        <link rel="stylesheet" type="text/css" href="plugins/table/datatable/dt-global_style.css">
+        <!-- END PAGE LEVEL CUSTOM STYLES -->
       @break
 
     @case('chat')

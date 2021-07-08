@@ -88,16 +88,28 @@ class PerfilController extends Controller
      */
     public function update(Request $request, Profissionais $profissional, Empresa $empresa)
     {
+        
         if($request->perfil == "profissional"){
+
+            $personagem = Profissionais::where([
+                ['email', '=', $request->email_verified],
+                ['deleted_at', '=', null]
+            ])->get();
             
             $newUser['name'] = $request->parceiro;
             $newUser['password'] = Hash::make($request->password);
+            $newUser['email'] = $request->email;
+            
+            $usuario = User::where('id', $request->id)->update($newUser);
+
+            unset($request['email_verified']);
+            unset($request['id']);
     
-            User::where('id', $request->id)->update($newUser);
-    
-            $profissional->where('email', $request->email)->where('deleted_at', null)->update($request->toArray());
-    
+            $profissional->where('email', $personagem[0]->email)->where('deleted_at', null)->update($request->toArray());
+
             $retorno = response()->json($profissional);
+
+            dd($profissional);
 
             $log['entidade'] = "perfil_profissional";
             $log['acao'] = "editar_perfil";
@@ -109,13 +121,22 @@ class PerfilController extends Controller
         }
 
         if($request->perfil == "empresa"){
+
+            $personagem = Empresa::where([
+                ['email', '=', $request->email_verified],
+                ['deleted_at', '=', null]
+            ])->get();
             
             $newUser['name'] = $request->razao_social;
             $newUser['password'] = Hash::make($request->password);
+            $newUser['email'] = $request->email;
     
-            User::where('id', $request->id)->update($newUser);
+            $usuario = User::where('id', $request->id)->update($newUser);
+
+            unset($request['email_verified']);
+            unset($request['id']);
     
-            $empresa->where('email', $request->email)->where('deleted_at', null)->update($request->toArray());
+            $empresa->where('email', $request->email_verified)->where('deleted_at', null)->update($request->toArray());
     
             $retorno = response()->json($empresa);
 

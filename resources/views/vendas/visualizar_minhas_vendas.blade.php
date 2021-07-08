@@ -23,30 +23,24 @@
                                 <table id="zero-config" class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th style="text-align: center">ID</th>
+                                            <th style="text-align: center">Data da Venda</th>
                                             <th style="text-align: center">Cliente</th>
-                                            <th style="text-align: center">Contato</th>
-                                            <th style="text-align: center">Empresa</th>
                                             <th style="text-align: center">Indicado</th>
                                             <th style="text-align: center">Valor</th>
                                             <th style="text-align: center">CAED</th>
-                                            <th style="text-align: center">Data da Venda</th>
-                                            <th style="text-align: center">Criado em</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($vendas as $v)
+                                        @if(Auth::user()->email == $v->email_indicado || Auth::user()->name == $v->indicador || Auth::user()->name == $v->indicado)
                                         <tr>
-                                            <td style="text-align: center">{{ $v->id }}</td>
+                                            <td style="text-align: center">{{ $v->data_venda }}</td>
                                             <td style="text-align: center">{{ $v->cliente }}</td>
-                                            <td style="text-align: center">{{ $v->contato }}</td>
-                                            <td style="text-align: center">{{ $v->indicador }}</td>
                                             <td style="text-align: center">{{ $v->indicado }}</td>
                                             <td style="text-align: center">{{ $v->valor }}</td>
                                             <td style="text-align: center">{{ $v->caed }}</td>
-                                            <td style="text-align: center">{{ $v->data_venda }}</td>
-                                            <td style="text-align: center">{{ $v->created_at }}</td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                     </tbody>
                                 </table>

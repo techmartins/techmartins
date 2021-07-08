@@ -19,6 +19,7 @@
                                         <input type="hidden" value="{{ Request::url() }}" id="url_cadastro">
                                         <input type="hidden" value="{{ Auth::user()->id }}" id="id">
                                         <input type="hidden" value="{{ Auth::user()->perfil }}" id="perfil">
+                                        <input type="hidden" id="email_verified">
                                         
                                             
                                                 <div class="form-row mb-1">
@@ -32,7 +33,7 @@
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label for="email_edit">Email</label>
-                                                        <input name="email_edit" type="email" class="form-control" id="email_edit" placeholder="Email do profissional" disabled>
+                                                        <input name="email_edit" type="email" class="form-control" id="email_edit" placeholder="Email do profissional">
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label for="nascimento_edit">Data de nascimento</label>
@@ -88,6 +89,7 @@
                                     <input type="hidden" value="{{Request::url()}}" id="url_cadastro">
                                     <input type="hidden" value="{{ Auth::user()->id }}" id="id">
                                     <input type="hidden" value="{{ Auth::user()->perfil }}" id="perfil">
+                                    <input type="hidden" id="email_verified">
                                     
                                             <div class="form-row mb-1">
                                                 <div class="form-group col-md-6">

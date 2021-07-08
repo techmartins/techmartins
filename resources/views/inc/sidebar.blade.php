@@ -58,9 +58,20 @@
                             <a href="/public/vendas">Registrar Venda</a>
                         </li>
                         @endif
-                        @if(Auth::user()->perfil == 'profissional')
+                        @if(Auth::user()->perfil == 'empresa')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
+                            <a href="/public/minhasvendas">Minhas Vendas</a>
+                        </li>
+                        @endif
+                        @if(Auth::user()->perfil == 'profissional')
+                        <li class="{{ ($page_name === 'compras') ? 'active' : '' }}">
                             <a href="/public/compras">Informar Compra</a>
+                        </li>
+                        <li class="{{ ($page_name === 'compras') ? 'active' : '' }}">
+                            <a href="/public/compras/minhascompras">Minhas Compras</a>
+                        </li>
+                        <li class="{{ ($page_name === 'compras') ? 'active' : '' }}">
+                            <a href="/public/empresa/credenciadas">Visualizar Empresas</a>
                         </li>
                         @endif
                         @if(Auth::user()->perfil == 'admin')
@@ -71,29 +82,6 @@
                     </ul>
                 </li>
                 
-                {{-- <li class="menu single-menu">
-                    <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
-                        <div class="">
-                            <i data-feather="codepen"></i>
-                            <span>Obras</span>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </a>
-                    <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
-                        <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/public/vendas">Registrar</a>
-                        </li>
-                        @if(Auth::user()->perfil !== 'admin')
-                        <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/public/vendas/visualizar">Minhas Obras</a>
-                        </li>
-                        @endif
-                        <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
-                            <a href="/public/vendas/visualizar">Lista de Obras</a>
-                        </li>
-                    </ul>
-                </li> --}}
-
                 @if(Auth::user()->perfil == 'empresa' || Auth::user()->perfil == 'profissional')
                 <li class="menu single-menu">
                     <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
@@ -121,28 +109,26 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </a>
                     <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
+                        
                         <li class="{{ ($page_name === 'ranking') ? 'active' : '' }}">
-                            <a href="/tabelaranking">Ranking</a>
+                            <a href="/public/tabelaranking">Ranking</a>
                         </li>
-                        {{-- <li>
-                            <a href="/relatorios/venda-lojista"> Vendas Por Lojista </a>
+                        <li class="{{ ($page_name === 'ranking') ? 'active' : '' }}">
+                            <a href="/public/vendas/relatorio/empresa">Resgates Solicitados</a>
                         </li>
-                        <li>
-                            <a href="/relatorios/obra-profissional"> Obras Por Profissional </a>
-                        </li>
-                        <li>
-                            <a href="/relatorios/ranking"> Ranking de Pontuação </a>
+                        <!-- <li>
+                            <a href="/public/vendas/relatorio/empresa"> Total de Vendas Por Empresa </a>
                         </li>
                         <li>
-                            <a href="/relatorios/comissao-profissional-lojista"> Comissionamento Profissional X Lojista </a>
-                        </li> --}}
+                            <a href="/public/vendas/relatorio/empresa"> Total de Vendas Por Profissional </a>
+                        </li> -->
                         <li>
                             <a href="/public/pontuacao"> Premiações </a>
                         </li>
+                       
                     </ul>
                 </li>
                 @endif
-                
             </ul>
         </nav>
     </div>
