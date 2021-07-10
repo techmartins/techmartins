@@ -1816,7 +1816,7 @@ input[disabled], select[disabled], textarea[disabled], input[readonly], select[r
 
 .table > tbody > tr > td {
   vertical-align: middle;
-  color: #515365;
+  color: #2c09aa;
   font-size: 13px;
   letter-spacing: 1px;
 }

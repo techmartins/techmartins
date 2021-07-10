@@ -6,6 +6,7 @@ use App\Pontuacao;
 use App\Profissionais;
 use App\Empresa;
 use App\User;
+use App\Logbook;
 use Illuminate\Http\Request;
 
 class PontuacaoController extends Controller
@@ -32,7 +33,6 @@ class PontuacaoController extends Controller
         $profissionais = Profissionais::select('parceiro', 'pontuacao')
             ->where('deleted_at', null)
             ->orderBy('pontuacao', 'desc')
-            //->skip(10)->take(3)
             ->get();
         
         $page_name = 'ranking';
@@ -41,6 +41,56 @@ class PontuacaoController extends Controller
         $scrollspy_offset = '';
 
         return view('ranking.visualizar_ranking',compact('profissionais', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+    }
+
+    public function indexTabelaEmpresas()
+    {
+        $empresas = Empresa::select('razao_social', 'pontuacao')
+            ->where('deleted_at', null)
+            ->orderBy('pontuacao', 'desc')
+            ->get();
+
+        $page_name = 'ranking';
+        $category_name = 'ranking';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+
+        return view('ranking.visualizar_ranking_empresas',compact('empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+    }
+
+    public function resgatessolicitados()
+    {
+        $resgates = Logbook::where('acao', '=', 'resgate')->get();
+        $page_name = 'ranking';
+        $category_name = 'ranking';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+
+        return view('resgate.visualizar_resgates_solicitados',compact('resgates', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+    }
+
+    public function relatorioprofissionais()
+    {
+        $profissionais = Profissionais::where('deleted_at', null)->get();
+        
+        $page_name = 'teste';
+        $category_name = 'teste';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+
+        return view('relatorios.relatorio_profissionais',compact('profissionais', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+    }
+
+    public function relatorioempresas()
+    {
+        $empresas = Empresa::where('deleted_at', null)->get();
+        
+        $page_name = 'teste';
+        $category_name = 'teste';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+
+        return view('relatorios.relatorio_empresas',compact('empresas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
     /**

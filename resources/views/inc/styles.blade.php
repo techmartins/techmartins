@@ -354,6 +354,13 @@
       <link href="{{asset('plugins/notification/snackbar/snackbar.min.css')}}" rel="stylesheet" type="text/css" />
     @break
 
+    @case('teste')
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" type="text/css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/searchbuilder/1.1.0/css/searchBuilder.dataTables.min.css" type="text/css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" type="text/css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.0/css/dataTables.dateTime.min.css" type="text/css">
+    @break
+
     @case('vendas')
       <link href="{{asset('plugins/loaders/custom-loader.css')}}" rel="stylesheet" type="text/css" />
       <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />

@@ -128,14 +128,35 @@
                 "pageLength": 7 
             } );
         </script>
+        <script src="{{asset('plugins/font-icons/feather/feather.min.js')}}"></script>
+        <script type="text/javascript">
+            feather.replace();
+        </script>
         <!-- END PAGE LEVEL CUSTOM SCRIPTS -->
+    @break
+
+    @case('teste')
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script src="{{asset('plugins/table/datatable/button-ext/jszip.min.js')}}"></script>
+        <script src="{{asset('plugins/table/datatable/button-ext/dataTables.buttons.min.js')}}"></script>
+        <script src="https://cdn.datatables.net/searchbuilder/1.1.0/js/dataTables.searchBuilder.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/datetime/1.1.0/js/dataTables.dateTime.min.js"></script>
+        <script src="{{asset('plugins/script-teste.js')}}"></script>
+        <script src="{{asset('plugins/font-icons/feather/feather.min.js')}}"></script>
+        <script src="{{asset('plugins/script-dashboard.js')}}"></script>
+        <script type="text/javascript">
+            feather.replace();
+        </script>
+
     @break
 
     @case('cadastrar-empresa')
         {{-- Table Datatable HTML5 --}}
         <script src="{{asset('plugins/table/datatable/datatables.js')}}"></script>
-        <script src="{{asset('plugins/table/datatable/button-ext/dataTables.buttons.min.js')}}"></script>
         <script src="{{asset('plugins/table/datatable/button-ext/jszip.min.js')}}"></script>
+        <script src="{{asset('plugins/table/datatable/button-ext/dataTables.buttons.min.js')}}"></script>
         <script src="{{asset('plugins/notification/snackbar/snackbar.min.js')}}"></script>
         <script src="{{asset('assets/js/components/notification/custom-snackbar.js')}}"></script>    
         <script src="{{asset('plugins/table/datatable/button-ext/buttons.html5.min.js')}}"></script>

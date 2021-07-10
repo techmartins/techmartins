@@ -97,13 +97,17 @@ class VendasController extends Controller
 
     public function getallvendas(Vendas $vendas)
     {
+        $profissionais = Profissionais::where('deleted_at', '=', null)->latest()->get();
+        $profissionais = $profissionais->sortBy('parceiro');
+        $empresas = Empresa::where('deleted_at', '=', null)->latest()->get();
+        $empresas = $empresas->sortBy('razao_social');
         $vendas = Vendas::all();
         $page_name = 'vendas';
         $category_name = 'vendas';
         $has_scrollspy = 0;
         $scrollspy_offset = '';
         
-        return view('vendas.visualizar_vendas',compact('vendas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+        return view('vendas.visualizar_vendas',compact( 'empresas', 'profissionais', 'vendas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
     public function relatoriovendasporempresa()
@@ -159,6 +163,17 @@ class VendasController extends Controller
         
         return view('vendas.visualizar_minhas_vendas',compact('vendas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
         
+    }
+
+    public function relatoriovendasemgeral()
+    {
+        $vendas = Vendas::all();
+        $page_name = 'teste';
+        $category_name = 'teste';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+        
+        return view('relatorios.relatorio_vendas_geral',compact('vendas', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
     /**
@@ -386,15 +401,101 @@ class VendasController extends Controller
     public function update(Request $request, Vendas $vendas)
     {
         $request->validate([
+            'id',
             'valor',
+            'valor_original',
             'cliente',
             'contato',
             'indicador',
+            'data_venda',
             'indicado',
+            'id_indicado',
             'pontuacao_indicador',
             'descricao_servico',
-            'caed'
+            'perfil',
+            'motivo'
         ]);
+        dd($request->valor_original - $request->valor);
+        
+        if($request->valor < $request->valor_original){
+            $diferenca = $request->valor_original - $request->valor;
+        }else{
+            $diferenca = $request->valor - $request->valor_original; 
+        }
+
+        $request['pontuacao_indicador'] = explode(",", $diferenca);
+
+        $pos = strpos($request['pontuacao_indicador'][0], ".");
+        if($pos === false){
+            $pt = $request['pontuacao_indicador'][0];
+        }else{
+            $request['pontuacao_indicador'] = explode(".",$request['pontuacao_indicador'][0]);
+            $pt = $request['pontuacao_indicador'][0];
+            for ($n = 1; $n < count($request['pontuacao_indicador']); $n++) {
+                $pt .= $request['pontuacao_indicador'][$n];
+            }
+        }
+
+        if($request->perfil === 'profissional-empresa'){
+            
+            
+            $request['caed'] = $pt*0.025;
+            $request['caed'] = number_format($request['caed'], 2, ',', '.');
+            $request['caed'] = str_replace(",", ".", $request['caed']);
+
+            $request['indicado'] = $request->indicado;
+            $request['id_indicado'] = $request->id_indicado;
+            
+            $pontos = Profissionais::select('pontuacao' , 'email' , 'parceiro')->where('id', $request['id_indicado'])->where('deleted_at', null)->get();
+            
+            if($pontos[0]['pontuacao'] !== 0){
+                if($request->valor < $request->valor_original){
+                    $request_profissional['pontuacao'] = $pontos[0]['pontuacao'] - $pt;    
+                }else{
+                    $request_profissional['pontuacao'] = $pontos[0]['pontuacao'] + $pt;
+                }
+            }else{
+                $request_profissional['pontuacao'] = $pt;
+            }
+            
+            $profissionais = Profissionais::where('id', $request['id_indicado'])->where('deleted_at', null)->update($request_profissional);
+
+            $log['entidade'] = $request->perfil;
+            $log['acao'] = "edição-venda";
+            $log['observacao'] = "Edição de Venda para Profissional";
+            $log['id_usuario'] = $request['id_indicado'];
+            
+            Logbook::create($log);
+            
+        }else{
+            $request['caed'] = $pt*0.025;
+            $request['caed'] = number_format($request['caed'], 2, ',', '.');
+            $request['caed'] = str_replace(",", ".", $request['caed']);
+            
+            $request['indicado'] = $request->indicado;
+            $request['id_indicado'] = $request->id_indicado;
+
+            $pontos = Empresa::select('pontuacao' , 'email' , 'razao_social')->where('id', $request['id_indicado'])->where('deleted_at', null)->get();
+
+            if($pontos[0]['pontuacao'] !== 0){
+                if($request->valor < $request->valor_original){
+                    $request_profissional['pontuacao'] = $pontos[0]['pontuacao'] - $pt;    
+                }else{
+                    $request_profissional['pontuacao'] = $pontos[0]['pontuacao'] + $pt;
+                }
+            }else{
+                $request_profissional['pontuacao'] = $pt;
+            }
+
+            $log['entidade'] = $request->perfil;
+            $log['acao'] = "registro-venda";
+            $log['observacao'] = "Registro de Venda para Empresa";
+            $log['id_usuario'] = $request['id_indicado'];
+            
+            Logbook::create($log);
+        }
+
+        unset($request->valor_original);
 
         $vendas->where('id', '=', $request->id)->update($request->toArray());
 

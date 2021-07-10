@@ -75,6 +75,8 @@ Route::group(['middleware' => 'auth'] , function() {
     // DADOS DE VENDA E RANKING
     Route::get('/vendas', 'VendasController@index'); // VISUALIZA A TELA DE CADASTRO DAS VENDAS
     Route::get('/vendas/visualizar', 'VendasController@getallvendas')->name('visualizar.vendas'); // VISUALIZA AS VENDAS EM GERAL
+    Route::get('/vendas/visualizar/{id}', 'VendasController@show');
+    Route::put('/vendas/visualizar/{id}', 'VendasController@update');
     Route::get('/vendas/resgate/premio', 'VendasController@resgatarpremiacao'); // PÁGINA DE RESGATE DO PREMIO
     Route::post('/vendas/resgate/premio', 'VendasController@realizarresgate');
     Route::get('/minhasvendas/', 'VendasController@getvendas');
@@ -89,7 +91,13 @@ Route::group(['middleware' => 'auth'] , function() {
     
     // CRUD DA TABELA PONTUAÇÃO
     Route::get('/pontuacao', 'PontuacaoController@index');
+    Route::get('/vendas/relatorio/resgates', 'PontuacaoController@resgatessolicitados');
+    Route::get('/relatorio/profissionais', 'PontuacaoController@relatorioprofissionais');
+    Route::get('/relatorio/empresas', 'PontuacaoController@relatorioempresas');
+    Route::get('/relatorio/vendas', 'VendasController@relatoriovendasemgeral');
+    Route::get('/relatorio/compras', 'ComprasController@relatoriocompras');
     Route::get('/tabelaranking', 'PontuacaoController@indexTabela');
+    Route::get('/tabelarankingempresas', 'PontuacaoController@indexTabelaEmpresas');
     Route::get('/pontuacao/{id}', 'PontuacaoController@show')->name('pontuacao.show');
     Route::put('/pontuacao/{id}', 'PontuacaoController@update')->name('pontuacao.update');
 

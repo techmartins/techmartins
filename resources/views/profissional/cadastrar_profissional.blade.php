@@ -26,13 +26,13 @@
                   <label for="parceiro">Nome</label>
                   <input name="parceiro" type="text" class="form-control" id="parceiro" placeholder="Nome do Profissional">
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="cpf">CPF</label>
-                  <input name="cpf" type="text" class="form-control" id="cpf" placeholder="cpf do profissional">
+                <div class="form-group col-md-3">
+                  <label for="area">Área de Atuação</label>
+                  <input name="area" type="text" class="form-control" id="area">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="email">Email</label>
-                  <input name="email" type="email" class="form-control" id="email" placeholder="Email do profissional">
+                  <label for="cpf">CPF</label>
+                  <input name="cpf" type="text" class="form-control" id="cpf" placeholder="cpf do profissional">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="nascimento">Data de nascimento</label>
@@ -43,8 +43,8 @@
                   <input type="tel" class="form-control" id="telefone">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="area">Área de Atuação</label>
-                  <input name="area" type="text" class="form-control" id="area">
+                  <label for="email">Email</label>
+                  <input name="email" type="email" class="form-control" id="email" placeholder="Email do profissional">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="chave_pix">Chave PIX</label>
@@ -64,12 +64,12 @@
                   <input name="bairro" type="text" class="form-control" id="bairro" placeholder="Bairro">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="uf">UF</label>
-                  <input name="uf" type="text" class="form-control" id="uf" placeholder="Estado">
-                </div>
-                <div class="form-group col-md-3">
                   <label for="cidade">Cidade</label>
                   <input name="cidade" type="text" class="form-control" id="cidade" placeholder="Cidade">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="uf">UF</label>
+                  <input name="uf" type="text" class="form-control" id="uf" placeholder="Estado">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="password">Senha</label>
@@ -95,13 +95,18 @@
                   <tr>
                     <th>ID</th>
                     <th>Parceiro</th>
-                    <th>CPF</th>
-                    <th>E-mail</th>
                     <th>Área de Atuação</th>
+                    <th>CPF</th>
+                    <th>Nascimento</th>
                     <th>Telefone</th>
+                    <th>E-mail</th>
                     <th>Chave PIX</th>
+                    <th>CEP</th>
+                    <th>Endereço</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>UF</th>
                     <th>Criado em</th>
-                    {{-- <th>Ação</th> --}}
                   </tr>
               </thead>
               <tbody>
@@ -109,16 +114,18 @@
                   <tr>
                     <td>{{ $prof->id }}</td>
                     <td>{{ $prof->parceiro }}</td>
-                    <td>{{ $prof->cpf }}</td>
-                    <td>{{ $prof->email }}</td>
                     <td>{{ $prof->area_atuacao }}</td>
+                    <td>{{ $prof->cpf }}</td>
+                    <td>{{ $prof->nascimento }}</td>
                     <td>{{ $prof->telefone }}</td>
+                    <td>{{ $prof->email }}</td>
                     <td>{{ $prof->chave_pix }}</td>
+                    <td>{{ $prof->cep }}</td>
+                    <td>{{ $prof->endereco }}</td>
+                    <td>{{ $prof->bairro }}</td>
+                    <td>{{ $prof->cidade }}</td>
+                    <td>{{ $prof->uf }}</td>
                     <td>{{ $prof->created_at }}</td>
-                    {{-- <td class="text-center">
-                      <button class="btn btn-primary mb-2 btn-editar-profissional" data-id="{{ $prof->id }}"><i data-feather="edit-3"></i></button>
-                      <button class="btn btn-danger mb-2 btn-excluir-profissional" data-id="{{ $prof->id }}"><i data-feather="trash-2"></i><span class="icon-name"></span></button>
-                    </td> --}}
                   </tr>
                 @endforeach
               </tbody>
@@ -198,13 +205,13 @@
                             <label for="parceiro_edit">Nome</label>
                             <input name="parceiro_edit" type="text" class="form-control" id="parceiro_edit" placeholder="Nome do Profissional">
                           </div>
-                          <div class="form-group col-md-6">
-                            <label for="cpf_edit">CPF</label>
-                            <input name="cpf_edit" type="text" class="form-control" id="cpf_edit" placeholder="cpf do profissional">
+                          <div class="form-group col-md-3">
+                            <label for="area_edit">Área de Atuação</label>
+                            <input name="area_edit" type="text" class="form-control" id="area_edit">
                           </div>
                           <div class="form-group col-md-3">
-                            <label for="email_edit">Email</label>
-                            <input name="email_edit" type="email" class="form-control" id="email_edit" placeholder="Email do profissional">
+                            <label for="cpf_edit">CPF</label>
+                            <input name="cpf_edit" type="text" class="form-control" id="cpf_edit" placeholder="cpf do profissional">
                           </div>
                           <div class="form-group col-md-3">
                             <label for="nascimento_edit">Data de nascimento</label>
@@ -215,10 +222,10 @@
                             <input type="tel" class="form-control" id="telefone_edit">
                           </div>
                           <div class="form-group col-md-3">
-                            <label for="area_edit">Área de Atuação</label>
-                            <input name="area_edit" type="text" class="form-control" id="area_edit">
+                            <label for="email_edit">Email</label>
+                            <input name="email_edit" type="email" class="form-control" id="email_edit" placeholder="Email do profissional">
                           </div>
-                          <div class="form-group col-md-6">
+                          <div class="form-group col-md-3">
                             <label for="chave_pix_edit">Chave PIX</label>
                             <input name="chave_pix_edit" type="text" class="form-control" id="chave_pix_edit" placeholder="Chave PIX">
                           </div>
@@ -236,16 +243,18 @@
                             <input name="bairro_edit" type="text" class="form-control" id="bairro_edit" placeholder="Bairro">
                           </div>
                           <div class="form-group col-md-3">
-                            <label for="uf_edit">UF</label>
-                            <input name="uf_edit" type="text" class="form-control" id="uf_edit" placeholder="Estado">
-                          </div>
-                          <div class="form-group col-md-3">
                             <label for="cidade_edit">Cidade</label>
                             <input name="cidade_edit" type="text" class="form-control" id="cidade_edit" placeholder="Cidade">
                           </div>
                           <div class="form-group col-md-3">
+                            <label for="uf_edit">UF</label>
+                            <input name="uf_edit" type="text" class="form-control" id="uf_edit" placeholder="Estado">
+                          </div>
+                          <div class="form-group col-md-3">
                             <label for="password_edit">Senha</label>
                             <input type="password" class="form-control" id="password_edit" placeholder="Password">
+                          </div>
+                          <div class="form-group col-md-6">
                           </div>
                           <button type="button" class="btn btn-primary mt-3" id="editar-dados">Confirmar</button>
                         </div>

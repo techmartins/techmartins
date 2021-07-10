@@ -35,25 +35,7 @@
                 </div>
                 <div class="form-group col-md-3">
                   <label for="ramo">Ramo de Atividade</label>
-                  <select name="ramo" id="ramo" class="form-control">
-                    <option selected="">Selecione</option>
-                    <option value="Ar Condicionado">Ar Condicionado</option>
-                    <option value="Automacao Residencial">Automação Residencial</option>
-                    <option value="Coifas e Calhas">Coifas, Calhas</option>
-                    <option value="Cortinas e Persianas">Cortinas e Persianas</option>
-                    <option value="Drywall e Gesso">Drywall e Gesso</option>
-                    <option value="Energia Fotovoltaica">Energia Fotovoltaica</option>
-                    <option value="Esquadrias e PVC">Esquadrias e PVC</option>
-                    <option value="Lajes e Artefatos Cimento">Lajes e Artefatos Cimento</option>
-                    <option value="Marcenaria">Marcenaria</option>
-                    <option value="Materiais de Construcao">Materiais de Construção</option>
-                    <option value="Moveis e Decoracao">Móveis e Decoração</option>
-                    <option value="Moveis Planejados">Móveis Planejados</option>
-                    <option value="Moveis Prontos">Móveis Prontos</option>
-                    <option value="Pergolado Madeira">Pergolado Madeira</option>
-                    <option value="Vidracaria">Vidraçaria</option>
-                    <option value="Vidros Box e Guarda Corpo">Vidros Box e Guarda Corpo</option>
-                  </select>
+                  <input name="ramo" type="text" class="form-control" id="ramo" placeholder="Ramo de Atividade da Empresa">
                 </div>
                 <div class="form-group col-md-3">
                   <label for="cep">CEP</label>
@@ -81,6 +63,10 @@
                   <input type="tel" class="form-control" id="contato">
                 </div>
                 <div class="form-group col-md-3">
+                  <label for="contato_admin">Contato ADM</label>
+                  <input type="text" class="form-control" id="contato_admin">
+                </div>
+                <div class="form-group col-md-3">
                   <label for="referencia">Referência do Contato</label>
                   <input type="text" class="form-control" id="referencia">
                 </div>
@@ -88,7 +74,7 @@
                   <label for="password">Senha</label>
                   <input type="password" class="form-control" id="password" placeholder="Password">
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-3">
                 </div>
                 <button type="button" class="btn btn-primary mt-3" id="enviar-dados">Confirmar</button>
               </div>
@@ -111,6 +97,7 @@
                     <th>E-mail</th>
                     <th>Atividade</th>
                     <th>Contato</th>
+                    <th>Contato ADM</th>
                     <th>Referência</th>
                   </tr>
               </thead>
@@ -123,6 +110,7 @@
                     <td>{{ $emp->email }}</td>
                     <td>{{ $emp->ramo_atividade }}</td>
                     <td>{{ $emp->contato }}</td>
+                    <td>{{ $emp->contato_admin }}</td>
                     <td>{{ $emp->referencia }}</td>
                   </tr>
                 @endforeach
@@ -213,25 +201,7 @@
                           </div>
                           <div class="form-group col-md-3">
                             <label for="ramo">Ramo de Atividade</label>
-                            <select name="ramo" id="ramo_edit" class="form-control">
-                              <option selected="">Selecione</option>
-                              <option value="Ar Condicionado">Ar Condicionado</option>
-                              <option value="Automacao Residencial">Automação Residencial</option>
-                              <option value="Coifas e Calhas">Coifas, Calhas</option>
-                              <option value="Cortinas e Persianas">Cortinas e Persianas</option>
-                              <option value="Drywall e Gesso">Drywall e Gesso</option>
-                              <option value="Energia Fotovoltaica">Energia Fotovoltaica</option>
-                              <option value="Esquadrias e PVC">Esquadrias e PVC</option>
-                              <option value="Lajes e Artefatos Cimento">Lajes e Artefatos Cimento</option>
-                              <option value="Marcenaria">Marcenaria</option>
-                              <option value="Materiais de Construcao">Materiais de Construção</option>
-                              <option value="Moveis e Decoracao">Móveis e Decoração</option>
-                              <option value="Moveis Planejados">Móveis Planejados</option>
-                              <option value="Moveis Prontos">Móveis Prontos</option>
-                              <option value="Pergolado Madeira">Pergolado Madeira</option>
-                              <option value="Vidracaria">Vidraçaria</option>
-                              <option value="Vidros Box e Guarda Corpo">Vidros Box e Guarda Corpo</option>
-                            </select>
+                            <input name="ramo" type="text" class="form-control" id="ramo_edit" placeholder="Ramo de Atividade da Empresa">
                           </div>
                           <div class="form-group col-md-3">
                             <label for="cep">CEP</label>
@@ -259,6 +229,10 @@
                             <input type="tel" class="form-control" id="contato_edit">
                           </div>
                           <div class="form-group col-md-3">
+                            <label for="contato_admin">Contato ADM</label>
+                            <input type="text" class="form-control" id="contato_admin_edit">
+                          </div>
+                          <div class="form-group col-md-3">
                             <label for="referencia">Referência do Contato</label>
                             <input type="text" class="form-control" id="referencia_edit">
                           </div>
@@ -266,7 +240,7 @@
                             <label for="password">Senha</label>
                             <input type="password" class="form-control" id="password_edit" placeholder="Password">
                           </div>
-                          <div class="form-group col-md-6">
+                          <div class="form-group col-md-3">
                           </div>
                           <button type="button" class="btn btn-primary mt-3" data-dismiss="modal" id="editar-dados">Confirmar</button>
                         </div>

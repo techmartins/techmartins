@@ -103,6 +103,17 @@ class ComprasController extends Controller
         return view('compras.visualizar_minhas_compras',compact('compras', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
     }
 
+    public function relatoriocompras()
+    {
+        $compras = Compras::all();
+        $page_name = 'teste';
+        $category_name = 'teste';
+        $has_scrollspy = 0;
+        $scrollspy_offset = '';
+        
+        return view('relatorios.relatorio_compras',compact('compras', 'page_name', 'category_name', 'has_scrollspy', 'scrollspy_offset'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

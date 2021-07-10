@@ -70,9 +70,6 @@
                         <li class="{{ ($page_name === 'compras') ? 'active' : '' }}">
                             <a href="/public/compras/minhascompras">Minhas Compras</a>
                         </li>
-                        <li class="{{ ($page_name === 'compras') ? 'active' : '' }}">
-                            <a href="/public/empresa/credenciadas">Visualizar Empresas</a>
-                        </li>
                         @endif
                         @if(Auth::user()->perfil == 'admin')
                         <li class="{{ ($page_name === 'vendas') ? 'active' : '' }}">
@@ -81,6 +78,23 @@
                         @endif
                     </ul>
                 </li>
+                @if(Auth::user()->perfil == 'profissional')
+                <li class="menu single-menu">
+                    <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            <span>Empresas</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="menu2" data-parent="#topAccordion">
+                        
+                        <li class="{{ ($page_name === 'compras') ? 'active' : '' }}">
+                            <a href="/public/empresa/credenciadas">Visualizar Empresas</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
                 
                 @if(Auth::user()->perfil == 'empresa' || Auth::user()->perfil == 'profissional')
                 <li class="menu single-menu">
@@ -111,15 +125,27 @@
                     <ul class="collapse submenu list-unstyled" id="menu1" data-parent="#topAccordion">
                         
                         <li class="{{ ($page_name === 'ranking') ? 'active' : '' }}">
-                            <a href="/public/tabelaranking">Ranking</a>
+                            <a href="/public/tabelaranking">Ranking de Profissionais</a>
                         </li>
                         <li class="{{ ($page_name === 'ranking') ? 'active' : '' }}">
-                            <a href="/public/vendas/relatorio/empresa">Resgates Solicitados</a>
+                            <a href="/public/tabelarankingempresas">Ranking de Empresas</a>
                         </li>
-                        <!-- <li>
-                            <a href="/public/vendas/relatorio/empresa"> Total de Vendas Por Empresa </a>
+                        <li class="{{ ($page_name === 'ranking') ? 'active' : '' }}">
+                            <a href="/public/vendas/relatorio/resgates">Resgates Solicitados</a>
                         </li>
                         <li>
+                            <a href="/public/relatorio/profissionais"> Relatório de Profissionais </a>
+                        </li>
+                        <li>
+                            <a href="/public/relatorio/empresas"> Relatório de Empresas </a>
+                        </li>
+                        <li>
+                            <a href="/public/relatorio/vendas"> Relatório Geral de Vendas </a>
+                        </li>
+                        <li>
+                            <a href="/public/relatorio/compras"> Relatório de Compras </a>
+                        </li>
+                        <!-- <li>
                             <a href="/public/vendas/relatorio/empresa"> Total de Vendas Por Profissional </a>
                         </li> -->
                         <li>

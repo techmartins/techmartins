@@ -66,15 +66,14 @@ class EmpresaController extends Controller
             'uf',
             'cidade',
             'contato',
+            'contato_admin',
             'pontuacao',
             'referencia',
             'password'
         ]);
         $validacao = Empresa::where('email', '=', $request->email)->get();
 
-        // if($validacao > 0){
-        //     return $msg = ;
-        // }
+        // validar existencia de empresa com o email cadastrado
 
         $empresa = Empresa::create($request->all());
 
@@ -149,6 +148,8 @@ class EmpresaController extends Controller
         $newUser['password'] = Hash::make($request->password);
 
         $usuario = User::where('email', $request->email_verified)->update($newUser);
+
+        unset($request['email_verified']);
 
         $empresa->where('id', $request->id)->update($request->toArray());
         

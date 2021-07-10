@@ -44,6 +44,7 @@ $(document).ready(function(){
         var uf = $('#uf').val();
         var cidade = $('#cidade').val();
         var contato = $('#contato').val();
+        var contato_admin = $('#contato_admin').val();
         var referencia = $('#referencia').val();
         var password = $('#password').val();
         var pontuacao = 0;
@@ -68,6 +69,7 @@ $(document).ready(function(){
                     uf: uf,
                     cidade: cidade,
                     contato: contato,
+                    contato_admin: contato_admin,
                     referencia: referencia,
                     password: password,
                     pontuacao:pontuacao,
@@ -76,15 +78,16 @@ $(document).ready(function(){
 
                 success: function(response) {
                     console.log(response);
-                    //location.reload();
+                    // location.reload();
                 },
                 error: function(response) {
                     console.log(response)
                 }
             });
             $('#modal-loading').modal('hide');
-            // location.reload();
+            window.location.reload();
         }, 3000);
+
     });
 
     $(".btn-editar-empresa").click(function(){
@@ -112,6 +115,7 @@ $(document).ready(function(){
                 $('#cidade_edit').val(response[0]["cidade"]);
                 $('#referencia_edit').val(response[0]["referencia"]);
                 $('#contato_edit').val(response[0]["contato"]);
+                $('#contato_admin_edit').val(response[0]["contato_admin"]);
                 $('#password_edit').val(response[0]["password"]);
             },
             error: function(err) {
@@ -134,6 +138,7 @@ $(document).ready(function(){
         var uf = $('#uf_edit').val();
         var cidade = $('#cidade_edit').val();
         var contato = $('#contato_edit').val();
+        var contato_admin = $('#contato_admin_edit').val();
         var referencia = $('#referencia_edit').val();
         var password = $('#password_edit').val();
 
@@ -163,6 +168,7 @@ $(document).ready(function(){
                     uf: uf,
                     cidade: cidade,
                     contato: contato,
+                    contato_admin: contato_admin,
                     referencia: referencia,
                     password: password
                     // _token: _token

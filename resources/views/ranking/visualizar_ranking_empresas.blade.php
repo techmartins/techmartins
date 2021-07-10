@@ -11,7 +11,7 @@
                 <div class="widget-header">                                
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                            <h4>Ranking de Pontuação Profissionais</h4>
+                            <h4>Ranking de Pontuação Empresas</h4>
                         </div>
                     </div>
                 </div>
@@ -22,16 +22,14 @@
                                 <table id="zero-config" class="table table-hover">
                                     <thead>
                                         <tr>
-                                            {{-- <th style="text-align: center">Colocação</th> --}}
                                             <th style="text-align: center">Parceiro</th>
                                             <th style="text-align: center">Pontuação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($profissionais as $rank)
+                                        @foreach ($empresas as $rank)
                                         <tr>
-                                            {{-- <td style="text-align: center">{{ $rank->id }}</td> --}}
-                                            <td style="text-align: center">{{ $rank['parceiro'] }}</td>
+                                            <td style="text-align: center">{{ $rank['razao_social'] }}</td>
                                             <td style="text-align: center">{{ $rank['pontuacao'] }}</td>
                                         </tr>
                                         @endforeach

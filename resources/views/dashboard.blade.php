@@ -44,9 +44,6 @@
                                     <th>Profissional</th>
                                     @endif
                                     <th>Valor</th>
-                                    <!-- @if( Auth::user()->perfil == "empresa" )
-                                    <th>RT</RT>
-                                    @endif -->
                                     <th>Data da Venda</th>
                                 </tr>
                                 <tr>
@@ -58,9 +55,6 @@
                                     <th><input type="text" id="profissional" placeholder="Pesquisar..."/></th>
                                     @endif
                                     <th><input type="text" id="valor" placeholder="Pesquisar..."/></th>
-                                    <!-- @if( Auth::user()->perfil == "empresa" )
-                                    <th><input type="text" id="rt" placeholder="Pesquisar..."/></th>
-                                    @endif -->
                                     <th><input type="text" id="data_venda" placeholder="Pesquisar..."/></th>
                                 </tr>  
                             </thead>

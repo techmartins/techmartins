@@ -11,7 +11,7 @@
                 <div class="widget-header">                                
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                            <h4>Ranking de Pontuação Profissionais</h4>
+                            <h4>Resgates Solicitados</h4>
                         </div>
                     </div>
                 </div>
@@ -23,16 +23,16 @@
                                     <thead>
                                         <tr>
                                             {{-- <th style="text-align: center">Colocação</th> --}}
-                                            <th style="text-align: center">Parceiro</th>
-                                            <th style="text-align: center">Pontuação</th>
+                                            <th style="text-align: center">Observação</th>
+                                            <th style="text-align: center">Data da Solicitação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($profissionais as $rank)
+                                        @foreach ($resgates as $withdraw)
                                         <tr>
                                             {{-- <td style="text-align: center">{{ $rank->id }}</td> --}}
-                                            <td style="text-align: center">{{ $rank['parceiro'] }}</td>
-                                            <td style="text-align: center">{{ $rank['pontuacao'] }}</td>
+                                            <td style="text-align: center">{{ $withdraw['observacao'] }}</td>
+                                            <td style="text-align: center">{{ $withdraw['created_at'] }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
